@@ -43,12 +43,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    // Rute Manajemen Pengguna
-    Route::resource('admin/pengguna', App\Http\Controllers\UserController::class)->names('pengguna')->except(['show']);
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    
+    // Rute untuk update checklist widget (Cukup 1 baris ini saja tambahannya)
     Route::post('/profile/widget', [ProfileController::class, 'updateWidget'])->name('profile.widget');
     
-    // Rute CRUD Manajemen Admin (Menggunakan prefix admin/ agar aman)
+    // Rute Manajemen Pengguna
+    Route::resource('admin/pengguna', App\Http\Controllers\UserController::class)->names('pengguna')->except(['show']);
+    
+    // Rute CRUD Manajemen Admin
     Route::resource('admin/berita', BeritaController::class)->names('berita');
     Route::resource('admin/aspirasi', AspirasiController::class)->names('aspirasi')->only(['index', 'update', 'destroy']);
     Route::resource('admin/kegiatan', KegiatanController::class)->names('kegiatan');
