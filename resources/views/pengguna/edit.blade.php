@@ -52,12 +52,12 @@
 
                     <!-- Pilihan Checklist Hak Akses Fitur -->
                     <div class="pt-6 border-t border-gray-100">
-                        <label class="block text-base font-extrabold text-semaft-navy mb-4"><i class="fa-solid fa-list-check text-semaft-gold mr-2"></i> Modifikasi Delegasi Hak Akses</label>
-                        <p class="text-sm text-gray-500 mb-6">Sesuaikan fitur spesifik di bawah ini yang boleh diakses kembali oleh akun operator tersebut.</p>
+                        <label class="block text-base font-extrabold text-semaft-navy mb-4"><i class="fa-solid fa-list-check text-semaft-gold mr-2"></i> Modifikasi Delegasi Hak Akses & Tampilan</label>
+                        <p class="text-sm text-gray-500 mb-6">Sesuaikan fitur spesifik dan tampilan dashboard yang boleh diakses oleh akun ini.</p>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-gray-50 p-6 rounded-2xl border border-gray-100">
                             
-                            <!-- Kategori: Publikasi & Konten -->
+                            <!-- Kategori 1: Publikasi & Konten -->
                             <div>
                                 <h4 class="font-extrabold text-gray-700 mb-3 flex items-center gap-2 border-b border-gray-200 pb-2">
                                     <i class="fa-solid fa-bullhorn text-semaft-navy"></i> Konten Publikasi
@@ -81,7 +81,7 @@
                                 </div>
                             </div>
 
-                            <!-- Kategori: Interaksi & Layanan -->
+                            <!-- Kategori 2: Interaksi & Layanan -->
                             <div>
                                 <h4 class="font-extrabold text-gray-700 mb-3 flex items-center gap-2 border-b border-gray-200 pb-2">
                                     <i class="fa-solid fa-users text-semaft-navy"></i> Interaksi Mahasiswa
@@ -100,7 +100,7 @@
                                 </div>
                             </div>
 
-                            <!-- Kategori: Administrasi Internal -->
+                            <!-- Kategori 3: Administrasi Internal -->
                             <div>
                                 <h4 class="font-extrabold text-gray-700 mb-3 flex items-center gap-2 border-b border-gray-200 pb-2">
                                     <i class="fa-solid fa-folder-tree text-semaft-navy"></i> Administrasi Sistem
@@ -120,6 +120,35 @@
                                         <input type="checkbox" name="hak_akses[]" value="kalender_lihat" class="w-5 h-5 text-semaft-navy border-gray-300 rounded focus:ring-semaft-navy"
                                             {{ is_array($user->hak_akses) && in_array('kalender_lihat', $user->hak_akses) ? 'checked' : '' }}>
                                         <span class="ml-3 text-sm font-bold text-gray-600 group-hover:text-semaft-navy transition"><i class="fa-solid fa-calendar-days mr-1 text-gray-400"></i> Widget Kalender Interaktif</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Kategori 4: Tampilan Widget (BARU) -->
+                            <div>
+                                <h4 class="font-extrabold text-gray-700 mb-3 flex items-center gap-2 border-b border-gray-200 pb-2">
+                                    <i class="fa-solid fa-table-cells-large text-semaft-navy"></i> Tampilan Dashboard
+                                </h4>
+                                <div class="space-y-3">
+                                    <label class="flex items-center cursor-pointer group">
+                                        <input type="checkbox" name="show_aspirasi" value="1" class="w-5 h-5 text-semaft-navy border-gray-300 rounded focus:ring-semaft-navy"
+                                            {{ $user->show_aspirasi ? 'checked' : '' }}>
+                                        <span class="ml-3 text-sm font-bold text-gray-600 group-hover:text-semaft-navy transition">Tampilkan Widget Aspirasi</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer group">
+                                        <input type="checkbox" name="show_agenda" value="1" class="w-5 h-5 text-semaft-navy border-gray-300 rounded focus:ring-semaft-navy"
+                                            {{ $user->show_agenda ? 'checked' : '' }}>
+                                        <span class="ml-3 text-sm font-bold text-gray-600 group-hover:text-semaft-navy transition">Tampilkan Widget Agenda</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer group">
+                                        <input type="checkbox" name="show_berita" value="1" class="w-5 h-5 text-semaft-navy border-gray-300 rounded focus:ring-semaft-navy"
+                                            {{ $user->show_berita ? 'checked' : '' }}>
+                                        <span class="ml-3 text-sm font-bold text-gray-600 group-hover:text-semaft-navy transition">Tampilkan Widget Berita</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer group mt-2">
+                                        <input type="checkbox" name="show_himpunan" value="1" class="w-5 h-5 text-semaft-navy border-gray-300 rounded focus:ring-semaft-navy"
+                                            {{ $user->show_himpunan ? 'checked' : '' }}>
+                                        <span class="ml-3 text-sm font-bold text-gray-600 group-hover:text-semaft-navy transition">Tampilkan Widget Himpunan</span>
                                     </label>
                                 </div>
                             </div>

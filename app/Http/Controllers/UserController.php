@@ -70,6 +70,7 @@ class UserController extends Controller implements HasMiddleware
         return redirect()->route('pengguna.index')->with('success', 'Akun berhasil dihapus!');
         
     }
+    
     // Menampilkan halaman form edit akun & hak akses
     public function edit($id)
     {
@@ -98,6 +99,12 @@ class UserController extends Controller implements HasMiddleware
         // Jika rolenya diubah jadi superadmin, otomatis bersihkan array hak akses karena superadmin memegang kendali penuh
         $user->hak_akses = $request->role === 'superadmin' ? null : $request->hak_akses;
 
+        // MENANGKAP STATUS CHECKBOX WIDGET TAMPILAN
+        $user->show_aspirasi = $request->has('show_aspirasi');
+        $user->show_agenda   = $request->has('show_agenda');
+        $user->show_berita   = $request->has('show_berita');
+        $user->show_himpunan = $request->has('show_himpunan');
+
         // Jika kolom password diisi, lakukan enkripsi dan simpan
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);
@@ -105,6 +112,6 @@ class UserController extends Controller implements HasMiddleware
 
         $user->save();
 
-        return redirect()->route('pengguna.index')->with('success', 'Data akun dan hak akses berhasil diperbarui!');
+        return redirect()->route('pengguna.index')->with('success', 'Data akun, hak akses, dan tampilan berhasil diperbarui!');
     }
 }
