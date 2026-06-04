@@ -104,7 +104,7 @@
     <section class="py-20 bg-gray-50 border-t border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-semaft-navy uppercase tracking-wide">Kabar TEKNIK</h2>
+                <h2 class="text-3xl font-bold text-semaft-navy uppercase tracking-wide">Kabar Mahasiswa TEKNIK</h2>
                 <div class="w-24 h-1 bg-semaft-gold mx-auto mt-4 rounded-full"></div>
                 <p class="text-gray-500 mt-4 max-w-2xl mx-auto">Pantau terus informasi terbaru, artikel, dan rilis pers dari kegiatan mahasiswa Teknik.</p>
             </div>
