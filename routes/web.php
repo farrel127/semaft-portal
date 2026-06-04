@@ -45,6 +45,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     // Rute Manajemen Pengguna
     Route::resource('admin/pengguna', App\Http\Controllers\UserController::class)->names('pengguna')->except(['show']);
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::post('/profile/widget', [ProfileController::class, 'updateWidget'])->name('profile.widget');
     
     // Rute CRUD Manajemen Admin (Menggunakan prefix admin/ agar aman)
     Route::resource('admin/berita', BeritaController::class)->names('berita');
