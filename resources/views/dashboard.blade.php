@@ -1,75 +1,120 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+        <h2 class="font-bold text-xl text-semaft-navy leading-tight">
+            {{ __('Dashboard Utama') }}
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-10 bg-gray-50 min-h-screen">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
-            <!-- Header Dashboard -->
-            <div class="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 px-4 sm:px-0">
+            <div class="mb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 px-4 sm:px-0">
                 <div>
-                    <h1 class="text-2xl sm:text-3xl font-extrabold text-gray-800 tracking-tight">
-                        Halo, {{ auth()->user()->name }}! 👋
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-100 text-blue-700 text-xs font-bold mb-3 border border-blue-200 shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span> Ruang Kendali SEMA FT
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+                        Halo, <span class="text-semaft-navy">{{ explode(' ', auth()->user()->name)[0] }}</span>! 👋
                     </h1>
-                    <p class="text-sm sm:text-base text-gray-500 mt-1">Pantau pergerakan dan aktivitas SEMA FT hari ini.</p>
+                    <p class="text-sm sm:text-base text-gray-500 mt-2 max-w-2xl">Selamat datang di pusat manajemen. Pantau pergerakan, kelola informasi, dan kawal aspirasi mahasiswa Teknik hari ini.</p>
                 </div>
                 <div>
-                    <a href="{{ url('/') }}" target="_blank" class="inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-700 hover:text-blue-600 hover:bg-gray-50 font-semibold px-4 py-2 rounded-lg shadow-sm transition-all duration-200 text-sm">
-                        <i class="fa-solid fa-earth-asia text-blue-500"></i> Kunjungi Web
+                    <a href="{{ url('/') }}" target="_blank" class="inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-700 hover:text-semaft-navy hover:border-semaft-navy font-bold px-5 py-2.5 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 text-sm group">
+                        <i class="fa-solid fa-earth-asia text-semaft-gold group-hover:animate-spin"></i> Kunjungi Web Portal
                     </a>
                 </div>
             </div>
 
-            <!-- Grid Widget Dinamis -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 sm:px-0">
                 
                 {{-- WIDGET ASPIRASI --}}
                 @if(auth()->user()->show_aspirasi)
-                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group border border-gray-100">
-                    <div class="flex items-center justify-between relative z-10">
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 relative overflow-hidden group border border-gray-100 flex flex-col justify-between h-full cursor-pointer">
+                    <div class="absolute -right-6 -top-6 w-24 h-24 bg-red-50 rounded-full opacity-80 group-hover:scale-150 transition-transform duration-700 ease-out"></div>
+                    
+                    <div class="flex items-start justify-between relative z-10 mb-4">
                         <div>
-                            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Aspirasi Menunggu</p>
-                            <h3 class="text-3xl font-black text-gray-800">12</h3>
+                            <p class="text-[11px] font-extrabold text-gray-400 uppercase tracking-widest mb-1">Aspirasi Menunggu</p>
+                            <h3 class="text-4xl font-black text-gray-800 tracking-tight">{{ $aspirasi_baru ?? 0 }}</h3>
                         </div>
+                        <div class="w-14 h-14 rounded-2xl bg-red-50 text-red-500 flex items-center justify-center text-2xl shadow-inner group-hover:bg-red-500 group-hover:text-white transition-colors duration-300">
+                            <i class="fa-solid fa-envelope-open-text"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-auto pt-4 border-t border-gray-50 relative z-10">
+                        <a href="{{ route('aspirasi.index') }}" class="text-xs font-bold text-red-500 hover:text-red-700 flex items-center gap-1 group/link transition-colors">
+                            Tindak Lanjuti <i class="fa-solid fa-arrow-right transform group-hover/link:translate-x-1 transition-transform"></i>
+                        </a>
                     </div>
                 </div>
                 @endif
 
                 {{-- WIDGET AGENDA --}}
                 @if(auth()->user()->show_agenda)
-                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group border border-gray-100">
-                    <div class="flex items-center justify-between relative z-10">
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 relative overflow-hidden group border border-gray-100 flex flex-col justify-between h-full cursor-pointer">
+                    <div class="absolute -right-6 -top-6 w-24 h-24 bg-emerald-50 rounded-full opacity-80 group-hover:scale-150 transition-transform duration-700 ease-out"></div>
+                    
+                    <div class="flex items-start justify-between relative z-10 mb-4">
                         <div>
-                            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Agenda Aktif</p>
-                            <h3 class="text-3xl font-black text-gray-800">4</h3>
+                            <p class="text-[11px] font-extrabold text-gray-400 uppercase tracking-widest mb-1">Agenda Aktif</p>
+                            <h3 class="text-4xl font-black text-gray-800 tracking-tight">{{ $kegiatan_aktif ?? 0 }}</h3>
                         </div>
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-500 flex items-center justify-center text-2xl shadow-inner group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-300">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+                    </div>
+
+                    <div class="mt-auto pt-4 border-t border-gray-50 relative z-10">
+                        <a href="{{ route('kegiatan.index') }}" class="text-xs font-bold text-emerald-500 hover:text-emerald-700 flex items-center gap-1 group/link transition-colors">
+                            Kelola Jadwal <i class="fa-solid fa-arrow-right transform group-hover/link:translate-x-1 transition-transform"></i>
+                        </a>
                     </div>
                 </div>
                 @endif
 
                 {{-- WIDGET BERITA --}}
                 @if(auth()->user()->show_berita)
-                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group border border-gray-100">
-                    <div class="flex items-center justify-between relative z-10">
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 relative overflow-hidden group border border-gray-100 flex flex-col justify-between h-full cursor-pointer">
+                    <div class="absolute -right-6 -top-6 w-24 h-24 bg-blue-50 rounded-full opacity-80 group-hover:scale-150 transition-transform duration-700 ease-out"></div>
+                    
+                    <div class="flex items-start justify-between relative z-10 mb-4">
                         <div>
-                            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Total Berita</p>
-                            <h3 class="text-3xl font-black text-gray-800">38</h3>
+                            <p class="text-[11px] font-extrabold text-gray-400 uppercase tracking-widest mb-1">Total Publikasi</p>
+                            <h3 class="text-4xl font-black text-gray-800 tracking-tight">{{ $total_berita ?? 0 }}</h3>
                         </div>
+                        <div class="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl shadow-inner group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                            <i class="fa-solid fa-newspaper"></i>
+                        </div>
+                    </div>
+
+                    <div class="mt-auto pt-4 border-t border-gray-50 relative z-10">
+                        <a href="{{ route('berita.index') }}" class="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1 group/link transition-colors">
+                            Tulis Artikel Baru <i class="fa-solid fa-arrow-right transform group-hover/link:translate-x-1 transition-transform"></i>
+                        </a>
                     </div>
                 </div>
                 @endif
 
                 {{-- WIDGET HIMPUNAN --}}
                 @if(auth()->user()->show_himpunan)
-                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group border border-gray-100">
-                    <div class="flex items-center justify-between relative z-10">
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 relative overflow-hidden group border border-gray-100 flex flex-col justify-between h-full cursor-pointer">
+                    <div class="absolute -right-6 -top-6 w-24 h-24 bg-yellow-50 rounded-full opacity-80 group-hover:scale-150 transition-transform duration-700 ease-out"></div>
+                    
+                    <div class="flex items-start justify-between relative z-10 mb-4">
                         <div>
-                            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Data Himpunan</p>
-                            <h3 class="text-3xl font-black text-gray-800">6</h3>
+                            <p class="text-[11px] font-extrabold text-gray-400 uppercase tracking-widest mb-1">Data Himpunan</p>
+                            <h3 class="text-4xl font-black text-gray-800 tracking-tight">{{ $total_himpunan ?? 0 }}</h3>
                         </div>
+                        <div class="w-14 h-14 rounded-2xl bg-yellow-50 text-yellow-600 flex items-center justify-center text-2xl shadow-inner group-hover:bg-semaft-gold group-hover:text-white transition-colors duration-300">
+                            <i class="fa-solid fa-building-columns"></i>
+                        </div>
+                    </div>
+
+                    <div class="mt-auto pt-4 border-t border-gray-50 relative z-10">
+                        <a href="{{ route('himpunan.index') }}" class="text-xs font-bold text-yellow-600 hover:text-yellow-700 flex items-center gap-1 group/link transition-colors">
+                            Lihat Direktori <i class="fa-solid fa-arrow-right transform group-hover/link:translate-x-1 transition-transform"></i>
+                        </a>
                     </div>
                 </div>
                 @endif
