@@ -27,13 +27,25 @@ Route::get('/tentang', [FrontendController::class, 'tentang'])->name('frontend.t
 // RUTE BACKEND (DASHBOARD ADMIN)
 // ==========================================
 Route::get('/dashboard', function () {
-    // Data Widget Atas
-    $total_berita = \App\Models\Berita::count();
+    $user = auth()->user();
+
+    // 1. FILTER DATA BERITA (Berdasarkan Role)
+    $beritaQuery = \App\Models\Berita::query();
+    
+    // Jika role operator, kunci data berita hanya untuk user tersebut
+    // (Pastikan tabel 'beritas' memiliki kolom 'user_id')
+    if ($user->role === 'operator') {
+        $beritaQuery->where('user_id', $user->id);
+    }
+    
+    $total_berita = (clone $beritaQuery)->count();
+
+    // 2. DATA WIDGET ATAS LAINNYA
     $aspirasi_baru = \App\Models\Aspirasi::where('status', 'Menunggu')->count();
     $kegiatan_aktif = \App\Models\Kegiatan::whereIn('status', ['Akan Datang', 'Berlangsung'])->count();
     $total_himpunan = \App\Models\Himpunan::count();
 
-    // 1. Data Grafik Aspirasi (Doughnut Chart)
+    // 3. Data Grafik Aspirasi (Doughnut Chart)
     $aspirasi_raw = \App\Models\Aspirasi::selectRaw('status, COUNT(*) as count')
                         ->groupBy('status')
                         ->pluck('count', 'status')
@@ -42,14 +54,17 @@ Route::get('/dashboard', function () {
     $label_aspirasi = !empty($aspirasi_raw) ? array_keys($aspirasi_raw) : ['Belum Ada Data'];
     $data_aspirasi  = !empty($aspirasi_raw) ? array_values($aspirasi_raw) : [1];
 
-    // 2. Data Grafik Tren Berita 6 Bulan Terakhir (Line Chart)
+    // 4. Data Grafik Tren Berita 6 Bulan Terakhir (Line Chart)
     $label_bulan = [];
     $data_berita = [];
 
     for ($i = 5; $i >= 0; $i--) {
         $date = \Carbon\Carbon::now()->subMonths($i);
         $label_bulan[] = $date->format('M Y'); // Contoh: Jun 2026
-        $data_berita[] = \App\Models\Berita::whereYear('created_at', $date->year)
+        
+        // Gunakan clone beritaQuery agar filter operator tetap berlaku di grafik
+        $data_berita[] = (clone $beritaQuery)
+                            ->whereYear('created_at', $date->year)
                             ->whereMonth('created_at', $date->month)
                             ->count();
     }
