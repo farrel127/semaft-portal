@@ -29,24 +29,38 @@ Route::get('/tentang', [FrontendController::class, 'tentang'])->name('frontend.t
 Route::get('/dashboard', function () {
     $user = auth()->user();
 
-    // 1. FILTER DATA BERITA (Berdasarkan Role)
-    $beritaQuery = \App\Models\Berita::query();
-    
-    // Jika role operator, kunci data berita hanya untuk user tersebut
-    // (Pastikan tabel 'beritas' memiliki kolom 'user_id')
+    // ==========================================
+    // 1. INISIALISASI QUERY DASAR
+    // ==========================================
+    $beritaQuery   = \App\Models\Berita::query();
+    $aspirasiQuery = \App\Models\Aspirasi::query();
+    $kegiatanQuery = \App\Models\Kegiatan::query();
+    $himpunanQuery = \App\Models\Himpunan::query();
+
+    // ==========================================
+    // 2. LOGIKA FILTER MULTI-TENANT (Operator HMJ)
+    // ==========================================
+    // Mengunci data agar operator hanya bisa melihat miliknya sendiri
     if ($user->role === 'operator') {
         $beritaQuery->where('user_id', $user->id);
+        $aspirasiQuery->where('user_id', $user->id);
+        $kegiatanQuery->where('user_id', $user->id);
+        $himpunanQuery->where('user_id', $user->id);
     }
-    
-    $total_berita = (clone $beritaQuery)->count();
 
-    // 2. DATA WIDGET ATAS LAINNYA
-    $aspirasi_baru = \App\Models\Aspirasi::where('status', 'Menunggu')->count();
-    $kegiatan_aktif = \App\Models\Kegiatan::whereIn('status', ['Akan Datang', 'Berlangsung'])->count();
-    $total_himpunan = \App\Models\Himpunan::count();
+    // ==========================================
+    // 3. HITUNG DATA WIDGET (Berdasarkan Filter)
+    // ==========================================
+    // Menggunakan (clone) agar query dasar tidak rusak saat dipakai berulang
+    $total_berita   = (clone $beritaQuery)->count();
+    $aspirasi_baru  = (clone $aspirasiQuery)->where('status', 'Menunggu')->count();
+    $kegiatan_aktif = (clone $kegiatanQuery)->whereIn('status', ['Akan Datang', 'Berlangsung'])->count();
+    $total_himpunan = (clone $himpunanQuery)->count();
 
-    // 3. Data Grafik Aspirasi (Doughnut Chart)
-    $aspirasi_raw = \App\Models\Aspirasi::selectRaw('status, COUNT(*) as count')
+    // ==========================================
+    // 4. DATA GRAFIK DONAT (Status Aspirasi)
+    // ==========================================
+    $aspirasi_raw = (clone $aspirasiQuery)->selectRaw('status, COUNT(*) as count')
                         ->groupBy('status')
                         ->pluck('count', 'status')
                         ->toArray();
@@ -54,15 +68,16 @@ Route::get('/dashboard', function () {
     $label_aspirasi = !empty($aspirasi_raw) ? array_keys($aspirasi_raw) : ['Belum Ada Data'];
     $data_aspirasi  = !empty($aspirasi_raw) ? array_values($aspirasi_raw) : [1];
 
-    // 4. Data Grafik Tren Berita 6 Bulan Terakhir (Line Chart)
+    // ==========================================
+    // 5. DATA GRAFIK GARIS (Tren Berita 6 Bulan)
+    // ==========================================
     $label_bulan = [];
     $data_berita = [];
 
     for ($i = 5; $i >= 0; $i--) {
         $date = \Carbon\Carbon::now()->subMonths($i);
-        $label_bulan[] = $date->format('M Y'); // Contoh: Jun 2026
+        $label_bulan[] = $date->format('M Y'); 
         
-        // Gunakan clone beritaQuery agar filter operator tetap berlaku di grafik
         $data_berita[] = (clone $beritaQuery)
                             ->whereYear('created_at', $date->year)
                             ->whereMonth('created_at', $date->month)
