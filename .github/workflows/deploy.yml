@@ -1,0 +1,26 @@
+name: Deploy SEMA FT Portal Otomatis
+
+# Robot akan berjalan setiap kali ada kodingan yang didorong ke cabang main
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Eksekusi Perintah di cPanel
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.PORT }}
+          # Ini adalah komando yang biasa Anda ketik manual di terminal
+          script: |
+            cd semaft_portal
+            git fetch --all
+            git reset --hard origin/main
+            php artisan optimize:clear
+            php artisan view:clear
