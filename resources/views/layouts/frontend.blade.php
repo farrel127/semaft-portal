@@ -9,7 +9,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
     <!-- Memanggil FontAwesome untuk Ikon Profesional -->
+     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="{{ asset('images/sema.png') }}?v=3" type="image/png">
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen">
 
