@@ -13,7 +13,7 @@
             <!-- Label Organisasi -->
             <div class="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6 sm:mb-8 text-xs sm:text-sm font-medium text-gray-300 tracking-wide shadow-lg">
                 <span class="w-2 h-2 rounded-full bg-semaft-gold animate-ping"></span>
-                Senat Mahasiswa Fakultas Teknik USB YPKP
+                Senat Mahasiswa Fakultas Teknik USB YPKP Bandung.
             </div>
 
             <!-- Headline -->
