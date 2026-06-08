@@ -17,9 +17,14 @@ class BeritaController extends Controller
     }
 
     public function create()
-    {
-        return view('berita.create');
-    }
+{
+    // Mengambil semua data himpunan dari database
+    // (Pastikan nama modelnya benar, misalnya Himpunan)
+    $himpunans = \App\Models\Himpunan::all(); 
+
+    // Mengirim data $himpunans ke file tampilan (view)
+    return view('berita.create', compact('himpunans'));
+}
 
     public function store(Request $request)
     {
