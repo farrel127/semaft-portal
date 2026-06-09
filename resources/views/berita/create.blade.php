@@ -59,7 +59,7 @@
 
                     <div>
                         <label class="block text-sm font-extrabold text-semaft-navy mb-2">Isi Berita <span class="text-red-500">*</span></label>
-                        <textarea name="isi" rows="8" required 
+                        <textarea name="konten" rows="8" required
                             class="w-full rounded-xl border-gray-200 focus:border-semaft-navy focus:ring focus:ring-semaft-navy/20 py-3 text-gray-800 bg-gray-50" 
                             placeholder="Tuliskan paragraf berita selengkapnya di sini..."></textarea>
                     </div>
