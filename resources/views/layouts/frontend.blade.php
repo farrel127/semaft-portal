@@ -15,36 +15,29 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen">
 
-    <header x-data="{ open: false }" 
-        x-effect="document.body.classList.toggle('overflow-hidden', open)"
-        class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
-        :class="open ? 'bg-transparent' : 'bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100'">
-    
+    <header x-data="{ open: false }" class="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-lg border-b border-gray-100 shadow-sm transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20 sm:h-24">
+        <div class="flex justify-between items-center h-20">
             
-            <div class="flex-shrink-0 flex items-center relative z-50">
+            <div class="flex-shrink-0 flex items-center">
                 <a href="{{ url('/') }}" class="flex items-center gap-3 group">
-                    <img src="{{ asset('images/sema.png') }}" alt="Logo SEMAFT" class="h-12 sm:h-14 w-auto group-hover:scale-105 transition-transform duration-500">
-                    <div class="flex flex-col transform transition-all duration-300" :class="open ? 'text-white' : 'text-semaft-navy'">
-                        <span class="font-extrabold text-xl sm:text-2xl tracking-tighter leading-none">SEMA FT</span>
-                        <span class="text-[9px] sm:text-[10px] font-bold tracking-[0.2em] uppercase mt-1 opacity-80" :class="open ? 'text-semaft-gold' : 'text-gray-500'">Portal Resmi</span>
+                    <img src="{{ asset('images/sema.png') }}" alt="Logo SEMAFT" class="h-12 w-auto group-hover:scale-110 transition-transform duration-300">
+                    <div class="flex flex-col">
+                        <span class="font-extrabold text-xl tracking-tight text-semaft-navy leading-none">SEMA FT</span>
+                        <span class="text-[10px] font-bold text-semaft-gold uppercase tracking-widest mt-1">Portal Resmi</span>
                     </div>
                 </a>
             </div>
 
-            <div class="flex items-center relative z-50">
+            <div class="flex items-center">
                 <button @click="open = !open" 
-                        class="group flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 focus:outline-none"
-                        :class="open ? 'bg-white/10 hover:bg-white/20' : 'bg-gray-50 hover:bg-gray-100'">
+                        class="relative z-50 w-10 h-10 flex flex-col justify-center items-center group focus:outline-none bg-gray-50 hover:bg-gray-100 rounded-full transition-colors border border-gray-200">
+                    <span class="sr-only">Buka menu navigasi</span>
                     
-                    <div class="relative w-5 h-4 flex flex-col justify-between transform transition-all duration-300">
-                        <span class="w-full h-[2px] rounded-full transition-all duration-300 origin-left" 
-                              :class="open ? 'bg-white rotate-45 translate-y-[-1px] w-[22px]' : 'bg-semaft-navy'"></span>
-                        <span class="w-full h-[2px] rounded-full transition-all duration-300" 
-                              :class="open ? 'bg-white opacity-0 translate-x-3' : 'bg-semaft-navy'"></span>
-                        <span class="w-full h-[2px] rounded-full transition-all duration-300 origin-left" 
-                              :class="open ? 'bg-white -rotate-45 -translate-y-[-1px] w-[22px]' : 'bg-semaft-navy'"></span>
+                    <div class="w-5 h-4 relative flex flex-col justify-between transform transition-all duration-300 origin-center" :class="{'rotate-180': open}">
+                        <span class="w-full h-[2px] bg-semaft-navy rounded-full transition-all duration-300 origin-left" :class="{'rotate-45 translate-y-[-1px] w-[22px]': open}"></span>
+                        <span class="w-full h-[2px] bg-semaft-navy rounded-full transition-all duration-300" :class="{'opacity-0 translate-x-3': open}"></span>
+                        <span class="w-full h-[2px] bg-semaft-navy rounded-full transition-all duration-300 origin-left" :class="{'-rotate-45 -translate-y-[-1px] w-[22px]': open}"></span>
                     </div>
                 </button>
             </div>
@@ -53,7 +46,7 @@
 
     <div x-show="open" 
          x-cloak
-         class="fixed inset-0 z-30 bg-black/20 backdrop-blur-sm"
+         class="fixed inset-0 z-40 bg-gray-900/40 backdrop-blur-sm"
          x-transition:enter="transition-opacity ease-linear duration-300"
          x-transition:enter-start="opacity-0"
          x-transition:enter-end="opacity-100"
@@ -65,55 +58,62 @@
 
     <div x-show="open" 
          x-cloak
-         class="fixed top-0 right-0 h-screen w-full sm:w-[450px] bg-semaft-navy shadow-2xl z-40 flex flex-col pt-24 sm:pt-32 pb-8 px-8 sm:px-12 transform transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.175,1)]"
-         x-transition:enter="transition transform duration-500"
+         class="fixed top-0 right-0 h-screen w-full sm:w-[350px] bg-white shadow-2xl z-50 flex flex-col transform transition-transform duration-300 ease-in-out border-l border-gray-100"
+         x-transition:enter="transition ease-out duration-300 transform"
          x-transition:enter-start="translate-x-full"
          x-transition:enter-end="translate-x-0"
-         x-transition:leave="transition transform duration-500"
+         x-transition:leave="transition ease-in duration-300 transform"
          x-transition:leave-start="translate-x-0"
-         x-transition:leave-end="translate-x-full">
+         x-transition:leave-end="translate-x-full"
+         @click.away="open = false">
         
-        <p class="text-semaft-gold font-bold text-xs tracking-[0.2em] uppercase mb-8 opacity-80">Menu Navigasi</p>
+        <div class="flex items-center justify-between h-20 px-8 border-b border-gray-100 bg-gray-50/50">
+            <span class="font-extrabold text-sm text-gray-400 uppercase tracking-widest">Menu Eksplorasi</span>
+            <button @click="open = false" class="text-gray-400 hover:text-red-500 hover:rotate-90 transition-all duration-300 p-2">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
 
-        <nav class="flex-1 flex flex-col space-y-2">
+        <div class="flex-1 overflow-y-auto py-8 px-6 space-y-2">
+            <a href="{{ url('/') }}" class="flex items-center px-4 py-3.5 rounded-2xl font-bold text-gray-700 hover:bg-blue-50 hover:text-semaft-navy transition-all duration-200 group">
+                <div class="w-10 h-10 rounded-full bg-gray-100 group-hover:bg-white flex items-center justify-center mr-4 transition-colors shadow-sm">
+                    <i class="fa-solid fa-house text-gray-500 group-hover:text-semaft-gold transition-colors"></i>
+                </div>
+                Beranda SEMA
+            </a>
+
+            <a href="{{ route('frontend.berita') }}" class="flex items-center px-4 py-3.5 rounded-2xl font-bold text-gray-700 hover:bg-blue-50 hover:text-semaft-navy transition-all duration-200 group">
+                <div class="w-10 h-10 rounded-full bg-gray-100 group-hover:bg-white flex items-center justify-center mr-4 transition-colors shadow-sm">
+                    <i class="fa-solid fa-newspaper text-gray-500 group-hover:text-semaft-gold transition-colors"></i>
+                </div>
+                Portal Berita
+            </a>
+
+            <a href="#" class="flex items-center px-4 py-3.5 rounded-2xl font-bold text-gray-700 hover:bg-blue-50 hover:text-semaft-navy transition-all duration-200 group">
+                <div class="w-10 h-10 rounded-full bg-gray-100 group-hover:bg-white flex items-center justify-center mr-4 transition-colors shadow-sm">
+                    <i class="fa-regular fa-calendar-days text-gray-500 group-hover:text-semaft-gold transition-colors"></i>
+                </div>
+                Agenda Kegiatan
+            </a>
             
-            <a href="{{ url('/') }}" class="group flex items-center justify-between py-4 border-b border-white/10 hover:border-semaft-gold/50 transition-colors duration-300">
-                <span class="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-semaft-gold transition-colors duration-300">Beranda</span>
-                <i class="fa-solid fa-arrow-right-long text-semaft-gold opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-xl"></i>
+            <a href="#" class="flex items-center px-4 py-3.5 rounded-2xl font-bold text-gray-700 hover:bg-blue-50 hover:text-semaft-navy transition-all duration-200 group">
+                <div class="w-10 h-10 rounded-full bg-gray-100 group-hover:bg-white flex items-center justify-center mr-4 transition-colors shadow-sm">
+                    <i class="fa-solid fa-users text-gray-500 group-hover:text-semaft-gold transition-colors"></i>
+                </div>
+                Tentang Pengurus
             </a>
+        </div>
 
-            <a href="{{ route('frontend.berita') }}" class="group flex items-center justify-between py-4 border-b border-white/10 hover:border-semaft-gold/50 transition-colors duration-300">
-                <span class="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-semaft-gold transition-colors duration-300">Portal Berita</span>
-                <i class="fa-solid fa-arrow-right-long text-semaft-gold opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-xl"></i>
+        <div class="p-6 border-t border-gray-100 bg-white">
+            <a href="{{ route('login') }}" class="flex items-center justify-center w-full py-4 px-4 rounded-xl bg-semaft-navy text-white font-bold hover:bg-blue-900 focus:ring-4 focus:ring-blue-900/30 transition-all duration-300 shadow-lg transform hover:-translate-y-1">
+                <i class="fa-solid fa-user-shield mr-2"></i> Masuk sebagai Admin
             </a>
-
-            <a href="#" class="group flex items-center justify-between py-4 border-b border-white/10 hover:border-semaft-gold/50 transition-colors duration-300">
-                <span class="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-semaft-gold transition-colors duration-300">Agenda</span>
-                <i class="fa-solid fa-arrow-right-long text-semaft-gold opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-xl"></i>
-            </a>
-
-            <a href="#" class="group flex items-center justify-between py-4 border-b border-white/10 hover:border-semaft-gold/50 transition-colors duration-300">
-                <span class="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-semaft-gold transition-colors duration-300">Pengurus</span>
-                <i class="fa-solid fa-arrow-right-long text-semaft-gold opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-xl"></i>
-            </a>
-
-        </nav>
-
-        <div class="mt-auto pt-8">
-            <a href="{{ route('login') }}" class="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 rounded-full bg-white text-semaft-navy font-bold text-sm hover:bg-semaft-gold hover:text-white transition-all duration-300 group">
-                <i class="fa-solid fa-lock mr-3 group-hover:scale-110 transition-transform"></i> Akses Administrator
-            </a>
-            <div class="mt-8 flex items-center gap-4 text-gray-400 text-sm">
-                <a href="#" class="hover:text-semaft-gold transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
-                <a href="#" class="hover:text-semaft-gold transition-colors"><i class="fa-brands fa-youtube text-xl"></i></a>
-                <a href="#" class="hover:text-semaft-gold transition-colors"><i class="fa-brands fa-tiktok text-xl"></i></a>
-            </div>
         </div>
     </div>
 </header>
 
     <!-- Konten Dinamis (Berubah-ubah sesuai halaman) -->
-    <main class="pt-28 min-h-screen">
+    <main class="flex-grow">
         @yield('content')
     </main>
 
