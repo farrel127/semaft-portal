@@ -113,7 +113,7 @@
 </header>
 
     <!-- Konten Dinamis (Berubah-ubah sesuai halaman) -->
-    <main class="flex-grow">
+    <main class="pt-28 min-h-screen">
         @yield('content')
     </main>
 
