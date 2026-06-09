@@ -21,80 +21,46 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen selection:bg-semaft-gold selection:text-semaft-navy" x-data="{ open: false }" :class="{'overflow-hidden': open}">
 
-    <header class="fixed top-4 inset-x-0 z-50 flex justify-center px-4 pointer-events-none transition-all duration-300">
+    <header class="fixed top-6 inset-x-0 z-50 flex flex-col items-center justify-center w-full pointer-events-none">
         
-        <nav class="pointer-events-auto w-full max-w-6xl bg-semaft-navy/90 backdrop-blur-lg border border-white/10 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] px-3 py-2.5 flex items-center justify-between">
+        <div class="relative w-full max-w-5xl px-4 sm:px-6">
             
-            <a href="{{ url('/') }}" class="flex items-center gap-3 pl-3 group">
-                <div class="bg-white/10 p-1.5 rounded-full group-hover:bg-white/20 transition duration-300">
-                    <img src="{{ asset('images/sema.png') }}" alt="Logo SEMAFT" class="h-8 w-auto object-contain drop-shadow-md group-hover:scale-110 transition-transform duration-300">
+            <nav class="pointer-events-auto w-full bg-semaft-navy/95 backdrop-blur-lg border border-white/30 rounded-full p-2 flex items-center justify-between shadow-[0_8px_30px_rgb(0,0,0,0.3)]">
+                
+                <a href="{{ url('/') }}" class="flex items-center gap-3 pl-3 sm:pl-4 group shrink-0">
+                    <img src="{{ asset('images/sema.png') }}" alt="Logo SEMAFT" class="h-8 md:h-10 w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform">
+                    <span class="font-extrabold text-xl tracking-widest text-white group-hover:text-semaft-gold transition-colors">SEMA<span class="text-semaft-gold">FT</span></span>
+                </a>
+                
+                <div class="hidden md:flex items-center gap-2 border border-white/20 rounded-full p-1.5 bg-white/5 shadow-inner">
+                    <a href="{{ url('/') }}" class="px-6 py-1.5 rounded-full text-sm font-bold transition-all {{ request()->is('/') ? 'bg-semaft-gold text-semaft-navy shadow-md' : 'text-gray-200 hover:text-white hover:bg-white/10' }}">Beranda</a>
+                    <a href="{{ url('/tentang') }}" class="px-6 py-1.5 rounded-full text-sm font-semibold transition-all {{ request()->is('tentang') ? 'bg-semaft-gold text-semaft-navy shadow-md' : 'text-gray-200 hover:text-white hover:bg-white/10' }}">Profil</a>
+                    <a href="{{ route('frontend.berita') }}" class="px-6 py-1.5 rounded-full text-sm font-semibold transition-all {{ request()->routeIs('frontend.berita') ? 'bg-semaft-gold text-semaft-navy shadow-md' : 'text-gray-200 hover:text-white hover:bg-white/10' }}">Berita</a>
+                    <a href="{{ url('/aspirasi') }}" class="px-6 py-1.5 rounded-full text-sm font-semibold transition-all {{ request()->is('aspirasi') ? 'bg-semaft-gold text-semaft-navy shadow-md' : 'text-gray-200 hover:text-white hover:bg-white/10' }}">Aspirasi</a>
                 </div>
-                <span class="font-extrabold text-xl tracking-widest text-white group-hover:text-semaft-gold transition-colors duration-300">SEMA<span class="text-semaft-gold">FT</span></span>
-            </a>
-            
-            <div class="hidden md:flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/5">
-                <a href="{{ url('/') }}" class="px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 {{ request()->is('/') ? 'bg-semaft-gold text-semaft-navy shadow-md' : 'text-gray-300 hover:text-white hover:bg-white/10' }}">Beranda</a>
-                
-                <a href="{{ url('/tentang') }}" class="px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 {{ request()->is('tentang') ? 'bg-semaft-gold text-semaft-navy shadow-md' : 'text-gray-300 hover:text-white hover:bg-white/10' }}">Profil</a>
-                
-                <a href="{{ route('frontend.berita') }}" class="px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 {{ request()->routeIs('frontend.berita') ? 'bg-semaft-gold text-semaft-navy shadow-md' : 'text-gray-300 hover:text-white hover:bg-white/10' }}">Berita</a>
-                
-                <a href="{{ url('/aspirasi') }}" class="px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 {{ request()->is('aspirasi') ? 'bg-semaft-gold text-semaft-navy shadow-md' : 'text-gray-300 hover:text-white hover:bg-white/10' }}">Aspirasi</a>
-            </div>
 
-            <div class="hidden md:block pr-1">
-                @auth
-                    <a href="{{ route('dashboard') }}" class="flex items-center gap-2 bg-gradient-to-r from-semaft-gold to-yellow-500 text-semaft-navy font-bold px-6 py-2 rounded-full hover:shadow-[0_0_15px_rgba(255,215,0,0.5)] transform hover:-translate-y-0.5 transition-all duration-300">
-                        <i class="fa-solid fa-table-columns text-sm"></i> Dashboard
-                    </a>
-                @else
-                    <a href="{{ route('login') }}" class="flex items-center gap-2 bg-white/10 text-white border border-white/20 font-bold px-6 py-2 rounded-full hover:bg-semaft-gold hover:text-semaft-navy hover:border-semaft-gold transform hover:-translate-y-0.5 transition-all duration-300">
-                        <i class="fa-solid fa-right-to-bracket text-sm"></i> Login
-                    </a>
-                @endauth
-            </div>
-
-            <div class="md:hidden pr-2">
-                <button @click="open = !open" class="w-10 h-10 bg-white/10 border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-semaft-gold hover:text-semaft-navy transition-colors focus:outline-none focus:ring-2 focus:ring-semaft-gold">
-                    <i class="fa-solid fa-bars text-lg" x-show="!open"></i>
-                    <i class="fa-solid fa-xmark text-lg" x-show="open" x-cloak></i>
-                </button>
-            </div>
-            
-        </nav>
-
-        <div x-show="open" 
-             x-cloak
-             @click.away="open = false"
-             x-transition:enter="transition ease-out duration-200"
-             x-transition:enter-start="opacity-0 -translate-y-4"
-             x-transition:enter-end="opacity-100 translate-y-0"
-             x-transition:leave="transition ease-in duration-150"
-             x-transition:leave-start="opacity-100 translate-y-0"
-             x-transition:leave-end="opacity-0 -translate-y-4"
-             class="absolute top-20 left-4 right-4 bg-semaft-navy/95 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl p-4 md:hidden pointer-events-auto">
-            
-            <div class="flex flex-col space-y-2">
-                <a href="{{ url('/') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl text-white hover:bg-white/10 transition-colors {{ request()->is('/') ? 'bg-semaft-gold/20 text-semaft-gold border border-semaft-gold/30' : '' }}">
-                    <i class="fa-solid fa-house w-5 text-center"></i> Beranda
-                </a>
-                <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-white hover:bg-white/10 transition-colors">
-                    <i class="fa-solid fa-users w-5 text-center"></i> Profil
-                </a>
-                <a href="{{ route('frontend.berita') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl text-white hover:bg-white/10 transition-colors {{ request()->routeIs('frontend.berita') ? 'bg-semaft-gold/20 text-semaft-gold border border-semaft-gold/30' : '' }}">
-                    <i class="fa-solid fa-newspaper w-5 text-center"></i> Portal Berita
-                </a>
-                <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-white hover:bg-white/10 transition-colors">
-                    <i class="fa-solid fa-bullhorn w-5 text-center"></i> Aspirasi
-                </a>
-                
-                <div class="pt-4 mt-2 border-t border-white/10">
-                    <a href="{{ route('login') }}" class="flex items-center justify-center gap-2 w-full bg-semaft-gold text-semaft-navy font-bold px-4 py-3 rounded-xl shadow-md">
-                        <i class="fa-solid fa-right-to-bracket"></i> Login Administrator
+                <div class="hidden md:block pr-1.5">
+                    <a href="{{ route('login') }}" class="flex items-center gap-2 bg-white/10 border border-white/30 text-white font-bold px-6 py-2 rounded-full hover:bg-semaft-gold hover:text-semaft-navy hover:border-semaft-gold transition-all shadow-sm">
+                        <i class="fa-solid fa-right-to-bracket text-sm shrink-0"></i> Login
                     </a>
                 </div>
+
+                <div class="md:hidden pr-1.5">
+                    <button @click="open = !open" class="w-10 h-10 bg-white/10 border border-white/30 rounded-full flex items-center justify-center text-white hover:bg-semaft-gold hover:text-semaft-navy transition-colors shrink-0">
+                        <i class="fa-solid fa-bars text-lg" x-show="!open"></i>
+                        <i class="fa-solid fa-xmark text-lg" x-show="open" x-cloak></i>
+                    </button>
+                </div>
+            </nav>
+
+            <div class="hidden md:flex absolute -bottom-11 right-10 pointer-events-auto items-center gap-2 bg-semaft-navy/90 backdrop-blur-md border border-white/30 rounded-full px-5 py-1.5 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-semaft-gold animate-pulse"></span>
+                <span class="text-white text-xs font-medium tracking-wide">Senat Mahasiswa Fakultas Teknik USB YPKP Bandung.</span>
             </div>
         </div>
+
+        <div x-show="open" x-cloak @click.away="open = false" class="absolute top-20 left-4 right-4 bg-semaft-navy/95 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl p-4 md:hidden pointer-events-auto text-white">
+             </div>
     </header>
 
     <main class="flex-grow pt-32 pb-12">
