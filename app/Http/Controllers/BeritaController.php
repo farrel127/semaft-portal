@@ -27,29 +27,34 @@ class BeritaController extends Controller
 }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'judul' => 'required|string|max:255',
-            'konten' => 'required',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-        ]);
+{
+    // 1. Validasi Input
+    $request->validate([
+        'judul' => 'required|string|max:255',
+        'konten' => 'required',
+        'himpunan_id' => 'required', // Tambahkan validasi himpunan_id
+        'gambar' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048', // Saya tambahkan webp untuk fleksibilitas
+    ]);
 
-        $gambarPath = null;
-        if ($request->hasFile('gambar')) {
-            $gambarPath = $request->file('gambar')->store('berita_gambar', 'public');
-        }
-
-        Berita::create([
-            'judul' => $request->judul,
-            'slug' => Str::slug($request->judul) . '-' . time(),
-            'konten' => $request->konten,
-            'gambar' => $gambarPath,
-            'user_id' => Auth::id(), 
-            'himpunan_id' => Auth::user()->himpunan_id, 
-        ]);
-
-        return redirect()->route('berita.index')->with('success', 'Berita berhasil dipublikasikan!');
+    // 2. Proses Upload Gambar
+    $gambarPath = null;
+    if ($request->hasFile('gambar')) {
+        // Simpan ke brankas public/berita_gambar
+        $gambarPath = $request->file('gambar')->store('berita_gambar', 'public');
     }
+
+    // 3. Simpan ke Database
+    Berita::create([
+        'judul' => $request->judul,
+        'slug' => Str::slug($request->judul) . '-' . time(),
+        'konten' => $request->konten,
+        'gambar' => $gambarPath,
+        'user_id' => Auth::id(), 
+        'himpunan_id' => $request->himpunan_id, // Ubah ini agar mengambil dari pilihan form
+    ]);
+
+    return redirect()->route('berita.index')->with('success', 'Berita berhasil dipublikasikan!');
+}
 
     // 3. Menampilkan form Edit
     public function edit($id)
