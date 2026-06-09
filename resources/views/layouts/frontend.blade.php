@@ -17,43 +17,53 @@
 
     <header x-data="{ open: false }" 
         x-effect="document.body.classList.toggle('overflow-hidden', open)"
-        class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
-        :class="open ? 'bg-transparent' : 'bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100'">
+        class="fixed top-0 left-0 w-full z-50 shadow-xl border-b border-semaft-gold/20">
     
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20 sm:h-24">
-            
-            <div class="flex-shrink-0 flex items-center relative z-50">
-                <a href="{{ url('/') }}" class="flex items-center gap-3 group">
-                    <img src="{{ asset('images/sema.png') }}" alt="Logo SEMAFT" class="h-12 sm:h-14 w-auto group-hover:scale-105 transition-transform duration-500">
-                    <div class="flex flex-col transform transition-all duration-300" :class="open ? 'text-white' : 'text-semaft-navy'">
-                        <span class="font-extrabold text-xl sm:text-2xl tracking-tighter leading-none">SEMA FT</span>
-                        <span class="text-[9px] sm:text-[10px] font-bold tracking-[0.2em] uppercase mt-1 opacity-80" :class="open ? 'text-semaft-gold' : 'text-gray-500'">Portal Resmi</span>
-                    </div>
-                </a>
-            </div>
+    <div class="hidden md:flex w-full bg-gray-900 px-6 py-2 items-center justify-between text-xs font-semibold tracking-wide text-gray-300 border-b border-white/5">
+        <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-semaft-gold animate-pulse shadow-[0_0_8px_rgba(255,215,0,0.6)]"></span>
+            <span>Senat Mahasiswa Fakultas Teknik USB YPKP Bandung</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <span>Portal Navigasi Resmi</span>
+        </div>
+    </div>
 
-            <div class="flex items-center relative z-50">
-                <button @click="open = !open" 
-                        class="group flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 focus:outline-none"
-                        :class="open ? 'bg-white/10 hover:bg-white/20' : 'bg-gray-50 hover:bg-gray-100'">
-                    
-                    <div class="relative w-5 h-4 flex flex-col justify-between transform transition-all duration-300">
-                        <span class="w-full h-[2px] rounded-full transition-all duration-300 origin-left" 
-                              :class="open ? 'bg-white rotate-45 translate-y-[-1px] w-[22px]' : 'bg-semaft-navy'"></span>
-                        <span class="w-full h-[2px] rounded-full transition-all duration-300" 
-                              :class="open ? 'bg-white opacity-0 translate-x-3' : 'bg-semaft-navy'"></span>
-                        <span class="w-full h-[2px] rounded-full transition-all duration-300 origin-left" 
-                              :class="open ? 'bg-white -rotate-45 -translate-y-[-1px] w-[22px]' : 'bg-semaft-navy'"></span>
-                    </div>
-                </button>
+    <div class="bg-semaft-navy w-full transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 sm:h-20">
+                
+                <div class="flex-shrink-0 flex items-center relative z-50">
+                    <a href="{{ url('/') }}" class="flex items-center gap-3 sm:gap-4 group">
+                        <img src="{{ asset('images/sema.png') }}" alt="Logo SEMAFT" class="h-10 sm:h-12 w-auto group-hover:scale-105 transition-transform duration-300 drop-shadow-md">
+                        <div class="flex flex-col justify-center border-l border-white/20 pl-3 sm:pl-4">
+                            <span class="font-extrabold text-lg sm:text-xl text-white tracking-wide leading-none group-hover:text-semaft-gold transition-colors">SEMA FT</span>
+                            <span class="text-[9px] sm:text-[10px] font-bold text-semaft-gold tracking-[0.2em] uppercase mt-1">Portal Resmi</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="flex items-center relative z-50">
+                    <button @click="open = !open" 
+                            class="group flex items-center justify-center w-10 sm:w-12 h-10 sm:h-12 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 hover:border-semaft-gold/50 transition-all duration-300 focus:outline-none">
+                        
+                        <div class="relative w-5 h-4 flex flex-col justify-between transform transition-all duration-300">
+                            <span class="w-full h-[2px] rounded-full transition-all duration-300 origin-left" 
+                                  :class="open ? 'bg-semaft-gold rotate-45 translate-y-[-1px] w-[22px]' : 'bg-white group-hover:bg-semaft-gold'"></span>
+                            <span class="w-full h-[2px] rounded-full transition-all duration-300" 
+                                  :class="open ? 'bg-semaft-gold opacity-0 translate-x-3' : 'bg-white group-hover:bg-semaft-gold'"></span>
+                            <span class="w-full h-[2px] rounded-full transition-all duration-300 origin-left" 
+                                  :class="open ? 'bg-semaft-gold -rotate-45 -translate-y-[-1px] w-[22px]' : 'bg-white group-hover:bg-semaft-gold'"></span>
+                        </div>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 
     <div x-show="open" 
          x-cloak
-         class="fixed inset-0 z-30 bg-black/20 backdrop-blur-sm"
+         class="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm"
          x-transition:enter="transition-opacity ease-linear duration-300"
          x-transition:enter-start="opacity-0"
          x-transition:enter-end="opacity-100"
@@ -65,7 +75,7 @@
 
     <div x-show="open" 
          x-cloak
-         class="fixed top-0 right-0 h-screen w-full sm:w-[450px] bg-semaft-navy shadow-2xl z-40 flex flex-col pt-24 sm:pt-32 pb-8 px-8 sm:px-12 transform transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.175,1)]"
+         class="fixed top-0 right-0 h-screen w-full sm:w-[400px] bg-white shadow-2xl z-40 flex flex-col pt-28 pb-8 px-8 sm:px-10 transform transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.175,1)]"
          x-transition:enter="transition transform duration-500"
          x-transition:enter-start="translate-x-full"
          x-transition:enter-end="translate-x-0"
@@ -73,41 +83,29 @@
          x-transition:leave-start="translate-x-0"
          x-transition:leave-end="translate-x-full">
         
-        <p class="text-semaft-gold font-bold text-xs tracking-[0.2em] uppercase mb-8 opacity-80">Menu Navigasi</p>
+        <p class="text-gray-400 font-bold text-xs tracking-[0.2em] uppercase mb-6">Menu Navigasi</p>
 
-        <nav class="flex-1 flex flex-col space-y-2">
-            
-            <a href="{{ url('/') }}" class="group flex items-center justify-between py-4 border-b border-white/10 hover:border-semaft-gold/50 transition-colors duration-300">
-                <span class="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-semaft-gold transition-colors duration-300">Beranda</span>
-                <i class="fa-solid fa-arrow-right-long text-semaft-gold opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-xl"></i>
+        <nav class="flex-1 flex flex-col space-y-1">
+            <a href="{{ url('/') }}" class="group flex items-center justify-between py-4 border-b border-gray-100 hover:border-semaft-navy transition-colors duration-300">
+                <span class="text-2xl font-extrabold text-gray-800 group-hover:text-semaft-navy transition-colors duration-300">Beranda</span>
+                <i class="fa-solid fa-arrow-right-long text-semaft-gold opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-lg"></i>
             </a>
 
-            <a href="{{ route('frontend.berita') }}" class="group flex items-center justify-between py-4 border-b border-white/10 hover:border-semaft-gold/50 transition-colors duration-300">
-                <span class="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-semaft-gold transition-colors duration-300">Portal Berita</span>
-                <i class="fa-solid fa-arrow-right-long text-semaft-gold opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-xl"></i>
+            <a href="{{ route('frontend.berita') }}" class="group flex items-center justify-between py-4 border-b border-gray-100 hover:border-semaft-navy transition-colors duration-300">
+                <span class="text-2xl font-extrabold text-gray-800 group-hover:text-semaft-navy transition-colors duration-300">Portal Berita</span>
+                <i class="fa-solid fa-arrow-right-long text-semaft-gold opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-lg"></i>
             </a>
 
-            <a href="#" class="group flex items-center justify-between py-4 border-b border-white/10 hover:border-semaft-gold/50 transition-colors duration-300">
-                <span class="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-semaft-gold transition-colors duration-300">Agenda</span>
-                <i class="fa-solid fa-arrow-right-long text-semaft-gold opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-xl"></i>
+            <a href="#" class="group flex items-center justify-between py-4 border-b border-gray-100 hover:border-semaft-navy transition-colors duration-300">
+                <span class="text-2xl font-extrabold text-gray-800 group-hover:text-semaft-navy transition-colors duration-300">Agenda Kegiatan</span>
+                <i class="fa-solid fa-arrow-right-long text-semaft-gold opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-lg"></i>
             </a>
-
-            <a href="#" class="group flex items-center justify-between py-4 border-b border-white/10 hover:border-semaft-gold/50 transition-colors duration-300">
-                <span class="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-semaft-gold transition-colors duration-300">Pengurus</span>
-                <i class="fa-solid fa-arrow-right-long text-semaft-gold opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-xl"></i>
-            </a>
-
         </nav>
 
         <div class="mt-auto pt-8">
-            <a href="{{ route('login') }}" class="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 rounded-full bg-white text-semaft-navy font-bold text-sm hover:bg-semaft-gold hover:text-white transition-all duration-300 group">
-                <i class="fa-solid fa-lock mr-3 group-hover:scale-110 transition-transform"></i> Akses Administrator
+            <a href="{{ route('login') }}" class="flex items-center justify-center w-full px-6 py-4 rounded-xl bg-semaft-navy text-white font-bold text-sm hover:bg-blue-900 shadow-lg transform hover:-translate-y-1 transition-all duration-300 group">
+                <i class="fa-solid fa-shield-halved mr-2 group-hover:text-semaft-gold transition-colors"></i> Portal Administrator
             </a>
-            <div class="mt-8 flex items-center gap-4 text-gray-400 text-sm">
-                <a href="#" class="hover:text-semaft-gold transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
-                <a href="#" class="hover:text-semaft-gold transition-colors"><i class="fa-brands fa-youtube text-xl"></i></a>
-                <a href="#" class="hover:text-semaft-gold transition-colors"><i class="fa-brands fa-tiktok text-xl"></i></a>
-            </div>
         </div>
     </div>
 </header>
