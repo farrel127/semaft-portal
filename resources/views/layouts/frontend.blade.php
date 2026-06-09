@@ -15,38 +15,102 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen">
 
-    <!-- Navbar Global -->
-    <nav class="bg-semaft-navy text-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                
-                <a href="{{ url('/') }}" class="flex items-center gap-3">
-                    <img src="{{ asset('images/sema.png') }}" alt="Logo SEMAFT" class="h-10 w-auto object-contain drop-shadow-md">
-                    <span class="font-bold text-2xl tracking-widest text-semaft-gold">SEMAFT</span>
+    <header x-data="{ open: false }" class="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-lg border-b border-gray-100 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            
+            <div class="flex-shrink-0 flex items-center">
+                <a href="{{ url('/') }}" class="flex items-center gap-3 group">
+                    <img src="{{ asset('images/sema.png') }}" alt="Logo SEMAFT" class="h-12 w-auto group-hover:scale-110 transition-transform duration-300">
+                    <div class="flex flex-col">
+                        <span class="font-extrabold text-xl tracking-tight text-semaft-navy leading-none">SEMA FT</span>
+                        <span class="text-[10px] font-bold text-semaft-gold uppercase tracking-widest mt-1">Portal Resmi</span>
+                    </div>
                 </a>
-                
-                <div class="hidden md:flex space-x-8 font-medium">
-                    <a href="{{ url('/') }}" class="hover:text-semaft-gold transition duration-300 {{ request()->is('/') ? 'text-semaft-gold border-b-2 border-semaft-gold pb-1' : '' }}">Beranda</a>
-                    <a href="#" class="hover:text-semaft-gold transition duration-300">Profil</a>
-                    <a href="{{ route('frontend.berita') }}" class="hover:text-semaft-gold transition duration-300 {{ request()->routeIs('frontend.berita') ? 'text-semaft-gold border-b-2 border-semaft-gold pb-1' : '' }}">Berita</a>
-                    <a href="#" class="hover:text-semaft-gold transition duration-300">Aspirasi</a>
-                </div>
+            </div>
 
-                <div>
-                    @auth
-                        <a href="{{ route('dashboard') }}" class="bg-semaft-gold text-semaft-navy font-bold px-6 py-2.5 rounded-md hover:bg-yellow-400 transition shadow-md">
-                            Dashboard
-                        </a>
-                    @else
-                        <a href="{{ route('login') }}" class="bg-semaft-gold text-semaft-navy font-bold px-6 py-2.5 rounded-md hover:bg-yellow-400 transition shadow-md">
-                            Login Portal
-                        </a>
-                    @endauth
-                </div>
-
+            <div class="flex items-center">
+                <button @click="open = !open" 
+                        class="relative z-50 w-10 h-10 flex flex-col justify-center items-center group focus:outline-none bg-gray-50 hover:bg-gray-100 rounded-full transition-colors border border-gray-200">
+                    <span class="sr-only">Buka menu navigasi</span>
+                    
+                    <div class="w-5 h-4 relative flex flex-col justify-between transform transition-all duration-300 origin-center" :class="{'rotate-180': open}">
+                        <span class="w-full h-[2px] bg-semaft-navy rounded-full transition-all duration-300 origin-left" :class="{'rotate-45 translate-y-[-1px] w-[22px]': open}"></span>
+                        <span class="w-full h-[2px] bg-semaft-navy rounded-full transition-all duration-300" :class="{'opacity-0 translate-x-3': open}"></span>
+                        <span class="w-full h-[2px] bg-semaft-navy rounded-full transition-all duration-300 origin-left" :class="{'-rotate-45 -translate-y-[-1px] w-[22px]': open}"></span>
+                    </div>
+                </button>
             </div>
         </div>
-    </nav>
+    </div>
+
+    <div x-show="open" 
+         x-cloak
+         class="fixed inset-0 z-40 bg-gray-900/40 backdrop-blur-sm"
+         x-transition:enter="transition-opacity ease-linear duration-300"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100"
+         x-transition:leave="transition-opacity ease-linear duration-300"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0"
+         @click="open = false">
+    </div>
+
+    <div x-show="open" 
+         x-cloak
+         class="fixed top-0 right-0 h-screen w-full sm:w-[350px] bg-white shadow-2xl z-50 flex flex-col transform transition-transform duration-300 ease-in-out border-l border-gray-100"
+         x-transition:enter="transition ease-out duration-300 transform"
+         x-transition:enter-start="translate-x-full"
+         x-transition:enter-end="translate-x-0"
+         x-transition:leave="transition ease-in duration-300 transform"
+         x-transition:leave-start="translate-x-0"
+         x-transition:leave-end="translate-x-full"
+         @click.away="open = false">
+        
+        <div class="flex items-center justify-between h-20 px-8 border-b border-gray-100 bg-gray-50/50">
+            <span class="font-extrabold text-sm text-gray-400 uppercase tracking-widest">Menu Eksplorasi</span>
+            <button @click="open = false" class="text-gray-400 hover:text-red-500 hover:rotate-90 transition-all duration-300 p-2">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
+
+        <div class="flex-1 overflow-y-auto py-8 px-6 space-y-2">
+            <a href="{{ url('/') }}" class="flex items-center px-4 py-3.5 rounded-2xl font-bold text-gray-700 hover:bg-blue-50 hover:text-semaft-navy transition-all duration-200 group">
+                <div class="w-10 h-10 rounded-full bg-gray-100 group-hover:bg-white flex items-center justify-center mr-4 transition-colors shadow-sm">
+                    <i class="fa-solid fa-house text-gray-500 group-hover:text-semaft-gold transition-colors"></i>
+                </div>
+                Beranda SEMA
+            </a>
+
+            <a href="{{ route('frontend.berita') }}" class="flex items-center px-4 py-3.5 rounded-2xl font-bold text-gray-700 hover:bg-blue-50 hover:text-semaft-navy transition-all duration-200 group">
+                <div class="w-10 h-10 rounded-full bg-gray-100 group-hover:bg-white flex items-center justify-center mr-4 transition-colors shadow-sm">
+                    <i class="fa-solid fa-newspaper text-gray-500 group-hover:text-semaft-gold transition-colors"></i>
+                </div>
+                Portal Berita
+            </a>
+
+            <a href="#" class="flex items-center px-4 py-3.5 rounded-2xl font-bold text-gray-700 hover:bg-blue-50 hover:text-semaft-navy transition-all duration-200 group">
+                <div class="w-10 h-10 rounded-full bg-gray-100 group-hover:bg-white flex items-center justify-center mr-4 transition-colors shadow-sm">
+                    <i class="fa-regular fa-calendar-days text-gray-500 group-hover:text-semaft-gold transition-colors"></i>
+                </div>
+                Agenda Kegiatan
+            </a>
+            
+            <a href="#" class="flex items-center px-4 py-3.5 rounded-2xl font-bold text-gray-700 hover:bg-blue-50 hover:text-semaft-navy transition-all duration-200 group">
+                <div class="w-10 h-10 rounded-full bg-gray-100 group-hover:bg-white flex items-center justify-center mr-4 transition-colors shadow-sm">
+                    <i class="fa-solid fa-users text-gray-500 group-hover:text-semaft-gold transition-colors"></i>
+                </div>
+                Tentang Pengurus
+            </a>
+        </div>
+
+        <div class="p-6 border-t border-gray-100 bg-white">
+            <a href="{{ route('login') }}" class="flex items-center justify-center w-full py-4 px-4 rounded-xl bg-semaft-navy text-white font-bold hover:bg-blue-900 focus:ring-4 focus:ring-blue-900/30 transition-all duration-300 shadow-lg transform hover:-translate-y-1">
+                <i class="fa-solid fa-user-shield mr-2"></i> Masuk sebagai Admin
+            </a>
+        </div>
+    </div>
+</header>
 
     <!-- Konten Dinamis (Berubah-ubah sesuai halaman) -->
     <main class="flex-grow">
