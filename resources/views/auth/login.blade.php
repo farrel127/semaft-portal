@@ -28,9 +28,9 @@
 
     <div class="flex flex-col md:flex-row w-full min-h-screen">
         
-        <div class="relative w-full md:w-5/12 bg-semaft-navy flex flex-col justify-center items-center p-10 md:p-12 text-white min-h-[35vh] md:min-h-screen z-10">
+        <div class="w-full md:w-5/12 bg-semaft-navy flex flex-col justify-center items-center p-10 md:p-12 text-white min-h-[35vh] md:min-h-screen relative z-20 md:shadow-[15px_0_30px_rgba(0,0,0,0.15)]">
             
-            <div class="text-center max-w-sm relative z-20">
+            <div class="text-center max-w-sm">
                 <h1 class="text-2xl md:text-3xl font-medium mb-6">Selamat Datang di</h1>
                 
                 <a href="{{ url('/') }}" class="inline-block bg-white p-4 rounded-full shadow-lg mb-6 group">
@@ -42,21 +42,9 @@
                     Portal Administrasi Senat Mahasiswa Fakultas Teknik. Masuk untuk mengelola berita, agenda, dan informasi fakultas.
                 </p>
             </div>
-
-            <div class="hidden md:block absolute top-0 -right-[40px] h-full w-[45px] z-10">
-                <svg viewBox="0 0 100 1000" preserveAspectRatio="none" class="h-full w-full text-white fill-current">
-                    <path d="M0,0 C60,50 100,100 20,200 C-30,300 80,400 40,500 C0,600 90,700 20,800 C-40,900 60,950 0,1000 L0,1000 L100,1000 L100,0 Z"></path>
-                </svg>
-            </div>
-
-            <div class="block md:hidden absolute -bottom-[20px] left-0 w-full h-[40px] z-10 overflow-hidden">
-                <svg viewBox="0 0 1000 100" preserveAspectRatio="none" class="h-full w-full text-white fill-current transform scale-y-[-1]">
-                    <path d="M0,0 C150,80 250,-20 500,50 C750,120 850,20 1000,80 L1000,100 L0,100 Z"></path>
-                </svg>
-            </div>
         </div>
 
-        <div class="w-full md:w-7/12 flex items-center justify-center p-8 sm:p-12 md:pl-20 relative z-20">
+        <div class="w-full md:w-7/12 flex items-center justify-center p-8 sm:p-12 md:pl-20 relative z-10 bg-white">
             <div class="w-full max-w-md">
                 
                 <div class="mb-10 text-center md:text-left">
