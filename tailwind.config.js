@@ -17,7 +17,7 @@ import defaultTheme from 'tailwindcss/defaultTheme';
                 // Tambahkan palet warna kita di sini:
                 colors: {
                     semaft: {
-                        navy: '#2d1f75',
+                        navy: '#1e1160',
                         gold: '#f4c332',
                     }
                 }
