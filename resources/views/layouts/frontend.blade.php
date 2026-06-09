@@ -67,217 +67,147 @@
         @yield('content')
     </main>
 
-    <footer class="bg-semaft-navy text-gray-300 pt-14 pb-6 border-t-[6px] border-semaft-gold mt-auto relative overflow-hidden">
+    <footer class="bg-semaft-navy text-gray-300 pt-16 pb-8 border-t-[6px] border-semaft-gold mt-auto relative overflow-hidden">
+        
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-semaft-gold rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
 
-    <!-- Background Effect -->
-    <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-semaft-gold rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                
+                <div class="space-y-5">
+                    <a href="{{ url('/') }}" class="flex items-center gap-3 mb-4 group">
+                        <div class="bg-white p-1.5 rounded-xl group-hover:scale-105 transition-transform">
+                            <img src="{{ asset('images/sema.png') }}" alt="Logo SEMAFT" class="h-12 w-auto object-contain">
+                        </div>
+                        <span class="font-extrabold text-2xl tracking-widest text-white">SEMA<span class="text-semaft-gold">FT</span></span>
+                    </a>
+                    <p class="text-sm leading-relaxed text-gray-400">
+                        Senat Mahasiswa Fakultas Teknik Universitas Sangga Buana YPKP. Wadah aspirasi dan sinergi untuk membangun mahasiswa teknik yang solid dan inovatif.
+                    </p>
+                    <div class="flex items-start gap-3 text-sm text-gray-300 mt-4 bg-white/5 p-3 rounded-xl border border-white/5">
+                        <i class="fa-solid fa-location-dot text-semaft-gold mt-1"></i> 
+                        <span>Jl. PHH. Mustofa No.68, Cikutra, Cibeunying Kidul, Kota Bandung.</span>
+                    </div>
+                </div>
 
-    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6 relative inline-block">
+                        Tautan Eksplorasi
+                        <span class="absolute -bottom-2 left-0 w-12 h-1 bg-semaft-gold rounded-full"></span>
+                    </h3>
+                    
+                    <div class="grid grid-cols-2 gap-3">
+                        <a href="{{ url('/') }}" class="group flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-xl hover:bg-semaft-gold hover:border-semaft-gold transition-all duration-300 shadow-sm hover:shadow-[0_4px_15px_rgba(255,215,0,0.2)] transform hover:-translate-y-1">
+                            <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-semaft-gold group-hover:bg-white/20 group-hover:text-semaft-navy transition-colors">
+                                <i class="fa-solid fa-house text-sm"></i>
+                            </div>
+                            <span class="text-xs font-bold text-gray-300 group-hover:text-semaft-navy transition-colors">Beranda</span>
+                        </a>
+                        <a href="{{ url('/tentang') }}" class="group flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-xl hover:bg-semaft-gold hover:border-semaft-gold transition-all duration-300 shadow-sm hover:shadow-[0_4px_15px_rgba(255,215,0,0.2)] transform hover:-translate-y-1">
+                            <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-semaft-gold group-hover:bg-white/20 group-hover:text-semaft-navy transition-colors">
+                                <i class="fa-solid fa-users text-sm"></i>
+                            </div>
+                            <span class="text-xs font-bold text-gray-300 group-hover:text-semaft-navy transition-colors">Profil</span>
+                        </a>
+                        <a href="{{ route('frontend.berita') }}" class="group flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-xl hover:bg-semaft-gold hover:border-semaft-gold transition-all duration-300 shadow-sm hover:shadow-[0_4px_15px_rgba(255,215,0,0.2)] transform hover:-translate-y-1">
+                            <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-semaft-gold group-hover:bg-white/20 group-hover:text-semaft-navy transition-colors">
+                                <i class="fa-solid fa-newspaper text-sm"></i>
+                            </div>
+                            <span class="text-xs font-bold text-gray-300 group-hover:text-semaft-navy transition-colors">Berita</span>
+                        </a>
+                        <a href="{{ url('/kegiatan') }}" class="group flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-xl hover:bg-semaft-gold hover:border-semaft-gold transition-all duration-300 shadow-sm hover:shadow-[0_4px_15px_rgba(255,215,0,0.2)] transform hover:-translate-y-1">
+                            <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-semaft-gold group-hover:bg-white/20 group-hover:text-semaft-navy transition-colors">
+                                <i class="fa-regular fa-calendar-check text-sm"></i>
+                            </div>
+                            <span class="text-xs font-bold text-gray-300 group-hover:text-semaft-navy transition-colors">Kegiatan</span>
+                        </a>
+                        <a href="{{ url('/aspirasi') }}" class="col-span-2 group flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-xl hover:bg-semaft-gold hover:border-semaft-gold transition-all duration-300 shadow-sm hover:shadow-[0_4px_15px_rgba(255,215,0,0.2)] transform hover:-translate-y-1">
+                            <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-semaft-gold group-hover:bg-white/20 group-hover:text-semaft-navy transition-colors">
+                                <i class="fa-solid fa-bullhorn text-sm"></i>
+                            </div>
+                            <span class="text-xs font-bold text-gray-300 group-hover:text-semaft-navy transition-colors">Suarakan Aspirasi Anda</span>
+                            <i class="fa-solid fa-arrow-right ml-auto text-gray-500 group-hover:text-semaft-navy opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </a>
+                    </div>
+                </div>
 
-        <!-- MAIN CONTENT -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6 relative inline-block">
+                        Layanan Humas
+                        <span class="absolute -bottom-2 left-0 w-12 h-1 bg-semaft-gold rounded-full"></span>
+                    </h3>
+                    <p class="text-sm text-gray-400 mb-5 leading-relaxed">Punya pertanyaan atau ingin berkolaborasi? Layanan humas kami siap membantu Anda.</p>
+                    
+                    <div class="space-y-3">
+                        <a href="https://wa.me/6281234567890" target="_blank" class="group flex items-center gap-3 bg-[#25D366]/10 border border-[#25D366]/30 text-[#25D366] hover:bg-[#25D366] hover:text-white px-4 py-3 rounded-xl transition-all duration-300 font-bold text-sm w-full shadow-sm hover:shadow-[0_4px_15px_rgba(37,211,102,0.3)] transform hover:-translate-y-1">
+                            <i class="fa-brands fa-whatsapp text-xl group-hover:animate-bounce"></i> Chat WhatsApp
+                        </a>
+                        <a href="mailto:semaft.usb@gmail.com" class="group flex items-center gap-3 bg-white/5 border border-white/10 text-gray-300 hover:bg-white hover:text-semaft-navy px-4 py-3 rounded-xl transition-all duration-300 text-sm w-full shadow-sm transform hover:-translate-y-1">
+                            <i class="fa-solid fa-envelope text-semaft-gold group-hover:text-semaft-navy transition-colors"></i> semaft.usb@gmail.com
+                        </a>
+                    </div>
+                </div>
 
-            <!-- ABOUT -->
-            <div class="flex flex-col h-full">
-                <a href="{{ url('/') }}" class="flex items-center gap-3 mb-4 group">
-                    <div class="bg-white p-1.5 rounded-xl group-hover:scale-105 transition-transform">
-                        <img src="{{ asset('images/sema.png') }}" alt="Logo SEMAFT" class="h-12 w-auto object-contain">
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6 relative inline-block">
+                        Terkoneksi
+                        <span class="absolute -bottom-2 left-0 w-12 h-1 bg-semaft-gold rounded-full"></span>
+                    </h3>
+                    
+                    <div class="mb-6">
+                        <a href="https://instagram.com/semaft_usby" target="_blank" class="group flex items-center gap-3 bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] p-[1px] rounded-xl transition-transform hover:-translate-y-1 hover:shadow-[0_4px_15px_rgba(253,29,29,0.3)] block">
+                            <div class="flex items-center gap-3 bg-semaft-navy px-4 py-2.5 rounded-xl w-full h-full group-hover:bg-transparent transition-colors duration-300">
+                                <i class="fa-brands fa-instagram text-xl text-white"></i>
+                                <span class="font-bold text-sm text-white">@semaft_usby</span>
+                            </div>
+                        </a>
                     </div>
 
-                    <span class="font-extrabold text-2xl tracking-widest text-white">
-                        SEMA<span class="text-semaft-gold">FT</span>
-                    </span>
-                </a>
+                    <div>
+                        <p class="text-xs text-gray-400 mb-3 font-semibold tracking-wider uppercase">Bagikan Portal Ini</p>
+                        <div class="flex gap-3">
+                            <button onclick="copyToClipboard()" class="w-11 h-11 rounded-full bg-white/10 border border-white/10 hover:bg-semaft-gold hover:text-semaft-navy hover:border-semaft-gold transition-all duration-300 flex items-center justify-center shadow-sm transform hover:-translate-y-1" title="Salin Link Website">
+                                <i class="fa-solid fa-link"></i>
+                            </button>
+                            <a href="https://api.whatsapp.com/send?text=Halo!%20Kunjungi%20Portal%20Resmi%20SEMAFT%20USB%20YPKP%20di%20sini:%20{{ url('/') }}" target="_blank" class="w-11 h-11 rounded-full bg-white/10 border border-white/10 hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition-all duration-300 flex items-center justify-center shadow-sm transform hover:-translate-y-1" title="Bagikan ke WhatsApp">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                            </a>
+                            <a href="https://twitter.com/intent/tweet?url={{ url('/') }}&text=Kunjungi%20Portal%20Senat%20Mahasiswa%20Fakultas%20Teknik!" target="_blank" class="w-11 h-11 rounded-full bg-white/10 border border-white/10 hover:bg-[#000000] hover:text-white hover:border-gray-700 transition-all duration-300 flex items-center justify-center shadow-sm transform hover:-translate-y-1" title="Bagikan ke Twitter/X">
+                                <i class="fa-brands fa-x-twitter text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-                <p class="text-sm leading-relaxed text-gray-400">
-                    Senat Mahasiswa Fakultas Teknik Universitas Sangga Buana YPKP.
-                    Wadah aspirasi dan sinergi untuk membangun mahasiswa teknik yang
-                    solid dan inovatif.
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 pb-4 mt-8">
+                <p class="text-center text-xs font-bold text-gray-500 uppercase tracking-widest mb-6">Disponsori & Didukung Oleh</p>
+                <div class="flex flex-wrap justify-center items-center gap-10 md:gap-16">
+                    
+                    <a href="#" class="flex items-center justify-center group" title="Kahf - Sponsor Resmi">
+                        <img src="{{ asset('images/kahf.png') }}" alt="Kahf" class="h-10 md:h-12 w-auto object-contain grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 hover:scale-105">
+                    </a>
+
+                    <a href="#" class="flex items-center justify-center group" title="FluxWallet">
+                        <span class="font-extrabold text-2xl text-gray-500 opacity-50 group-hover:opacity-100 group-hover:text-blue-400 transition-all duration-500 tracking-tighter hover:scale-105">Flux<span class="font-light">Wallet</span></span>
+                    </a>
+
+                    <a href="#" class="flex items-center justify-center group" title="AWS Educate">
+                        <i class="fa-brands fa-aws text-4xl text-gray-500 opacity-50 group-hover:opacity-100 group-hover:text-[#FF9900] transition-all duration-500 hover:scale-105"></i>
+                    </a>
+
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-6 mt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 font-medium">
+                <p>&copy; {{ date('Y') }} Senat Mahasiswa Fakultas Teknik USB YPKP. All rights reserved.</p>
+                <p class="flex items-center gap-1.5 hover:text-gray-300 transition-colors">
+                    Designed with by <span class="font-bold text-white tracking-wider">vicnitnizzmt</span>.
                 </p>
-
-                <div class="mt-5 flex items-start gap-3 bg-white/5 border border-white/10 rounded-xl p-4">
-                    <i class="fa-solid fa-location-dot text-semaft-gold mt-1"></i>
-                    <span class="text-sm">
-                        Jl. PHH. Mustofa No.68, Cikutra,
-                        Cibeunying Kidul, Kota Bandung.
-                    </span>
-                </div>
             </div>
-
-            <!-- NAVIGATION -->
-            <div class="flex flex-col h-full">
-                <h3 class="text-white font-bold text-lg mb-6 relative inline-block">
-                    Tautan Eksplorasi
-                    <span class="absolute -bottom-2 left-0 w-12 h-1 bg-semaft-gold rounded-full"></span>
-                </h3>
-
-                <div class="grid grid-cols-2 gap-3">
-
-                    <a href="{{ url('/') }}"
-                        class="group flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-xl hover:bg-semaft-gold hover:border-semaft-gold transition-all">
-                        <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-semaft-gold">
-                            <i class="fa-solid fa-house text-sm"></i>
-                        </div>
-                        <span class="text-xs font-bold">Beranda</span>
-                    </a>
-
-                    <a href="{{ url('/tentang') }}"
-                        class="group flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-xl hover:bg-semaft-gold hover:border-semaft-gold transition-all">
-                        <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-semaft-gold">
-                            <i class="fa-solid fa-users text-sm"></i>
-                        </div>
-                        <span class="text-xs font-bold">Profil</span>
-                    </a>
-
-                    <a href="{{ route('frontend.berita') }}"
-                        class="group flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-xl hover:bg-semaft-gold hover:border-semaft-gold transition-all">
-                        <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-semaft-gold">
-                            <i class="fa-solid fa-newspaper text-sm"></i>
-                        </div>
-                        <span class="text-xs font-bold">Berita</span>
-                    </a>
-
-                    <a href="{{ url('/kegiatan') }}"
-                        class="group flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-xl hover:bg-semaft-gold hover:border-semaft-gold transition-all">
-                        <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-semaft-gold">
-                            <i class="fa-regular fa-calendar-check text-sm"></i>
-                        </div>
-                        <span class="text-xs font-bold">Kegiatan</span>
-                    </a>
-
-                    <a href="{{ url('/aspirasi') }}"
-                        class="col-span-2 group flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-xl hover:bg-semaft-gold hover:border-semaft-gold transition-all">
-                        <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-semaft-gold">
-                            <i class="fa-solid fa-bullhorn text-sm"></i>
-                        </div>
-
-                        <span class="text-xs font-bold">
-                            Suarakan Aspirasi Anda
-                        </span>
-                    </a>
-
-                </div>
-            </div>
-
-            <!-- HUMAS -->
-            <div class="flex flex-col h-full">
-                <h3 class="text-white font-bold text-lg mb-6 relative inline-block">
-                    Layanan Humas
-                    <span class="absolute -bottom-2 left-0 w-12 h-1 bg-semaft-gold rounded-full"></span>
-                </h3>
-
-                <p class="text-sm text-gray-400 mb-5">
-                    Punya pertanyaan atau ingin berkolaborasi?
-                    Layanan humas kami siap membantu Anda.
-                </p>
-
-                <div class="space-y-3">
-
-                    <a href="https://wa.me/6281234567890"
-                        target="_blank"
-                        class="flex items-center gap-3 bg-[#25D366]/10 border border-[#25D366]/30 text-[#25D366] px-4 py-3 rounded-xl hover:bg-[#25D366] hover:text-white transition-all">
-                        <i class="fa-brands fa-whatsapp text-xl"></i>
-                        Chat WhatsApp
-                    </a>
-
-                    <a href="mailto:semaft.usb@gmail.com"
-                        class="flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-3 rounded-xl hover:bg-white hover:text-semaft-navy transition-all">
-                        <i class="fa-solid fa-envelope text-semaft-gold"></i>
-                        semaft.usb@gmail.com
-                    </a>
-
-                </div>
-            </div>
-
-            <!-- SOCIAL -->
-            <div class="flex flex-col h-full">
-                <h3 class="text-white font-bold text-lg mb-6 relative inline-block">
-                    Terkoneksi
-                    <span class="absolute -bottom-2 left-0 w-12 h-1 bg-semaft-gold rounded-full"></span>
-                </h3>
-
-                <a href="https://instagram.com/semaft_usby"
-                    target="_blank"
-                    class="flex items-center gap-3 bg-white/5 border border-white/10 p-4 rounded-xl hover:border-semaft-gold transition-all mb-6">
-
-                    <i class="fa-brands fa-instagram text-xl text-white"></i>
-
-                    <span class="font-bold text-white">
-                        @semaft_usby
-                    </span>
-                </a>
-
-                <p class="text-xs text-gray-400 uppercase tracking-widest mb-3">
-                    Bagikan Portal Ini
-                </p>
-
-                <div class="flex gap-3">
-
-                    <button onclick="copyToClipboard()"
-                        class="w-11 h-11 rounded-full bg-white/10 border border-white/10 flex items-center justify-center hover:bg-semaft-gold hover:text-semaft-navy transition-all">
-                        <i class="fa-solid fa-link"></i>
-                    </button>
-
-                    <a href="https://api.whatsapp.com/send?text={{ url('/') }}"
-                        target="_blank"
-                        class="w-11 h-11 rounded-full bg-white/10 border border-white/10 flex items-center justify-center hover:bg-[#25D366] hover:text-white transition-all">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </a>
-
-                    <a href="https://twitter.com/intent/tweet?url={{ url('/') }}"
-                        target="_blank"
-                        class="w-11 h-11 rounded-full bg-white/10 border border-white/10 flex items-center justify-center hover:bg-black hover:text-white transition-all">
-                        <i class="fa-brands fa-x-twitter"></i>
-                    </a>
-
-                </div>
-            </div>
-
         </div>
-
-        <!-- SPONSOR -->
-        <div class="border-t border-white/10 py-6 mt-8">
-
-            <p class="text-center text-xs font-bold text-gray-500 uppercase tracking-widest mb-6">
-                Disponsori & Didukung Oleh
-            </p>
-
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-
-                <img src="{{ asset('images/kahf.png') }}"
-                    alt="Kahf"
-                    class="h-10 opacity-50 hover:opacity-100 transition-all">
-
-                <span class="text-2xl font-bold text-gray-500 opacity-60">
-                    FluxWallet
-                </span>
-
-                <i class="fa-brands fa-aws text-4xl text-gray-500 opacity-60"></i>
-
-            </div>
-
-        </div>
-
-        <!-- COPYRIGHT -->
-        <div class="border-t border-white/10 pt-5 mt-5 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-gray-500">
-
-            <p>
-                &copy; {{ date('Y') }}
-                Senat Mahasiswa Fakultas Teknik USB YPKP.
-                All rights reserved.
-            </p>
-
-            <p>
-                Designed by
-                <span class="font-bold text-white">
-                    vicnitnizzmt
-                </span>
-            </p>
-
-        </div>
-
-    </div>
-</footer>
+    </footer>
 
     <script>
         function copyToClipboard() {

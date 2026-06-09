@@ -3,7 +3,7 @@
 @section('title', 'Beranda Utama')
 
 @section('content')
-   <section class="bg-semaft-navy pt-40 pb-24 relative overflow-hidden flex flex-col justify-center min-h-screen">
+  <section class="bg-semaft-navy pt-40 pb-24 relative overflow-hidden flex flex-col justify-center min-h-[80vh]">
         
         <div class="absolute top-0 right-0 w-80 h-80 bg-semaft-gold opacity-10 rounded-full -mr-10 -mt-10 blur-[100px] pointer-events-none"></div>
         <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-600 opacity-20 rounded-full -ml-20 -mb-20 blur-[100px] pointer-events-none"></div>
