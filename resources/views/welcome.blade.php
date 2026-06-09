@@ -3,24 +3,24 @@
 @section('title', 'Beranda Utama')
 
 @section('content')
-  <section class="bg-semaft-navy pt-40 pb-24 relative overflow-hidden flex flex-col justify-center min-h-[80vh]">
+    <section class="bg-[#1e1160] pt-48 md:pt-56 pb-24 relative overflow-hidden flex flex-col min-h-[85vh]">
         
-        <div class="absolute top-0 right-0 w-80 h-80 bg-semaft-gold opacity-10 rounded-full -mr-10 -mt-10 blur-[100px] pointer-events-none"></div>
+        <div class="absolute top-0 right-0 w-80 h-80 bg-[#f4c332] opacity-10 rounded-full -mr-10 -mt-10 blur-[100px] pointer-events-none"></div>
         <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-600 opacity-20 rounded-full -ml-20 -mb-20 blur-[100px] pointer-events-none"></div>
 
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 w-full text-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
             
-            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight sm:leading-tight md:leading-tight mb-6 tracking-tight drop-shadow-lg">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight sm:leading-tight md:leading-tight mb-6 tracking-tight drop-shadow-md">
                 Sinergi Membangun <br class="hidden sm:block"/> 
                 Fakultas Teknik yang Solid
             </h1>
             
-            <p class="mt-6 text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed font-medium">
+            <p class="mt-6 text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed font-medium">
                 Rumah aspirasi dan kolaborasi bagi seluruh elemen mahasiswa teknik untuk berkarya, berinovasi, dan bergerak bersama.
             </p>
             
             <div class="flex justify-center items-center w-full">
-                <a href="{{ url('/aspirasi') }}" class="inline-flex items-center justify-center gap-3 bg-semaft-gold text-semaft-navy font-extrabold px-10 py-4 rounded-full hover:bg-yellow-400 hover:scale-105 transition-all duration-300 shadow-[0_10px_25px_rgba(255,215,0,0.3)] text-lg">
+                <a href="{{ url('/aspirasi') }}" class="inline-flex items-center justify-center gap-3 bg-[#f4c332] text-[#1e1160] font-extrabold px-10 py-4 rounded-full hover:bg-yellow-400 hover:scale-105 transition-all duration-300 shadow-[0_10px_25px_rgba(244,195,50,0.3)] text-base sm:text-lg">
                     Sampaikan Aspirasi <i class="fa-solid fa-paper-plane text-sm"></i>
                 </a>
             </div>
