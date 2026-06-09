@@ -20,52 +20,47 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen selection:bg-semaft-gold selection:text-semaft-navy" x-data="{ open: false }" :class="{'overflow-hidden': open}">
 
-    <header class="fixed top-4 md:top-6 inset-x-0 z-50 flex flex-col items-center px-4 md:px-6 pointer-events-none transition-all duration-300">
+    <header class="fixed top-4 inset-x-0 z-50 flex justify-center px-4 md:px-6 pointer-events-none transition-all duration-300">
         
-        <div class="relative w-full max-w-5xl">
+        <nav class="pointer-events-auto w-full max-w-5xl bg-semaft-navy/95 backdrop-blur-lg border border-white/10 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.2)] p-2 flex items-center justify-between">
             
-            <nav class="pointer-events-auto w-full bg-[#1e1160]/80 backdrop-blur-lg border border-white/40 rounded-full p-2 flex items-center justify-between shadow-[0_8px_30px_rgb(0,0,0,0.2)]">
+            <a href="{{ url('/') }}" class="flex items-center gap-3 pl-2 sm:pl-3 group">
+                <div class="bg-white/10 p-1.5 rounded-full group-hover:bg-white/20 transition duration-300 shrink-0">
+                    <img src="{{ asset('images/sema.png') }}" alt="Logo SEMAFT" class="h-7 sm:h-8 w-auto object-contain drop-shadow-md group-hover:scale-110 transition-transform duration-300">
+                </div>
+                <span class="font-extrabold text-lg sm:text-xl tracking-widest text-white group-hover:text-semaft-gold transition-colors duration-300">SEMA<span class="text-semaft-gold">FT</span></span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/5">
+                <a href="{{ url('/') }}" class="px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 {{ request()->is('/') ? 'bg-semaft-gold text-semaft-navy shadow-md' : 'text-gray-300 hover:text-white hover:bg-white/10' }}">Beranda</a>
                 
-                <a href="{{ url('/') }}" class="flex items-center gap-3 pl-3 sm:pl-4 group shrink-0">
-                    <img src="{{ asset('images/sema.png') }}" alt="Logo SEMAFT" class="h-8 md:h-9 w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300">
-                    <span class="font-extrabold text-xl tracking-widest text-white group-hover:text-semaft-gold transition-colors duration-300">SEMA<span class="text-semaft-gold">FT</span></span>
-                </a>
+                <a href="{{ url('/tentang') }}" class="px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 {{ request()->is('tentang') ? 'bg-semaft-gold text-semaft-navy shadow-md' : 'text-gray-300 hover:text-white hover:bg-white/10' }}">Profil</a>
                 
-                <div class="hidden md:flex items-center gap-2 border border-white/40 rounded-full p-1 bg-white/5">
-                    <a href="{{ url('/') }}" class="px-6 py-1.5 rounded-full text-sm font-bold transition-all duration-300 {{ request()->is('/') ? 'bg-semaft-gold text-[#1e1160] shadow-md' : 'text-gray-200 hover:text-white hover:bg-white/10' }}">Beranda</a>
-                    
-                    <a href="{{ url('/tentang') }}" class="px-6 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 {{ request()->is('tentang') ? 'bg-semaft-gold text-[#1e1160] shadow-md' : 'text-gray-200 hover:text-white hover:bg-white/10' }}">Profil</a>
-                    
-                    <a href="{{ route('frontend.berita') }}" class="px-6 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 {{ request()->routeIs('frontend.berita') ? 'bg-semaft-gold text-[#1e1160] shadow-md' : 'text-gray-200 hover:text-white hover:bg-white/10' }}">Berita</a>
-                    
-                    <a href="{{ url('/aspirasi') }}" class="px-6 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 {{ request()->is('aspirasi') ? 'bg-semaft-gold text-[#1e1160] shadow-md' : 'text-gray-200 hover:text-white hover:bg-white/10' }}">Aspirasi</a>
-                </div>
-
-                <div class="hidden md:block pr-1">
-                    @auth
-                        <a href="{{ route('dashboard') }}" class="flex items-center gap-2 bg-white/10 border border-white/40 text-white font-bold px-6 py-2 rounded-full hover:bg-semaft-gold hover:text-[#1e1160] hover:border-semaft-gold transition-all duration-300 shadow-sm">
-                            <i class="fa-solid fa-table-columns text-sm"></i> Dashboard
-                        </a>
-                    @else
-                        <a href="{{ route('login') }}" class="flex items-center gap-2 bg-white/10 border border-white/40 text-white font-bold px-6 py-2 rounded-full hover:bg-semaft-gold hover:text-[#1e1160] hover:border-semaft-gold transition-all duration-300 shadow-sm">
-                            <i class="fa-solid fa-right-to-bracket text-sm shrink-0"></i> Login
-                        </a>
-                    @endauth
-                </div>
-
-                <div class="md:hidden pr-1">
-                    <button @click="open = !open" class="w-10 h-10 bg-white/10 border border-white/40 rounded-full flex items-center justify-center text-white hover:bg-semaft-gold hover:text-[#1e1160] transition-colors focus:outline-none shrink-0">
-                        <i class="fa-solid fa-bars text-lg" x-show="!open"></i>
-                        <i class="fa-solid fa-xmark text-lg" x-show="open" x-cloak></i>
-                    </button>
-                </div>
-            </nav>
-
-            <div class="hidden md:flex absolute -bottom-11 right-6 pointer-events-auto items-center gap-2 bg-[#1e1160]/90 backdrop-blur-md border border-white/40 rounded-full px-5 py-1.5 shadow-sm">
-                <span class="w-2 h-2 rounded-full bg-semaft-gold animate-pulse"></span>
-                <span class="text-white text-xs font-medium tracking-wide">Senat Mahasiswa Fakultas Teknik USB YPKP Bandung.</span>
+                <a href="{{ route('frontend.berita') }}" class="px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 {{ request()->routeIs('frontend.berita') ? 'bg-semaft-gold text-semaft-navy shadow-md' : 'text-gray-300 hover:text-white hover:bg-white/10' }}">Berita</a>
+                
+                <a href="{{ url('/aspirasi') }}" class="px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 {{ request()->is('aspirasi') ? 'bg-semaft-gold text-semaft-navy shadow-md' : 'text-gray-300 hover:text-white hover:bg-white/10' }}">Aspirasi</a>
             </div>
-        </div>
+
+            <div class="hidden md:block pr-1 sm:pr-2">
+                @auth
+                    <a href="{{ route('dashboard') }}" class="flex items-center gap-2 bg-gradient-to-r from-semaft-gold to-yellow-500 text-semaft-navy font-bold px-6 py-2.5 rounded-full hover:shadow-[0_0_15px_rgba(255,215,0,0.5)] transform hover:-translate-y-0.5 transition-all duration-300">
+                        <i class="fa-solid fa-table-columns text-sm"></i> Dashboard
+                    </a>
+                @else
+                    <a href="{{ route('login') }}" class="flex items-center gap-2 bg-white/10 text-white border border-white/20 font-bold px-6 py-2.5 rounded-full hover:bg-semaft-gold hover:text-semaft-navy hover:border-semaft-gold transform hover:-translate-y-0.5 transition-all duration-300">
+                        <i class="fa-solid fa-right-to-bracket text-sm shrink-0"></i> Login
+                    </a>
+                @endauth
+            </div>
+
+            <div class="md:hidden pr-1">
+                <button @click="open = !open" class="w-10 h-10 bg-white/10 border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-semaft-gold hover:text-semaft-navy transition-colors focus:outline-none shrink-0">
+                    <i class="fa-solid fa-bars text-lg" x-show="!open"></i>
+                    <i class="fa-solid fa-xmark text-lg" x-show="open" x-cloak></i>
+                </button>
+            </div>
+            
+        </nav>
 
         <div x-show="open" 
              x-cloak
@@ -76,24 +71,24 @@
              x-transition:leave="transition ease-in duration-150"
              x-transition:leave-start="opacity-100 translate-y-0"
              x-transition:leave-end="opacity-0 -translate-y-4"
-             class="absolute top-20 left-4 right-4 bg-[#1e1160]/95 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl p-4 md:hidden pointer-events-auto">
+             class="absolute top-20 left-4 right-4 bg-semaft-navy/95 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl p-4 md:hidden pointer-events-auto">
             
             <div class="flex flex-col space-y-2">
-                <a href="{{ url('/') }}" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl text-white font-bold hover:bg-white/10 transition-colors {{ request()->is('/') ? 'bg-semaft-gold text-[#1e1160]' : '' }}">
+                <a href="{{ url('/') }}" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl text-white font-bold hover:bg-white/10 transition-colors {{ request()->is('/') ? 'bg-semaft-gold/20 text-semaft-gold border border-semaft-gold/30' : '' }}">
                     <i class="fa-solid fa-house w-5 text-center shrink-0"></i> Beranda
                 </a>
-                <a href="{{ url('/tentang') }}" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl text-white font-bold hover:bg-white/10 transition-colors {{ request()->is('tentang') ? 'bg-semaft-gold text-[#1e1160]' : '' }}">
+                <a href="{{ url('/tentang') }}" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl text-white font-bold hover:bg-white/10 transition-colors {{ request()->is('tentang') ? 'bg-semaft-gold/20 text-semaft-gold border border-semaft-gold/30' : '' }}">
                     <i class="fa-solid fa-users w-5 text-center shrink-0"></i> Profil
                 </a>
-                <a href="{{ route('frontend.berita') }}" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl text-white font-bold hover:bg-white/10 transition-colors {{ request()->routeIs('frontend.berita') ? 'bg-semaft-gold text-[#1e1160]' : '' }}">
+                <a href="{{ route('frontend.berita') }}" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl text-white font-bold hover:bg-white/10 transition-colors {{ request()->routeIs('frontend.berita') ? 'bg-semaft-gold/20 text-semaft-gold border border-semaft-gold/30' : '' }}">
                     <i class="fa-solid fa-newspaper w-5 text-center shrink-0"></i> Portal Berita
                 </a>
-                <a href="{{ url('/aspirasi') }}" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl text-white font-bold hover:bg-white/10 transition-colors {{ request()->is('aspirasi') ? 'bg-semaft-gold text-[#1e1160]' : '' }}">
+                <a href="{{ url('/aspirasi') }}" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl text-white font-bold hover:bg-white/10 transition-colors {{ request()->is('aspirasi') ? 'bg-semaft-gold/20 text-semaft-gold border border-semaft-gold/30' : '' }}">
                     <i class="fa-solid fa-bullhorn w-5 text-center shrink-0"></i> Aspirasi
                 </a>
                 
-                <div class="pt-4 mt-2 border-t border-white/20">
-                    <a href="{{ route('login') }}" class="flex items-center justify-center gap-2 w-full bg-white/10 border border-white/30 text-white hover:bg-semaft-gold hover:text-[#1e1160] font-extrabold px-4 py-3.5 rounded-2xl shadow-md transition-colors">
+                <div class="pt-4 mt-2 border-t border-white/10">
+                    <a href="{{ route('login') }}" class="flex items-center justify-center gap-2 w-full bg-semaft-gold text-semaft-navy font-extrabold px-4 py-3.5 rounded-2xl shadow-md">
                         <i class="fa-solid fa-right-to-bracket shrink-0"></i> Login Administrator
                     </a>
                 </div>
@@ -101,11 +96,12 @@
         </div>
     </header>
 
-    <main class="flex-grow pt-28 md:pt-36 pb-12">
+    <main class="flex-grow pt-28 md:pt-32 pb-12">
         @yield('content')
     </main>
 
-    <footer class="bg-[#1e1160] text-gray-300 pt-16 pb-8 border-t-[6px] border-semaft-gold mt-auto relative">
+    <footer class="bg-semaft-navy text-gray-300 pt-16 pb-8 border-t-[6px] border-semaft-gold mt-auto relative">
+        
         <div class="absolute top-0 right-0 w-64 h-64 bg-semaft-gold rounded-full blur-[120px] opacity-10 pointer-events-none z-0"></div>
 
         <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
@@ -121,7 +117,7 @@
                     <p class="text-sm leading-relaxed text-gray-400">
                         Senat Mahasiswa Fakultas Teknik Universitas Sangga Buana YPKP. Wadah aspirasi dan sinergi untuk membangun mahasiswa teknik yang solid dan inovatif.
                     </p>
-                    <div class="flex items-start gap-3 text-sm text-gray-300 mt-4 bg-white/5 p-3.5 rounded-xl border border-white/10">
+                    <div class="flex items-start gap-3 text-sm text-gray-300 mt-4 bg-white/5 p-3.5 rounded-xl border border-white/5">
                         <i class="fa-solid fa-location-dot text-semaft-gold mt-1 shrink-0"></i> 
                         <span class="leading-relaxed">Jl. PHH. Mustofa No.68, Cikutra, Cibeunying Kidul, Kota Bandung.</span>
                     </div>
@@ -135,35 +131,35 @@
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <a href="{{ url('/') }}" class="group flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-xl hover:bg-semaft-gold hover:border-semaft-gold transition-all duration-300 shadow-sm transform hover:-translate-y-1">
-                            <div class="w-8 h-8 shrink-0 rounded-lg bg-white/10 flex items-center justify-center text-semaft-gold group-hover:bg-[#1e1160] transition-colors">
+                            <div class="w-8 h-8 shrink-0 rounded-lg bg-white/10 flex items-center justify-center text-semaft-gold group-hover:bg-white/20 group-hover:text-semaft-navy transition-colors">
                                 <i class="fa-solid fa-house text-sm"></i>
                             </div>
-                            <span class="text-sm font-bold text-gray-200 group-hover:text-[#1e1160] transition-colors">Beranda</span>
+                            <span class="text-sm font-bold text-gray-200 group-hover:text-semaft-navy transition-colors">Beranda</span>
                         </a>
                         <a href="{{ url('/tentang') }}" class="group flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-xl hover:bg-semaft-gold hover:border-semaft-gold transition-all duration-300 shadow-sm transform hover:-translate-y-1">
-                            <div class="w-8 h-8 shrink-0 rounded-lg bg-white/10 flex items-center justify-center text-semaft-gold group-hover:bg-[#1e1160] transition-colors">
+                            <div class="w-8 h-8 shrink-0 rounded-lg bg-white/10 flex items-center justify-center text-semaft-gold group-hover:bg-white/20 group-hover:text-semaft-navy transition-colors">
                                 <i class="fa-solid fa-users text-sm"></i>
                             </div>
-                            <span class="text-sm font-bold text-gray-200 group-hover:text-[#1e1160] transition-colors">Profil</span>
+                            <span class="text-sm font-bold text-gray-200 group-hover:text-semaft-navy transition-colors">Profil</span>
                         </a>
                         <a href="{{ route('frontend.berita') }}" class="group flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-xl hover:bg-semaft-gold hover:border-semaft-gold transition-all duration-300 shadow-sm transform hover:-translate-y-1">
-                            <div class="w-8 h-8 shrink-0 rounded-lg bg-white/10 flex items-center justify-center text-semaft-gold group-hover:bg-[#1e1160] transition-colors">
+                            <div class="w-8 h-8 shrink-0 rounded-lg bg-white/10 flex items-center justify-center text-semaft-gold group-hover:bg-white/20 group-hover:text-semaft-navy transition-colors">
                                 <i class="fa-solid fa-newspaper text-sm"></i>
                             </div>
-                            <span class="text-sm font-bold text-gray-200 group-hover:text-[#1e1160] transition-colors">Berita</span>
+                            <span class="text-sm font-bold text-gray-200 group-hover:text-semaft-navy transition-colors">Berita</span>
                         </a>
                         <a href="{{ url('/kegiatan') }}" class="group flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-xl hover:bg-semaft-gold hover:border-semaft-gold transition-all duration-300 shadow-sm transform hover:-translate-y-1">
-                            <div class="w-8 h-8 shrink-0 rounded-lg bg-white/10 flex items-center justify-center text-semaft-gold group-hover:bg-[#1e1160] transition-colors">
+                            <div class="w-8 h-8 shrink-0 rounded-lg bg-white/10 flex items-center justify-center text-semaft-gold group-hover:bg-white/20 group-hover:text-semaft-navy transition-colors">
                                 <i class="fa-regular fa-calendar-check text-sm"></i>
                             </div>
-                            <span class="text-sm font-bold text-gray-200 group-hover:text-[#1e1160] transition-colors">Kegiatan</span>
+                            <span class="text-sm font-bold text-gray-200 group-hover:text-semaft-navy transition-colors">Kegiatan</span>
                         </a>
                         <a href="{{ url('/aspirasi') }}" class="col-span-1 sm:col-span-2 group flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-xl hover:bg-semaft-gold hover:border-semaft-gold transition-all duration-300 shadow-sm transform hover:-translate-y-1">
-                            <div class="w-8 h-8 shrink-0 rounded-lg bg-white/10 flex items-center justify-center text-semaft-gold group-hover:bg-[#1e1160] transition-colors">
+                            <div class="w-8 h-8 shrink-0 rounded-lg bg-white/10 flex items-center justify-center text-semaft-gold group-hover:bg-white/20 group-hover:text-semaft-navy transition-colors">
                                 <i class="fa-solid fa-bullhorn text-sm"></i>
                             </div>
-                            <span class="text-sm font-bold text-gray-200 group-hover:text-[#1e1160] transition-colors flex-1">Suarakan Aspirasi Anda</span>
-                            <i class="fa-solid fa-arrow-right shrink-0 text-gray-500 group-hover:text-[#1e1160] opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                            <span class="text-sm font-bold text-gray-200 group-hover:text-semaft-navy transition-colors flex-1">Suarakan Aspirasi Anda</span>
+                            <i class="fa-solid fa-arrow-right shrink-0 text-gray-500 group-hover:text-semaft-navy opacity-0 group-hover:opacity-100 transition-opacity"></i>
                         </a>
                     </div>
                 </div>
@@ -179,8 +175,8 @@
                         <a href="https://wa.me/6281234567890" target="_blank" class="group flex items-center gap-3 bg-[#25D366]/10 border border-[#25D366]/30 text-[#25D366] hover:bg-[#25D366] hover:text-white px-4 py-3 rounded-xl transition-all duration-300 font-bold text-sm w-full shadow-sm transform hover:-translate-y-1">
                             <i class="fa-brands fa-whatsapp text-xl shrink-0 group-hover:animate-bounce"></i> Chat WhatsApp
                         </a>
-                        <a href="mailto:semaft.usb@gmail.com" class="group flex items-center gap-3 bg-white/5 border border-white/10 text-gray-300 hover:bg-white hover:text-[#1e1160] px-4 py-3 rounded-xl transition-all duration-300 text-sm font-bold w-full shadow-sm transform hover:-translate-y-1">
-                            <i class="fa-solid fa-envelope text-semaft-gold shrink-0 group-hover:text-[#1e1160] transition-colors"></i> 
+                        <a href="mailto:semaft.usb@gmail.com" class="group flex items-center gap-3 bg-white/5 border border-white/10 text-gray-300 hover:bg-white hover:text-semaft-navy px-4 py-3 rounded-xl transition-all duration-300 text-sm font-bold w-full shadow-sm transform hover:-translate-y-1">
+                            <i class="fa-solid fa-envelope text-semaft-gold shrink-0 group-hover:text-semaft-navy transition-colors"></i> 
                             <span class="truncate">semaft.usb@gmail.com</span>
                         </a>
                     </div>
@@ -194,7 +190,7 @@
                     
                     <div class="mb-6">
                         <a href="https://instagram.com/semaft_usby" target="_blank" class="group flex items-center bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] p-[1px] rounded-xl transition-transform hover:-translate-y-1 block shadow-md">
-                            <div class="flex items-center gap-3 bg-[#1e1160] px-4 py-3 rounded-xl w-full h-full group-hover:bg-transparent transition-colors duration-300">
+                            <div class="flex items-center gap-3 bg-semaft-navy px-4 py-3 rounded-xl w-full h-full group-hover:bg-transparent transition-colors duration-300">
                                 <i class="fa-brands fa-instagram text-xl text-white shrink-0"></i>
                                 <span class="font-bold text-sm text-white truncate">@semaft_usby</span>
                             </div>
@@ -204,13 +200,13 @@
                     <div>
                         <p class="text-xs text-gray-400 mb-3 font-semibold tracking-wider uppercase">Bagikan Portal Ini</p>
                         <div class="flex gap-3">
-                            <button onclick="copyToClipboard()" class="w-11 h-11 shrink-0 rounded-full bg-white/10 border border-white/20 hover:bg-semaft-gold hover:text-[#1e1160] hover:border-semaft-gold transition-all duration-300 flex items-center justify-center shadow-sm transform hover:-translate-y-1" title="Salin Link Website">
+                            <button onclick="copyToClipboard()" class="w-11 h-11 shrink-0 rounded-full bg-white/10 border border-white/10 hover:bg-semaft-gold hover:text-semaft-navy hover:border-semaft-gold transition-all duration-300 flex items-center justify-center shadow-sm transform hover:-translate-y-1" title="Salin Link Website">
                                 <i class="fa-solid fa-link"></i>
                             </button>
-                            <a href="https://api.whatsapp.com/send?text=Halo!%20Kunjungi%20Portal%20Resmi%20SEMAFT%20USB%20YPKP%20di%20sini:%20{{ url('/') }}" target="_blank" class="w-11 h-11 shrink-0 rounded-full bg-white/10 border border-white/20 hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition-all duration-300 flex items-center justify-center shadow-sm transform hover:-translate-y-1" title="Bagikan ke WhatsApp">
+                            <a href="https://api.whatsapp.com/send?text=Halo!%20Kunjungi%20Portal%20Resmi%20SEMAFT%20USB%20YPKP%20di%20sini:%20{{ url('/') }}" target="_blank" class="w-11 h-11 shrink-0 rounded-full bg-white/10 border border-white/10 hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition-all duration-300 flex items-center justify-center shadow-sm transform hover:-translate-y-1" title="Bagikan ke WhatsApp">
                                 <i class="fa-brands fa-whatsapp text-lg"></i>
                             </a>
-                            <a href="https://twitter.com/intent/tweet?url={{ url('/') }}&text=Kunjungi%20Portal%20Senat%20Mahasiswa%20Fakultas%20Teknik!" target="_blank" class="w-11 h-11 shrink-0 rounded-full bg-white/10 border border-white/20 hover:bg-[#000000] hover:text-white border-gray-700 transition-all duration-300 flex items-center justify-center shadow-sm transform hover:-translate-y-1" title="Bagikan ke Twitter/X">
+                            <a href="https://twitter.com/intent/tweet?url={{ url('/') }}&text=Kunjungi%20Portal%20Senat%20Mahasiswa%20Fakultas%20Teknik!" target="_blank" class="w-11 h-11 shrink-0 rounded-full bg-white/10 border border-white/10 hover:bg-[#000000] hover:text-white border-gray-700 transition-all duration-300 flex items-center justify-center shadow-sm transform hover:-translate-y-1" title="Bagikan ke Twitter/X">
                                 <i class="fa-brands fa-x-twitter text-lg"></i>
                             </a>
                         </div>
