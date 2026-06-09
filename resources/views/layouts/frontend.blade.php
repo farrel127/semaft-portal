@@ -123,14 +123,7 @@
         @yield('content')
     </main>
 
-    <!-- Footer tetap sama (disingkat untuk kebersihan) -->
-    <!-- <footer class="bg-semaft-navy text-gray-300 py-12 border-t-4 border-semaft-gold mt-auto"> -->
-        <!-- ... (Footer kode Anda tetap sama) ... -->
-        <!-- <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> -->
-            <!-- Isi footer Anda di sini (sama seperti sebelumnya) -->
-            <!-- @include('partials.footer-content') Saran: pisahkan footer jika terlalu panjang -->
-        <!-- </div> -->
-    <!-- </footer> -->
+    
 
     <script>
         const hamburger = document.getElementById('hamburger');
