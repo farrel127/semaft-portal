@@ -147,7 +147,7 @@
                 </div>
 
                 <div>
-                    <h3 class="text-white font-bold text-lg mb-6 relative inline-block pt-3">
+                    <h3 class="text-white font-bold text-lg mb-6 relative inline-block pt-5">
                         <span class="absolute top-0 left-0 w-12 h-1 bg-semaft-gold rounded-full"></span>
                         Terkoneksi
                     </h3>
