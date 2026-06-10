@@ -97,9 +97,9 @@
                 </div>
 
                 <div>
-                    <h3 class="text-white font-bold text-lg mb-6 relative inline-block">
+                    <h3 class="text-white font-bold text-lg mb-6 relative inline-block pt-3">
+                        <span class="absolute top-0 left-0 w-12 h-1 bg-semaft-gold rounded-full"></span>
                         Tautan Eksplorasi
-                        <span class="absolute -bottom-2 left-0 w-12 h-1 bg-semaft-gold rounded-full"></span>
                     </h3>
                     
                     <div class="flex flex-col space-y-3">
@@ -131,9 +131,9 @@
                 </div>
 
                 <div>
-                    <h3 class="text-white font-bold text-lg mb-6 relative inline-block">
+                    <h3 class="text-white font-bold text-lg mb-6 relative inline-block pt-3">
+                        <span class="absolute top-0 left-0 w-12 h-1 bg-semaft-gold rounded-full"></span>
                         Layanan Humas
-                        <span class="absolute -bottom-2 left-0 w-12 h-1 bg-semaft-gold rounded-full"></span>
                     </h3>
                     <div class="space-y-4">
                         <a href="https://wa.me/6281234567890" target="_blank" class="flex items-center gap-4 bg-green-500/10 border border-green-500/30 text-green-400 hover:bg-green-500 hover:text-white px-4 py-3.5 rounded-xl transition-all font-bold text-sm shadow-sm">
@@ -147,9 +147,9 @@
                 </div>
 
                 <div>
-                    <h3 class="text-white font-bold text-lg mb-6 relative inline-block">
+                    <h3 class="text-white font-bold text-lg mb-6 relative inline-block pt-3">
+                        <span class="absolute top-0 left-0 w-12 h-1 bg-semaft-gold rounded-full"></span>
                         Terkoneksi
-                        <span class="absolute -bottom-2 left-0 w-12 h-1 bg-semaft-gold rounded-full"></span>
                     </h3>
                     <div class="mb-8">
                         <a href="https://instagram.com/semaft_usby" target="_blank" class="flex items-center gap-3 bg-semaft-navy border border-pink-500 px-5 py-3 rounded-xl hover:bg-pink-600 transition-colors">
