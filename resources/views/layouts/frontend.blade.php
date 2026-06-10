@@ -73,12 +73,14 @@
         </div>
     </header>
 
-    <main class="flex-grow bg-white">
-        @yield('content')
+    <main class="flex-grow pt-28 md:pt-36 pb-24">
+    @yield('content')
     </main>
 
-    <footer class="bg-semaft-navy text-gray-300 pt-16 pb-8 border-t-[6px] border-semaft-gold mt-auto relative overflow-hidden">
+    <footer class="bg-semaft-navy text-gray-300 pt-24 sm:pt-28 pb-10 border-t-[6px] border-semaft-gold mt-auto relative overflow-hidden">
         
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-semaft-gold rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 mb-12 items-start">
                 
