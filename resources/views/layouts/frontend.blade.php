@@ -176,9 +176,9 @@
 
             </div>
             
-            <div class="border-t border-white/10 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400 font-medium">
+            <div class="border-t border-white/10 pt-4 mt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400 font-medium">
                 <p>&copy; {{ date('Y') }} Senat Mahasiswa Fakultas Teknik USB YPKP.</p>
-                <p>Designed with <i class="fa-solid fa-heart text-red-500 mx-1"></i> by vicnitnizzmt</p>
+                <p>Designed with by vicnitnizzmt</p>
             </div>
         </div>
     </footer>
