@@ -4,36 +4,46 @@
 
 @section('content')
    <section class="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden pt-32 pb-20" style="background-color: #1e1160;">
-    
-    <div style="position: absolute; top: -10%; left: -10%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(244,195,50,0.15) 0%, rgba(30,17,96,0) 70%); filter: blur(60px); pointer-events: none;"></div>
-    <div style="position: absolute; bottom: -10%; right: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, rgba(30,17,96,0) 70%); filter: blur(60px); pointer-events: none;"></div>
-    
-    <div class="absolute inset-0 opacity-40 pointer-events-none" style="background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px); background-size: 24px 24px;"></div>
 
-    <div class="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto flex flex-col items-center mt-10 md:mt-0">
-        
-        <div class="inline-flex items-center gap-3 px-6 py-2.5 rounded-full border border-white/20 backdrop-blur-md shadow-lg mb-8 md:mb-10 transform hover:-translate-y-1 transition-all duration-300" style="background-color: rgba(255,255,255,0.05);">
+    <div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+    <div class="absolute top-1/4 -left-20 w-[500px] h-[500px] rounded-full mix-blend-screen animate-pulse pointer-events-none" style="background: radial-gradient(circle, rgba(244,195,50,0.12) 0%, rgba(30,17,96,0) 70%); filter: blur(80px);"></div>
+    <div class="absolute bottom-1/4 -right-20 w-[500px] h-[500px] rounded-full mix-blend-screen animate-pulse pointer-events-none" style="background: radial-gradient(circle, rgba(139,92,246,0.12) 0%, rgba(30,17,96,0) 70%); filter: blur(80px);"></div>
+
+    <div class="hidden lg:block absolute top-1/3 left-12 w-48 h-48 rounded-3xl border border-white/10 transform -rotate-12 opacity-60 pointer-events-none" style="background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.001)); backdrop-filter: blur(8px); box-shadow: 0 10px 40px rgba(0,0,0,0.3);"></div>
+    <div class="hidden lg:block absolute bottom-1/4 right-16 w-64 h-64 rounded-full border border-white/10 transform rotate-45 opacity-50 pointer-events-none" style="background: linear-gradient(135deg, rgba(244,195,50,0.03), rgba(255,255,255,0.001)); backdrop-filter: blur(8px);"></div>
+
+    <div class="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto flex flex-col items-center">
+
+        <div class="inline-flex items-center gap-3 px-6 py-2.5 rounded-full border border-white/20 mb-8 md:mb-10 transform hover:scale-105 transition-all duration-300" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(12px); box-shadow: 0 0 20px rgba(244,195,50,0.15);">
             <span class="relative flex h-2.5 w-2.5">
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background-color: #f4c332;"></span>
                 <span class="relative inline-flex rounded-full h-2.5 w-2.5" style="background-color: #f4c332;"></span>
             </span>
-            <span class="text-xs sm:text-sm md:text-base font-bold text-gray-200 tracking-wider uppercase">Senat Mahasiswa Fakultas Teknik USB YPKP</span>
+            <span class="text-xs sm:text-sm font-bold tracking-[0.15em] uppercase" style="color: #f8fafc;">Senat Mahasiswa Fakultas Teknik USB YPKP</span>
         </div>
 
-        <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold text-white tracking-tight leading-[1.1] mb-6 md:mb-8 drop-shadow-2xl">
+        <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight leading-[1.1] mb-6 drop-shadow-2xl">
             Sinergi Membangun <br class="hidden sm:block" />
-            <span style="background: linear-gradient(to right, #fde047, #facc15, #eab308); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            <span style="background: linear-gradient(to right, #fde047, #ffffff, #facc15); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0px 4px 15px rgba(244,195,50,0.4));">
                 Fakultas Teknik yang Solid
             </span>
         </h1>
 
-        <p class="text-base sm:text-lg md:text-xl lg:text-2xl font-medium max-w-3xl mx-auto leading-relaxed drop-shadow-md" style="color: #cbd5e1;">
+        <p class="text-lg md:text-xl lg:text-2xl font-medium max-w-3xl mx-auto leading-relaxed drop-shadow-md mb-16" style="color: #94a3b8;">
             Rumah aspirasi dan kolaborasi bagi seluruh elemen mahasiswa teknik untuk berkarya, berinovasi, dan bergerak bersama.
         </p>
-        
+
+        <div class="flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity duration-300 animate-bounce cursor-default">
+            <span class="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style="color: #94a3b8;">Eksplorasi</span>
+            <div class="w-6 h-10 rounded-full border-2 flex justify-center pt-2" style="border-color: rgba(255,255,255,0.2);">
+                <div class="w-1.5 h-2.5 rounded-full" style="background-color: #f4c332;"></div>
+            </div>
+        </div>
+
     </div>
 
-    <div class="absolute bottom-0 inset-x-0 h-32 pointer-events-none" style="background: linear-gradient(to top, #f9fafb, transparent);"></div>
+    <div class="absolute bottom-0 inset-x-0 h-40 pointer-events-none" style="background: linear-gradient(to top, #f9fafb, transparent);"></div>
 </section>
 
     <section class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative bg-slate-50/50">
