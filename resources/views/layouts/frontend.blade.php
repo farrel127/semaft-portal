@@ -27,14 +27,14 @@
     <header class="fixed top-4 md:top-6 inset-x-0 z-[900] flex flex-col items-center justify-center w-full pointer-events-none">
         <div class="relative w-full max-w-5xl px-4 sm:px-6">
             
-            <nav class="pointer-events-auto w-full bg-semaft-navy/95 backdrop-blur-lg border border-white/20 rounded-full p-2.5 pl-4 pr-3 flex items-center justify-between shadow-2xl">
+            <nav class="pointer-events-auto w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-full p-2.5 pl-5 pr-3 flex items-center justify-between shadow-[0_8px_30px_rgba(0,0,0,0.3)]">
                 
                 <a href="{{ url('/') }}" class="flex items-center gap-3 group shrink-0">
-                    <img src="{{ asset('images/sema.png') }}" alt="Logo SEMAFT" class="h-9 md:h-10 w-auto object-contain">
-                    <span class="font-extrabold text-xl tracking-widest text-white">SEMA<span class="text-semaft-gold">FT</span></span>
+                    <img src="{{ asset('images/sema.png') }}" alt="Logo SEMAFT" class="h-9 md:h-10 w-auto object-contain drop-shadow-md hover:scale-105 transition-transform duration-300">
+                    <span class="font-extrabold text-xl tracking-widest text-white drop-shadow-md">SEMA<span class="text-[#f4c332]">FT</span></span>
                 </a>
                 
-                <button @click="openSidebar = true" class="flex items-center gap-2.5 bg-white/10 hover:bg-semaft-gold text-white hover:text-semaft-navy px-5 py-2.5 rounded-full transition-all duration-300 font-bold shadow-inner">
+                <button @click="openSidebar = true" class="flex items-center gap-2.5 bg-[#f4c332] text-[#1e1160] hover:bg-yellow-400 px-5 py-2.5 rounded-full transition-all duration-300 font-extrabold shadow-md transform hover:scale-105">
                     <span class="hidden sm:block text-sm">Menu</span>
                     <i class="fa-solid fa-bars text-lg"></i>
                 </button>
