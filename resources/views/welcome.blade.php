@@ -3,38 +3,37 @@
 @section('title', 'Beranda Utama')
 
 @section('content')
-    <section class="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden bg-semaft-navy pt-20">
+   <section class="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#1e1160] pt-32 pb-20">
     
-    <div class="absolute top-1/4 -left-10 w-72 md:w-96 h-72 md:h-96 bg-semaft-gold/30 rounded-full mix-blend-screen filter blur-[100px] animate-pulse pointer-events-none"></div>
+    <div style="position: absolute; top: -10%; left: -10%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(244,195,50,0.15) 0%, rgba(30,17,96,0) 70%); filter: blur(60px); pointer-events: none;"></div>
+    <div style="position: absolute; bottom: -10%; right: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, rgba(30,17,96,0) 70%); filter: blur(60px); pointer-events: none;"></div>
     
-    <div class="absolute bottom-1/4 -right-10 w-72 md:w-96 h-72 md:h-96 bg-[#8b5cf6]/20 rounded-full mix-blend-screen filter blur-[100px] pointer-events-none"></div>
-    
-    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-60 pointer-events-none"></div>
+    <div class="absolute inset-0 opacity-40 pointer-events-none" style="background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px); background-size: 24px 24px;"></div>
 
-    <div class="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto">
+    <div class="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto flex flex-col items-center mt-10 md:mt-0">
         
-        <div class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-2xl mb-8 transform hover:-translate-y-1 transition-all duration-300">
-            <span class="relative flex h-3 w-3">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-semaft-gold opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-3 w-3 bg-semaft-gold"></span>
+        <div class="inline-flex items-center gap-3 px-6 py-2.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md shadow-lg mb-8 md:mb-10 transform hover:-translate-y-1 transition-all duration-300">
+            <span class="relative flex h-2.5 w-2.5">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-yellow-400"></span>
             </span>
-            <span class="text-sm md:text-base font-semibold text-gray-200 tracking-wide">Senat Mahasiswa Fakultas Teknik USB YPKP Bandung</span>
+            <span class="text-xs sm:text-sm md:text-base font-bold text-gray-200 tracking-wider uppercase">Senat Mahasiswa Fakultas Teknik USB YPKP</span>
         </div>
 
-        <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight leading-[1.1] mb-8 drop-shadow-2xl">
+        <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold text-white tracking-tight leading-[1.1] mb-6 md:mb-8 drop-shadow-2xl">
             Sinergi Membangun <br class="hidden sm:block" />
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-semaft-gold via-yellow-200 to-semaft-gold">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600">
                 Fakultas Teknik yang Solid
             </span>
         </h1>
 
-        <p class="text-lg md:text-xl lg:text-2xl text-gray-300 font-medium max-w-3xl mx-auto leading-relaxed drop-shadow-md">
+        <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 font-medium max-w-3xl mx-auto leading-relaxed drop-shadow-md">
             Rumah aspirasi dan kolaborasi bagi seluruh elemen mahasiswa teknik untuk berkarya, berinovasi, dan bergerak bersama.
         </p>
         
     </div>
 
-    <div class="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-gray-50 to-transparent pointer-events-none"></div>
+    <div class="absolute bottom-0 inset-x-0 h-32 pointer-events-none" style="background: linear-gradient(to top, #f9fafb, transparent);"></div>
 </section>
 
     <section class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative bg-slate-50/50">
