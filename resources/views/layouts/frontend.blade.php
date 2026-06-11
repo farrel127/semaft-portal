@@ -182,7 +182,7 @@
         </a>
     </div>
 
-    <div class="mt-12">
+    <div class="mt-11">
         <h4 class="text-xs font-bold text-gray-400 tracking-[0.15em] uppercase mb-4 flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
             Live Traffic
@@ -210,7 +210,7 @@
                 <span class="text-white font-black font-mono tracking-wider">3,405</span>
             </div>
 
-            <div class="flex items-center justify-between group pt-3 mt-1 border-t border-white/10 cursor-default">
+            <div class="flex items-center justify-between group pt-4 border-t border-white/10 cursor-default">
                 <div class="flex items-center gap-3 text-gray-400 group-hover:text-semaft-gold transition-colors">
                     <div class="w-8 h-8 rounded-xl bg-semaft-gold/10 border border-semaft-gold/20 text-semaft-gold flex items-center justify-center shadow-sm">
                         <i class="fa-solid fa-chart-line text-xs"></i>
