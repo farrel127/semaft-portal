@@ -7,16 +7,79 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     {!! NoCaptcha::renderJs() !!}
 
     <style>
+
+        html{
+            scroll-behavior:smooth;
+        }
+
+        body{
+            overflow-x:hidden;
+        }
+
         input:-webkit-autofill,
         input:-webkit-autofill:hover,
-        input:-webkit-autofill:focus,
-        input:-webkit-autofill:active{
-            -webkit-box-shadow: 0 0 0 30px white inset !important;
+        input:-webkit-autofill:focus{
+            -webkit-box-shadow:0 0 0 1000px white inset !important;
+        }
+
+        /* Floating Logo */
+        @keyframes floating{
+            0%,100%{
+                transform:translateY(0);
+            }
+            50%{
+                transform:translateY(-10px);
+            }
+        }
+
+        .floating-logo{
+            animation:floating 4s ease-in-out infinite;
+        }
+
+        /* Fade Card */
+        @keyframes fadeUp{
+            from{
+                opacity:0;
+                transform:translateY(30px);
+            }
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+        .animate-card{
+            animation:fadeUp .7s ease;
+        }
+
+        /* Background Blob */
+        @keyframes blob{
+            0%{
+                transform:translate(0px,0px) scale(1);
+            }
+            33%{
+                transform:translate(30px,-50px) scale(1.1);
+            }
+            66%{
+                transform:translate(-20px,20px) scale(.95);
+            }
+            100%{
+                transform:translate(0px,0px) scale(1);
+            }
+        }
+
+        .blob{
+            animation:blob 15s infinite ease-in-out;
+        }
+
+        .blob2{
+            animation:blob 20s infinite ease-in-out;
         }
 
         .recaptcha-wrapper{
@@ -25,276 +88,269 @@
 
         @media(max-width:400px){
             .g-recaptcha{
-                transform:scale(.85);
+                transform:scale(.82);
                 transform-origin:left top;
             }
         }
+
     </style>
 </head>
 
-<body class="min-h-screen bg-gradient-to-br from-slate-100 via-gray-100 to-slate-200 font-sans antialiased">
+<body class="bg-slate-100 min-h-screen relative">
 
-<div class="min-h-screen flex items-center justify-center p-4 lg:p-8">
+    <!-- Background Decoration -->
 
-    <div class="w-full max-w-6xl bg-white rounded-[32px] overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.15)]">
+    <div class="fixed inset-0 overflow-hidden -z-10">
 
-        <div class="grid lg:grid-cols-2">
+        <div class="blob absolute top-0 left-0 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl"></div>
 
-            <!-- LEFT SIDE -->
-            <div class="hidden lg:flex relative overflow-hidden bg-gradient-to-br from-semaft-navy via-indigo-900 to-purple-900">
+        <div class="blob2 absolute bottom-0 right-0 w-[500px] h-[500px] bg-indigo-300/20 rounded-full blur-3xl"></div>
 
-                <!-- Decorative -->
-                <div class="absolute inset-0">
+    </div>
 
-                    <div class="absolute -top-20 -left-20 w-72 h-72 rounded-full border border-white/10"></div>
+    <div class="min-h-screen flex items-center justify-center px-4 py-10">
 
-                    <div class="absolute bottom-10 right-10 w-96 h-96 rounded-full border border-white/10"></div>
+        <div class="w-full max-w-lg animate-card">
 
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-white/5"></div>
+            <!-- Logo -->
+
+            <div class="text-center mb-6">
+
+                <div
+                    class="floating-logo inline-flex items-center justify-center bg-white p-5 rounded-full shadow-xl">
+
+                    <img
+                        src="{{ asset('images/sema.png') }}"
+                        alt="Logo SEMA FT"
+                        class="w-20 h-20 object-contain">
 
                 </div>
 
-                <div class="relative z-10 flex flex-col justify-center items-center text-center p-12 text-white">
+                <h1 class="mt-5 text-4xl font-black text-semaft-navy">
+                    SEMA FT
+                </h1>
 
-                    <div class="bg-white p-5 rounded-full shadow-2xl mb-8">
-                        <img
-                            src="{{ asset('images/sema.png') }}"
-                            alt="Logo SEMA FT"
-                            class="w-24 h-24 object-contain">
-                    </div>
+                <p class="text-gray-500 mt-2">
+                    Portal Administrasi Fakultas Teknik
+                </p>
 
-                    <h1 class="text-5xl font-extrabold tracking-wide mb-4">
-                        SEMA FT
-                    </h1>
+            </div>
 
-                    <div class="w-20 h-1 bg-yellow-400 rounded-full mb-6"></div>
+            <!-- Card -->
 
-                    <p class="max-w-md text-gray-200 text-lg leading-relaxed">
-                        Portal Administrasi Senat Mahasiswa Fakultas Teknik.
-                        Kelola berita, agenda kegiatan, informasi organisasi,
-                        dan seluruh kebutuhan administrasi dalam satu tempat.
+            <div
+                class="bg-white/90 backdrop-blur-xl border border-white rounded-3xl shadow-2xl p-8 md:p-10">
+
+                <div class="mb-8 text-center">
+
+                    <h2 class="text-3xl font-bold text-gray-900">
+                        Masuk ke Akun
+                    </h2>
+
+                    <p class="text-gray-500 mt-2">
+                        Silakan masukkan kredensial administrator
                     </p>
 
                 </div>
-            </div>
 
-            <!-- RIGHT SIDE -->
-            <div class="flex items-center justify-center p-6 md:p-10 lg:p-14 bg-white">
+                <x-auth-session-status
+                    class="mb-4"
+                    :status="session('status')" />
 
-                <div class="w-full max-w-md">
+                <form
+                    method="POST"
+                    action="{{ route('login') }}"
+                    class="space-y-6">
 
-                    <!-- Mobile Header -->
-                    <div class="lg:hidden text-center mb-8">
+                    @csrf
 
-                        <div class="inline-flex bg-white shadow-lg p-4 rounded-full mb-4">
-                            <img
-                                src="{{ asset('images/sema.png') }}"
-                                alt="Logo"
-                                class="w-16 h-16 object-contain">
+                    <!-- Email -->
+
+                    <div>
+
+                        <label
+                            class="text-sm font-semibold text-gray-700 mb-2 block">
+
+                            Email Administrator
+
+                        </label>
+
+                        <div class="relative">
+
+                            <i class="fa-regular fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+
+                            <input
+                                id="email"
+                                type="email"
+                                name="email"
+                                value="{{ old('email') }}"
+                                required
+                                autofocus
+
+                                class="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-300 focus:border-semaft-navy focus:ring-4 focus:ring-blue-100 transition-all duration-300"
+
+                                placeholder="Masukkan email administrator">
+
                         </div>
 
-                        <h2 class="text-3xl font-extrabold text-semaft-navy">
-                            SEMA FT
-                        </h2>
+                        <x-input-error
+                            :messages="$errors->get('email')"
+                            class="mt-2" />
 
                     </div>
 
-                    <!-- Heading -->
-                    <div class="mb-8">
+                    <!-- Password -->
 
-                        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">
-                            Masuk ke Akun
-                        </h2>
+                    <div>
 
-                        <p class="mt-2 text-gray-500">
-                            Silakan masukkan kredensial administrator
-                        </p>
+                        <label
+                            class="text-sm font-semibold text-gray-700 mb-2 block">
 
-                    </div>
+                            Kata Sandi
 
-                    <x-auth-session-status
-                        class="mb-4"
-                        :status="session('status')"
-                    />
+                        </label>
 
-                    <form
-                        method="POST"
-                        action="{{ route('login') }}"
-                        class="space-y-6">
+                        <div class="relative">
 
-                        @csrf
+                            <i class="fa-solid fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
 
-                        <!-- EMAIL -->
-                        <div>
+                            <input
+                                id="password"
+                                type="password"
+                                name="password"
+                                required
 
-                            <label
-                                for="email"
-                                class="block mb-2 text-sm font-semibold text-gray-700">
-                                Email Administrator
-                            </label>
+                                class="w-full pl-12 pr-12 py-4 rounded-xl border border-gray-300 focus:border-semaft-navy focus:ring-4 focus:ring-blue-100 transition-all duration-300"
 
-                            <div class="relative">
-
-                                <i class="fa-regular fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-
-                                <input
-                                    id="email"
-                                    type="email"
-                                    name="email"
-                                    value="{{ old('email') }}"
-                                    required
-                                    autofocus
-                                    autocomplete="username"
-                                    placeholder="Masukkan email administrator"
-                                    class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-gray-300 focus:border-semaft-navy focus:ring-4 focus:ring-blue-100 transition duration-300">
-
-                            </div>
-
-                            <x-input-error
-                                :messages="$errors->get('email')"
-                                class="mt-2" />
-
-                        </div>
-
-                        <!-- PASSWORD -->
-                        <div>
-
-                            <label
-                                for="password"
-                                class="block mb-2 text-sm font-semibold text-gray-700">
-                                Kata Sandi
-                            </label>
-
-                            <div class="relative">
-
-                                <i class="fa-solid fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-
-                                <input
-                                    id="password"
-                                    type="password"
-                                    name="password"
-                                    required
-                                    autocomplete="current-password"
-                                    placeholder="Masukkan kata sandi"
-                                    class="w-full pl-12 pr-12 py-3.5 rounded-xl border border-gray-300 focus:border-semaft-navy focus:ring-4 focus:ring-blue-100 transition duration-300">
-
-                                <button
-                                    type="button"
-                                    onclick="togglePassword()"
-                                    class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-semaft-navy">
-
-                                    <i id="eye-icon" class="fa-regular fa-eye"></i>
-
-                                </button>
-
-                            </div>
-
-                            <x-input-error
-                                :messages="$errors->get('password')"
-                                class="mt-2" />
-
-                        </div>
-
-                        <!-- Remember -->
-                        <div class="flex items-center justify-between">
-
-                            <label class="flex items-center gap-2 cursor-pointer">
-
-                                <input
-                                    id="remember_me"
-                                    type="checkbox"
-                                    name="remember"
-                                    class="rounded border-gray-300 text-semaft-navy focus:ring-semaft-navy">
-
-                                <span class="text-sm text-gray-600">
-                                    Ingat saya
-                                </span>
-
-                            </label>
-
-                            @if (Route::has('password.request'))
-                                <a
-                                    href="{{ route('password.request') }}"
-                                    class="text-sm font-semibold text-yellow-600 hover:text-yellow-700">
-                                    Lupa sandi?
-                                </a>
-                            @endif
-
-                        </div>
-
-                        <!-- CAPTCHA -->
-                        <div class="recaptcha-wrapper">
-
-                            {!! NoCaptcha::display() !!}
-
-                            @if ($errors->has('g-recaptcha-response'))
-                                <p class="text-red-500 text-sm mt-2">
-                                    {{ $errors->first('g-recaptcha-response') }}
-                                </p>
-                            @endif
-
-                        </div>
-
-                        <!-- BUTTONS -->
-                        <div class="space-y-3 pt-2">
+                                placeholder="Masukkan kata sandi">
 
                             <button
-                                type="submit"
-                                class="w-full py-3.5 rounded-xl bg-gradient-to-r from-semaft-navy to-indigo-800 text-white font-bold shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300">
+                                type="button"
+                                onclick="togglePassword()"
+                                class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-semaft-navy transition">
 
-                                <i class="fa-solid fa-right-to-bracket mr-2"></i>
-                                Masuk
+                                <i id="eye-icon"
+                                   class="fa-regular fa-eye"></i>
 
                             </button>
 
-                            <a
-                                href="{{ url('/') }}"
-                                class="w-full flex justify-center items-center py-3.5 rounded-xl border border-gray-300 text-gray-700 font-semibold hover:bg-gray-50 transition">
+                        </div>
 
-                                <i class="fa-solid fa-house mr-2"></i>
-                                Ke Beranda
+                        <x-input-error
+                            :messages="$errors->get('password')"
+                            class="mt-2" />
+
+                    </div>
+
+                    <!-- Remember -->
+
+                    <div class="flex justify-between items-center">
+
+                        <label
+                            class="flex items-center gap-2 cursor-pointer">
+
+                            <input
+                                type="checkbox"
+                                name="remember"
+                                class="rounded border-gray-300 text-semaft-navy focus:ring-semaft-navy">
+
+                            <span class="text-sm text-gray-600">
+                                Ingat saya
+                            </span>
+
+                        </label>
+
+                        @if(Route::has('password.request'))
+
+                            <a
+                                href="{{ route('password.request') }}"
+                                class="text-sm font-semibold text-yellow-600 hover:text-yellow-700">
+
+                                Lupa sandi?
 
                             </a>
 
-                        </div>
+                        @endif
 
-                    </form>
+                    </div>
 
-                </div>
+                    <!-- Captcha -->
+
+                    <div class="recaptcha-wrapper flex justify-center">
+
+                        {!! NoCaptcha::display() !!}
+
+                    </div>
+
+                    @if ($errors->has('g-recaptcha-response'))
+                        <p class="text-red-500 text-sm">
+                            {{ $errors->first('g-recaptcha-response') }}
+                        </p>
+                    @endif
+
+                    <!-- Submit -->
+
+                    <button
+                        type="submit"
+
+                        class="w-full py-4 rounded-xl bg-gradient-to-r from-semaft-navy to-indigo-700 text-white font-bold shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+
+                        <i class="fa-solid fa-right-to-bracket mr-2"></i>
+                        Masuk
+
+                    </button>
+
+                    <!-- Home -->
+
+                    <a
+                        href="{{ url('/') }}"
+
+                        class="w-full flex items-center justify-center py-4 rounded-xl border border-gray-300 text-gray-700 font-semibold hover:bg-gray-50 transition">
+
+                        <i class="fa-solid fa-house mr-2"></i>
+                        Ke Beranda
+
+                    </a>
+
+                </form>
 
             </div>
+
+            <p class="text-center text-gray-400 text-sm mt-6">
+                © {{ date('Y') }} SEMA FT
+            </p>
 
         </div>
 
     </div>
 
-</div>
-
 <script>
-    function togglePassword() {
 
-        const passwordInput =
-            document.getElementById('password');
+function togglePassword(){
 
-        const eyeIcon =
-            document.getElementById('eye-icon');
+    const password =
+        document.getElementById('password');
 
-        if (passwordInput.type === 'password') {
+    const icon =
+        document.getElementById('eye-icon');
 
-            passwordInput.type = 'text';
+    if(password.type === 'password'){
 
-            eyeIcon.classList.remove('fa-eye');
-            eyeIcon.classList.add('fa-eye-slash');
+        password.type = 'text';
 
-        } else {
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
 
-            passwordInput.type = 'password';
+    }else{
 
-            eyeIcon.classList.remove('fa-eye-slash');
-            eyeIcon.classList.add('fa-eye');
+        password.type = 'password';
 
-        }
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+
     }
+}
+
 </script>
 
 </body>
