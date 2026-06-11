@@ -99,6 +99,8 @@
         </div>
     </header>
 
+    <main class="flex-grow pt-28 md:pt-36 pb-20">
+
     <div x-show="openSidebar" x-cloak class="fixed inset-0 flex justify-end pointer-events-none" style="z-index: 9999;">
         
         <div x-show="openSidebar" 
