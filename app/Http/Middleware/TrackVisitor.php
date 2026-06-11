@@ -4,17 +4,28 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Response; // <-- Ini baris kunci yang sebelumnya hilang
+use App\Models\Visitor;
+use Carbon\Carbon;
 
 class TrackVisitor
 {
     /**
      * Handle an incoming request.
      *
-     * @param  Closure(Request): (Response)  $next
+    //  * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
     {
+        $ip = $request->ip();
+        $date = Carbon::today()->toDateString();
+
+        // Menyimpan data pengunjung
+        Visitor::firstOrCreate([
+            'ip_address' => $ip,
+            'visit_date' => $date
+        ]);
+
         return $next($request);
     }
 }

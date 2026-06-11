@@ -9,5 +9,6 @@ class Visitor extends Model
 {
     use HasFactory;
 
+    // Mengizinkan Laravel untuk mengisi kolom ini
     protected $fillable = ['ip_address', 'visit_date'];
 }
