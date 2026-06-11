@@ -197,7 +197,9 @@
                     </div>
                     <span class="text-sm font-medium">Hari ini</span>
                 </div>
-                <span class="text-white font-black font-mono tracking-wider">128</span>
+                <span class="text-white font-black font-mono tracking-wider">
+                    {{ number_format($todayVisitors, 0, ',', '.') }}
+                </span>
             </div>
 
             <div class="flex items-center justify-between group cursor-default">
@@ -207,7 +209,9 @@
                     </div>
                     <span class="text-sm font-medium">Bulan ini</span>
                 </div>
-                <span class="text-white font-black font-mono tracking-wider">3,405</span>
+                <span class="text-white font-black font-mono tracking-wider">
+                    {{ number_format($monthVisitors, 0, ',', '.') }}
+                </span>
             </div>
 
             <div class="flex items-center justify-between group pt-4 border-t border-white/10 cursor-default">
@@ -217,7 +221,9 @@
                     </div>
                     <span class="text-sm font-bold">Total Kunjungan</span>
                 </div>
-                <span class="text-semaft-gold font-black font-mono tracking-wider text-lg drop-shadow-[0_0_8px_rgba(244,195,50,0.5)]">45,912</span>
+                <span class="text-semaft-gold font-black font-mono tracking-wider text-lg drop-shadow-[0_0_8px_rgba(244,195,50,0.5)]">
+                    {{ number_format($totalVisitors, 0, ',', '.') }}
+                </span>
             </div>
 
         </div>

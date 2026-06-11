@@ -6,21 +6,26 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\AspirasiController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\HimpunanController;
+// TAMBAHAN: Panggil Middleware TrackVisitor yang akan kita buat
+use App\Http\Middleware\TrackVisitor; 
 use Illuminate\Support\Facades\Route;
 
 // ==========================================
 // RUTE FRONTEND (HALAMAN PUBLIK)
 // ==========================================
-Route::get('/', [FrontendController::class, 'index'])->name('beranda');
+// Membungkus semua rute publik dengan middleware pencatat pengunjung
+Route::middleware([TrackVisitor::class])->group(function () {
+    Route::get('/', [FrontendController::class, 'index'])->name('beranda');
 
-Route::get('/portal-berita', [FrontendController::class, 'berita'])->name('frontend.berita');
-Route::get('/portal-berita/{slug}', [FrontendController::class, 'bacaBerita'])->name('frontend.baca');
+    Route::get('/portal-berita', [FrontendController::class, 'berita'])->name('frontend.berita');
+    Route::get('/portal-berita/{slug}', [FrontendController::class, 'bacaBerita'])->name('frontend.baca');
 
-Route::get('/aspirasi', [FrontendController::class, 'aspirasi'])->name('frontend.aspirasi');
-Route::post('/aspirasi', [FrontendController::class, 'storeAspirasi'])->name('frontend.aspirasi.store');
+    Route::get('/aspirasi', [FrontendController::class, 'aspirasi'])->name('frontend.aspirasi');
+    Route::post('/aspirasi', [FrontendController::class, 'storeAspirasi'])->name('frontend.aspirasi.store');
 
-Route::get('/kegiatan', [FrontendController::class, 'kegiatan'])->name('frontend.kegiatan');
-Route::get('/tentang', [FrontendController::class, 'tentang'])->name('frontend.tentang');
+    Route::get('/kegiatan', [FrontendController::class, 'kegiatan'])->name('frontend.kegiatan');
+    Route::get('/tentang', [FrontendController::class, 'tentang'])->name('frontend.tentang');
+});
 
 
 // ==========================================
@@ -90,13 +95,14 @@ Route::get('/dashboard', function () {
     ));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
 Route::middleware('auth')->group(function () {
     // Rute Profile Akun
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
-    // Rute untuk update checklist widget (Cukup 1 baris ini saja tambahannya)
+    // Rute untuk update checklist widget
     Route::post('/profile/widget', [ProfileController::class, 'updateWidget'])->name('profile.widget');
     
     // Rute Manajemen Pengguna
@@ -109,6 +115,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('admin/himpunan', HimpunanController::class)->names('himpunan')->only(['index', 'edit', 'update']);
     
 });
+
 Route::get('/buat-jembatan', function () {
     \Illuminate\Support\Facades\Artisan::call('storage:link');
     return 'Jembatan storage berhasil dibuat!';
