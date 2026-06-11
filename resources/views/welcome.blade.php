@@ -3,35 +3,39 @@
 @section('title', 'Beranda Utama')
 
 @section('content')
-    <section class="bg-semaft-navy relative overflow-hidden flex flex-col justify-center min-h-screen pt-40 pb-20">
+    <section class="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden bg-semaft-navy pt-20">
+    
+    <div class="absolute top-1/4 -left-10 w-72 md:w-96 h-72 md:h-96 bg-semaft-gold/30 rounded-full mix-blend-screen filter blur-[100px] animate-pulse pointer-events-none"></div>
+    
+    <div class="absolute bottom-1/4 -right-10 w-72 md:w-96 h-72 md:h-96 bg-[#8b5cf6]/20 rounded-full mix-blend-screen filter blur-[100px] pointer-events-none"></div>
+    
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-60 pointer-events-none"></div>
+
+    <div class="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto">
         
-        <div class="absolute top-0 right-0 w-80 h-80 bg-semaft-gold opacity-10 rounded-full blur-[100px] pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-600 opacity-20 rounded-full blur-[100px] pointer-events-none"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full text-center">
-            
-            <div class="inline-flex items-center justify-center gap-2 px-5 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm mb-10 text-xs sm:text-sm font-semibold text-gray-200 tracking-wide shadow-lg mx-auto">
-                <span class="w-2 h-2 rounded-full bg-semaft-gold animate-ping"></span>
-                Senat Mahasiswa Fakultas Teknik USB YPKP Bandung.
-            </div>
-
-            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6 tracking-tight drop-shadow-md">
-                Sinergi Membangun <br class="hidden sm:block"/> 
-                Fakultas Teknik yang Solid
-            </h1>
-            
-            <p class="mt-6 text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed font-medium">
-                Rumah aspirasi dan kolaborasi bagi seluruh elemen mahasiswa teknik untuk berkarya, berinovasi, dan bergerak bersama.
-            </p>
-            
-            <div class="flex justify-center items-center w-full">
-                <a href="{{ url('/aspirasi') }}" class="inline-flex items-center justify-center gap-3 bg-semaft-gold text-semaft-navy font-extrabold px-10 py-4 rounded-full hover:bg-yellow-400 hover:scale-105 transition-all duration-300 shadow-[0_10px_25px_rgba(244,195,50,0.3)] text-base sm:text-lg shrink-0">
-                    Sampaikan Aspirasi <i class="fa-solid fa-paper-plane text-sm"></i>
-                </a>
-            </div>
-
+        <div class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-2xl mb-8 transform hover:-translate-y-1 transition-all duration-300">
+            <span class="relative flex h-3 w-3">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-semaft-gold opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-semaft-gold"></span>
+            </span>
+            <span class="text-sm md:text-base font-semibold text-gray-200 tracking-wide">Senat Mahasiswa Fakultas Teknik USB YPKP Bandung</span>
         </div>
-    </section>
+
+        <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight leading-[1.1] mb-8 drop-shadow-2xl">
+            Sinergi Membangun <br class="hidden sm:block" />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-semaft-gold via-yellow-200 to-semaft-gold">
+                Fakultas Teknik yang Solid
+            </span>
+        </h1>
+
+        <p class="text-lg md:text-xl lg:text-2xl text-gray-300 font-medium max-w-3xl mx-auto leading-relaxed drop-shadow-md">
+            Rumah aspirasi dan kolaborasi bagi seluruh elemen mahasiswa teknik untuk berkarya, berinovasi, dan bergerak bersama.
+        </p>
+        
+    </div>
+
+    <div class="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-gray-50 to-transparent pointer-events-none"></div>
+</section>
 
     <section class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative bg-slate-50/50">
         <div class="text-center mb-12 sm:mb-16">
