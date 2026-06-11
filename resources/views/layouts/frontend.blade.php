@@ -77,7 +77,7 @@
     @yield('content')
     </main>
 
-    <footer class="bg-semaft-navy text-gray-300 pt-16 pb-8 md:pb-16 border-t-[6px] border-semaft-gold mt-auto relative overflow-hidden">
+    <footer class="bg-semaft-navy text-gray-300 pt-16 pb-10 md:pb-16 border-t-[6px] border-semaft-gold mt-auto relative overflow-hidden">
         
         <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-semaft-gold rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
 
