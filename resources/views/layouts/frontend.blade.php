@@ -161,13 +161,13 @@
                     <div>
                         <p class="text-xs text-gray-400 mb-4 font-semibold tracking-wider uppercase">Bagikan Portal Ini</p>
                         <div class="flex flex-wrap gap-3">
-                            <button class="w-11 h-11 shrink-0 rounded-full bg-white/10 border border-white/10 hover:bg-semaft-gold hover:text-semaft-navy transition-all flex items-center justify-center">
+                            <button class="w-14 h-14 shrink-0 rounded-full bg-white/10 border border-white/10 hover:bg-semaft-gold hover:text-semaft-navy transition-all flex items-center justify-center">
                                 <i class="fa-solid fa-link"></i>
                             </button>
-                            <a href="#" class="w-11 h-11 shrink-0 rounded-full bg-white/10 border border-white/10 hover:bg-[#25D366] hover:text-white transition-all flex items-center justify-center">
+                            <a href="#" class="w-14 h-14 shrink-0 rounded-full bg-white/10 border border-white/10 hover:bg-[#25D366] hover:text-white transition-all flex items-center justify-center">
                                 <i class="fa-brands fa-whatsapp text-lg"></i>
                             </a>
-                            <a href="#" class="w-11 h-11 shrink-0 rounded-full bg-white/10 border border-white/10 hover:bg-black hover:text-white transition-all flex items-center justify-center">
+                            <a href="#" class="w-14 h-14 shrink-0 rounded-full bg-white/10 border border-white/10 hover:bg-black hover:text-white transition-all flex items-center justify-center">
                                 <i class="fa-brands fa-x-twitter text-lg"></i>
                             </a>
                         </div>
