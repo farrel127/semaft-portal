@@ -21,24 +21,81 @@
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen" 
-      x-data="{ openSidebar: false }" 
-      :class="{'overflow-hidden': openSidebar}">
+      x-data="{ openSidebar: false }">
 
-    <header class="fixed top-4 md:top-6 inset-x-0 flex flex-col items-center justify-center w-full pointer-events-none" style="z-index: 9990;">
+    <header class="fixed top-4 md:top-6 inset-x-0 flex flex-col items-center justify-center w-full pointer-events-none" style="z-index: 9999;">
         <div class="relative w-full max-w-5xl px-4 sm:px-6">
             
-            <nav class="pointer-events-auto w-full bg-semaft-navy/95 backdrop-blur-xl border border-white/20 rounded-full p-2.5 pl-5 pr-3 flex items-center justify-between shadow-2xl">
+            <nav class="pointer-events-auto w-full bg-semaft-navy/95 backdrop-blur-xl border border-white/20 rounded-full p-2.5 pl-5 pr-3 flex items-center justify-between shadow-2xl relative z-20">
                 
                 <a href="{{ url('/') }}" class="flex items-center gap-3 group shrink-0">
                     <img src="{{ asset('images/sema.png') }}" alt="Logo SEMAFT" class="h-9 md:h-10 w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300">
                     <span class="font-extrabold text-xl tracking-widest text-white">SEMA<span class="text-semaft-gold">FT</span></span>
                 </a>
                 
-                <button @click="openSidebar = true" class="flex items-center gap-2.5 bg-semaft-gold text-semaft-navy hover:bg-yellow-400 px-5 py-2.5 rounded-full transition-all duration-300 font-extrabold shadow-md transform hover:scale-105">
+                <button @click="openSidebar = !openSidebar" class="flex items-center gap-2.5 bg-semaft-gold text-semaft-navy hover:bg-yellow-400 px-5 py-2.5 rounded-full transition-all duration-300 font-extrabold shadow-md transform hover:scale-105 focus:outline-none">
                     <span class="hidden sm:block text-sm">Menu</span>
-                    <i class="fa-solid fa-bars text-lg"></i>
+                    <i class="fa-solid fa-bars text-lg" x-show="!openSidebar"></i>
+                    <i class="fa-solid fa-xmark text-lg" x-show="openSidebar" x-cloak></i>
                 </button>
             </nav>
+
+            <div x-show="openSidebar" 
+                 x-cloak
+                 @click.away="openSidebar = false"
+                 x-transition:enter="transition ease-out duration-200"
+                 x-transition:enter-start="opacity-0 -translate-y-4 scale-95"
+                 x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                 x-transition:leave="transition ease-in duration-150"
+                 x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+                 x-transition:leave-end="opacity-0 -translate-y-4 scale-95"
+                 class="absolute top-[calc(100%+0.75rem)] right-4 sm:right-6 w-[280px] bg-semaft-navy/95 backdrop-blur-xl border border-white/20 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden pointer-events-auto z-10 flex flex-col origin-top-right">
+                 
+                 <div class="p-3 flex flex-col gap-1.5">
+                    
+                    <a href="{{ url('/') }}" class="group flex items-center gap-3 p-3 rounded-2xl transition-all duration-300 {{ request()->is('/') ? 'bg-semaft-gold text-semaft-navy shadow-md' : 'hover:bg-white/10 text-gray-200' }}">
+                        <div class="w-9 h-9 shrink-0 rounded-xl flex items-center justify-center transition-colors {{ request()->is('/') ? 'bg-white/30 text-semaft-navy' : 'bg-white/10 text-semaft-gold group-hover:bg-semaft-gold group-hover:text-semaft-navy' }}">
+                            <i class="fa-solid fa-house text-sm"></i>
+                        </div>
+                        <span class="font-bold text-sm">Beranda Utama</span>
+                    </a>
+
+                    <a href="{{ url('/tentang') }}" class="group flex items-center gap-3 p-3 rounded-2xl transition-all duration-300 {{ request()->is('tentang') ? 'bg-semaft-gold text-semaft-navy shadow-md' : 'hover:bg-white/10 text-gray-200' }}">
+                        <div class="w-9 h-9 shrink-0 rounded-xl flex items-center justify-center transition-colors {{ request()->is('tentang') ? 'bg-white/30 text-semaft-navy' : 'bg-white/10 text-semaft-gold group-hover:bg-semaft-gold group-hover:text-semaft-navy' }}">
+                            <i class="fa-solid fa-users text-sm"></i>
+                        </div>
+                        <span class="font-bold text-sm">Profil Organisasi</span>
+                    </a>
+
+                    <a href="{{ route('frontend.berita') }}" class="group flex items-center gap-3 p-3 rounded-2xl transition-all duration-300 {{ request()->routeIs('frontend.berita') ? 'bg-semaft-gold text-semaft-navy shadow-md' : 'hover:bg-white/10 text-gray-200' }}">
+                        <div class="w-9 h-9 shrink-0 rounded-xl flex items-center justify-center transition-colors {{ request()->routeIs('frontend.berita') ? 'bg-white/30 text-semaft-navy' : 'bg-white/10 text-semaft-gold group-hover:bg-semaft-gold group-hover:text-semaft-navy' }}">
+                            <i class="fa-solid fa-newspaper text-sm"></i>
+                        </div>
+                        <span class="font-bold text-sm">Portal Berita</span>
+                    </a>
+
+                    <a href="{{ url('/kegiatan') }}" class="group flex items-center gap-3 p-3 rounded-2xl transition-all duration-300 {{ request()->is('kegiatan') ? 'bg-semaft-gold text-semaft-navy shadow-md' : 'hover:bg-white/10 text-gray-200' }}">
+                        <div class="w-9 h-9 shrink-0 rounded-xl flex items-center justify-center transition-colors {{ request()->is('kegiatan') ? 'bg-white/30 text-semaft-navy' : 'bg-white/10 text-semaft-gold group-hover:bg-semaft-gold group-hover:text-semaft-navy' }}">
+                            <i class="fa-regular fa-calendar-check text-sm"></i>
+                        </div>
+                        <span class="font-bold text-sm">Agenda Kegiatan</span>
+                    </a>
+
+                    <a href="{{ url('/aspirasi') }}" class="group flex items-center gap-3 p-3 rounded-2xl transition-all duration-300 {{ request()->is('aspirasi') ? 'bg-semaft-gold text-semaft-navy shadow-md' : 'border border-semaft-gold/30 bg-semaft-gold/10 hover:bg-semaft-gold text-semaft-gold hover:text-semaft-navy' }}">
+                        <div class="w-9 h-9 shrink-0 rounded-xl flex items-center justify-center transition-colors {{ request()->is('aspirasi') ? 'bg-white/30 text-semaft-navy' : 'bg-semaft-gold/20 text-semaft-gold group-hover:bg-[#1e1160] group-hover:text-white' }}">
+                            <i class="fa-solid fa-bullhorn text-sm"></i>
+                        </div>
+                        <span class="font-bold text-sm">Suarakan Aspirasi</span>
+                    </a>
+                 </div>
+
+                 <div class="p-3 border-t border-white/10 bg-black/20">
+                     <a href="{{ route('login') }}" class="flex items-center justify-center gap-2 w-full bg-white/10 border border-white/20 text-white hover:bg-semaft-gold hover:text-semaft-navy hover:border-transparent font-extrabold px-4 py-3 rounded-xl transition-all duration-300 text-sm">
+                         <i class="fa-solid fa-right-to-bracket shrink-0"></i> Login Admin
+                     </a>
+                 </div>
+            </div>
+
         </div>
     </header>
 
