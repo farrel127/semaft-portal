@@ -167,20 +167,62 @@
                 </div>
 
                 <div>
-                    <h3 class="text-white font-bold text-lg mb-6 relative inline-block pt-4">
-                        <span class="absolute top-0 left-0 w-12 h-1 bg-semaft-gold rounded-full"></span>
-                        Layanan Humas
-                    </h3>
-                    <div class="space-y-4">
-                        <a href="https://wa.me/6281234567890" target="_blank" class="flex items-center gap-4 bg-green-500/10 border border-green-500/30 text-green-400 hover:bg-green-500 hover:text-white px-4 py-3.5 rounded-xl transition-all font-bold text-sm shadow-sm">
-                            <i class="fa-brands fa-whatsapp text-xl shrink-0"></i> Chat WhatsApp
-                        </a>
-                        <a href="mailto:semaft.usb@gmail.com" class="flex items-center gap-4 bg-white/5 border border-white/10 text-gray-300 hover:bg-white hover:text-semaft-navy px-4 py-3.5 rounded-xl transition-all text-sm font-bold shadow-sm">
-                            <i class="fa-solid fa-envelope text-semaft-gold shrink-0"></i> 
-                            <span class="truncate">semaft.usb@gmail.com</span>
-                        </a>
+    <h3 class="text-white font-bold text-lg mb-6 relative inline-block pt-4">
+        <span class="absolute top-0 left-0 w-12 h-1 bg-semaft-gold rounded-full"></span>
+        Layanan Humas
+    </h3>
+    
+    <div class="space-y-4">
+        <a href="https://wa.me/6281234567890" target="_blank" class="flex items-center gap-4 bg-green-500/10 border border-green-500/30 text-green-400 hover:bg-green-500 hover:text-white px-4 py-3.5 rounded-xl transition-all font-bold text-sm shadow-sm">
+            <i class="fa-brands fa-whatsapp text-xl shrink-0"></i> Chat WhatsApp
+        </a>
+        <a href="mailto:semaft.usb@gmail.com" class="flex items-center gap-4 bg-white/5 border border-white/10 text-gray-300 hover:bg-white hover:text-semaft-navy px-4 py-3.5 rounded-xl transition-all text-sm font-bold shadow-sm">
+            <i class="fa-solid fa-envelope text-semaft-gold shrink-0"></i> 
+            <span class="truncate">semaft.usb@gmail.com</span>
+        </a>
+    </div>
+
+    <div class="mt-10">
+        <h4 class="text-xs font-bold text-gray-400 tracking-[0.15em] uppercase mb-4 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+            Live Traffic
+        </h4>
+        
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-4 flex flex-col gap-3 shadow-inner">
+            
+            <div class="flex items-center justify-between group cursor-default">
+                <div class="flex items-center gap-3 text-gray-400 group-hover:text-white transition-colors">
+                    <div class="w-8 h-8 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shadow-sm">
+                        <i class="fa-solid fa-user-clock text-xs"></i>
                     </div>
+                    <span class="text-sm font-medium">Hari ini</span>
                 </div>
+                <span class="text-white font-black font-mono tracking-wider">128</span>
+            </div>
+
+            <div class="flex items-center justify-between group cursor-default">
+                <div class="flex items-center gap-3 text-gray-400 group-hover:text-white transition-colors">
+                    <div class="w-8 h-8 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shadow-sm">
+                        <i class="fa-solid fa-calendar-days text-xs"></i>
+                    </div>
+                    <span class="text-sm font-medium">Bulan ini</span>
+                </div>
+                <span class="text-white font-black font-mono tracking-wider">3,405</span>
+            </div>
+
+            <div class="flex items-center justify-between group pt-3 mt-1 border-t border-white/10 cursor-default">
+                <div class="flex items-center gap-3 text-gray-400 group-hover:text-semaft-gold transition-colors">
+                    <div class="w-8 h-8 rounded-xl bg-semaft-gold/10 border border-semaft-gold/20 text-semaft-gold flex items-center justify-center shadow-sm">
+                        <i class="fa-solid fa-chart-line text-xs"></i>
+                    </div>
+                    <span class="text-sm font-bold">Total Kunjungan</span>
+                </div>
+                <span class="text-semaft-gold font-black font-mono tracking-wider text-lg drop-shadow-[0_0_8px_rgba(244,195,50,0.5)]">45,912</span>
+            </div>
+
+        </div>
+    </div>
+</div>
 
                 <div>
                     <h3 class="text-white font-bold text-lg mb-6 relative inline-block pt-4">
