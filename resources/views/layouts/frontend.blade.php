@@ -24,85 +24,118 @@
 <body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen" 
       x-data="{ isMenuOpen: false }">
 
-  <header class="absolute top-4 md:top-6 inset-x-0 flex flex-col items-center justify-center w-full pointer-events-none" style="z-index: 9999;">
-        <div class="relative w-full max-w-5xl px-4 sm:px-6 pointer-events-auto">
-            
-            <nav class="w-full backdrop-blur-2xl border border-white/10 rounded-full p-2 pl-6 pr-2.5 flex items-center justify-between shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-500" style="background-color: rgba(30, 17, 96, 0.85);">
-                
-                <a href="{{ url('/') }}" class="flex items-center gap-3 group shrink-0">
-                    <img src="{{ asset('images/sema.png') }}" alt="Logo SEMAFT" class="h-8 md:h-9 w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300">
-                    <span class="font-black text-xl tracking-widest text-white">SEMA<span style="color: #f4c332;">FT</span></span>
-                </a>
-                
-                <button @click="isMenuOpen = !isMenuOpen" class="flex items-center gap-3 px-6 py-2.5 rounded-full transition-all duration-300 font-extrabold shadow-md transform hover:scale-105 focus:outline-none" style="background-color: #f4c332; color: #1e1160;">
-                    <span class="text-sm tracking-wide">Menu</span>
-                    <div class="w-4 flex justify-center items-center">
-                        <i class="fa-solid fa-bars text-lg" x-show="!isMenuOpen"></i>
-                        <i class="fa-solid fa-xmark text-lg" x-show="isMenuOpen" x-cloak></i>
-                    </div>
-                </button>
-            </nav>
+  <header class="absolute top-4 md:top-6 inset-x-0 flex flex-col items-center justify-center w-full pointer-events-none" style="z-index: 9999; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
 
-            <div x-show="isMenuOpen" 
-                 x-cloak
-                 @click.away="isMenuOpen = false"
-                 x-transition:enter="transition ease-out duration-300"
-                 x-transition:enter-start="opacity-0 -translate-y-4 scale-95"
-                 x-transition:enter-end="opacity-100 translate-y-0 scale-100"
-                 x-transition:leave="transition ease-in duration-200"
-                 x-transition:leave-start="opacity-100 translate-y-0 scale-100"
-                 x-transition:leave-end="opacity-0 -translate-y-4 scale-95"
-                 class="absolute top-[calc(100%+1.25rem)] right-4 sm:right-6 w-[300px] backdrop-blur-3xl border border-white/10 rounded-[2rem] shadow-[0_24px_60px_rgba(0,0,0,0.8)] overflow-hidden z-50 flex flex-col origin-top-right"
-                 style="background-color: rgba(30, 17, 96, 0.95);">
-                 
-                 <div class="p-2.5 flex flex-col gap-1">
-                    <a href="{{ url('/') }}" class="group flex items-center gap-4 p-3 rounded-2xl transition-all duration-300 hover:bg-white/10 text-white/80 hover:text-white">
-                        <div class="w-10 h-10 shrink-0 rounded-full flex items-center justify-center transition-colors bg-white/5 border border-white/10 group-hover:bg-[#f4c332] group-hover:text-[#1e1160]" style="color: #f4c332;">
-                            <i class="fa-solid fa-house text-sm"></i>
-                        </div>
-                        <span class="font-bold text-sm tracking-wide">Beranda Utama</span>
-                    </a>
+    <div class="relative w-full px-4 sm:px-6 pointer-events-auto flex justify-center">
 
-                    <a href="{{ url('/tentang') }}" class="group flex items-center gap-4 p-3 rounded-2xl transition-all duration-300 hover:bg-white/10 text-white/80 hover:text-white">
-                        <div class="w-10 h-10 shrink-0 rounded-full flex items-center justify-center transition-colors bg-white/5 border border-white/10 group-hover:bg-[#f4c332] group-hover:text-[#1e1160]" style="color: #f4c332;">
-                            <i class="fa-solid fa-users text-sm"></i>
-                        </div>
-                        <span class="font-bold text-sm tracking-wide">Profil Organisasi</span>
-                    </a>
+        <nav class="w-full max-w-4xl rounded-[18px] px-4 py-2 flex items-center justify-between transition-all duration-500"
+             style="background: rgba(30, 30, 35, 0.45);
+                    backdrop-filter: blur(40px) saturate(200%);
+                    -webkit-backdrop-filter: blur(40px) saturate(200%);
+                    border: 0.5px solid rgba(255, 255, 255, 0.2);
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);">
 
-                    <a href="{{ route('frontend.berita') }}" class="group flex items-center gap-4 p-3 rounded-2xl transition-all duration-300 hover:bg-white/10 text-white/80 hover:text-white">
-                        <div class="w-10 h-10 shrink-0 rounded-full flex items-center justify-center transition-colors bg-white/5 border border-white/10 group-hover:bg-[#f4c332] group-hover:text-[#1e1160]" style="color: #f4c332;">
-                            <i class="fa-solid fa-newspaper text-sm"></i>
-                        </div>
-                        <span class="font-bold text-sm tracking-wide">Portal Berita</span>
-                    </a>
+            <a href="{{ url('/') }}" class="flex items-center gap-3 shrink-0 transition-opacity" style="opacity: 0.9;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.9'">
+                <img src="{{ asset('images/sema.png') }}" alt="Logo" class="h-7 md:h-8 w-auto object-contain drop-shadow-md">
+                <span style="font-weight: 700; font-size: 15px; color: white; letter-spacing: 0.5px;">
+                    SEMA<span style="color: #facc15;">FT</span>
+                </span>
+            </a>
 
-                    <a href="{{ url('/kegiatan') }}" class="group flex items-center gap-4 p-3 rounded-2xl transition-all duration-300 hover:bg-white/10 text-white/80 hover:text-white">
-                        <div class="w-10 h-10 shrink-0 rounded-full flex items-center justify-center transition-colors bg-white/5 border border-white/10 group-hover:bg-[#f4c332] group-hover:text-[#1e1160]" style="color: #f4c332;">
-                            <i class="fa-regular fa-calendar-check text-sm"></i>
-                        </div>
-                        <span class="font-bold text-sm tracking-wide">Agenda Kegiatan</span>
-                    </a>
+            <button @click="isMenuOpen = !isMenuOpen" class="flex items-center gap-2.5 px-3 py-1.5 rounded-[10px] transition-all focus:outline-none"
+                    style="background: rgba(255, 255, 255, 0.08); border: 0.5px solid rgba(255, 255, 255, 0.1); box-shadow: 0 2px 5px rgba(0,0,0,0.1);"
+                    onmouseover="this.style.backgroundColor='rgba(255, 255, 255, 0.15)'"
+                    onmouseout="this.style.backgroundColor='rgba(255, 255, 255, 0.08)'">
+                <i class="fa-brands fa-apple" style="color: rgba(255,255,255,0.9); font-size: 14px;"></i>
+                <span style="color: white; font-size: 13px; font-weight: 500;">Menu</span>
+            </button>
+        </nav>
 
-                    <div class="h-px w-full bg-white/10 my-1"></div>
+        <div x-show="isMenuOpen"
+             x-cloak
+             @click.away="isMenuOpen = false"
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 scale-95 -translate-y-2"
+             x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+             x-transition:leave="transition ease-in duration-150"
+             x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+             x-transition:leave-end="opacity-0 scale-95 -translate-y-2"
+             class="absolute top-[calc(100%+0.75rem)] right-4 sm:right-[calc(50%-450px)] sm:max-w-max w-[260px] rounded-[18px] p-2 flex flex-col origin-top-right z-50"
+             style="background: rgba(35, 35, 40, 0.65);
+                    backdrop-filter: blur(60px) saturate(220%);
+                    -webkit-backdrop-filter: blur(60px) saturate(220%);
+                    border: 0.5px solid rgba(255, 255, 255, 0.18);
+                    box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.15);">
 
-                    <a href="{{ url('/aspirasi') }}" class="group flex items-center gap-4 p-3 mt-1 rounded-2xl transition-all duration-300 border hover:bg-white/10" style="border-color: rgba(244,195,50,0.3); background-color: rgba(244,195,50,0.1); color: #f4c332;">
-                        <div class="w-10 h-10 shrink-0 rounded-full flex items-center justify-center transition-colors group-hover:bg-white/20" style="background-color: rgba(244,195,50,0.2);">
-                            <i class="fa-solid fa-bullhorn text-sm"></i>
-                        </div>
-                        <span class="font-black text-sm tracking-wide">Suarakan Aspirasi</span>
-                    </a>
-                 </div>
+             <div class="px-3 pt-1 pb-2">
+                 <p style="color: rgba(255,255,255,0.45); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Navigasi Sistem</p>
+             </div>
 
-                 <div class="p-4 border-t border-white/10 bg-black/30">
-                     <a href="{{ route('login') }}" class="flex items-center justify-center gap-3 w-full bg-white/10 border border-white/20 text-white hover:bg-white hover:text-[#1e1160] hover:border-transparent font-extrabold px-4 py-3.5 rounded-xl transition-all duration-300 text-sm">
-                         <i class="fa-solid fa-right-to-bracket shrink-0"></i> Login Administrator
-                     </a>
-                 </div>
-            </div>
+             <a href="{{ url('/') }}" class="flex items-center gap-3 px-3 py-1.5 rounded-[10px] transition-colors cursor-default"
+                style="{{ request()->is('/') ? 'background: #007aff; color: white;' : 'color: rgba(255,255,255,0.85);' }}"
+                onmouseover="this.style.backgroundColor='{{ request()->is('/') ? '#007aff' : 'rgba(255,255,255,0.1)' }}';"
+                onmouseout="this.style.backgroundColor='{{ request()->is('/') ? '#007aff' : 'transparent' }}';">
+                <div class="w-7 h-7 flex items-center justify-center rounded-md" style="background: {{ request()->is('/') ? 'transparent' : 'rgba(0,0,0,0.2)' }};">
+                    <i class="fa-solid fa-house text-xs"></i>
+                </div>
+                <span style="font-size: 13px; font-weight: 500;">Beranda Utama</span>
+             </a>
 
+             <a href="{{ url('/tentang') }}" class="flex items-center gap-3 px-3 py-1.5 rounded-[10px] transition-colors cursor-default"
+                style="{{ request()->is('tentang') ? 'background: #007aff; color: white;' : 'color: rgba(255,255,255,0.85);' }}"
+                onmouseover="this.style.backgroundColor='{{ request()->is('tentang') ? '#007aff' : 'rgba(255,255,255,0.1)' }}';"
+                onmouseout="this.style.backgroundColor='{{ request()->is('tentang') ? '#007aff' : 'transparent' }}';">
+                <div class="w-7 h-7 flex items-center justify-center rounded-md" style="background: {{ request()->is('tentang') ? 'transparent' : 'rgba(0,0,0,0.2)' }};">
+                    <i class="fa-solid fa-users text-xs"></i>
+                </div>
+                <span style="font-size: 13px; font-weight: 500;">Profil Organisasi</span>
+             </a>
+
+             <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 6px 12px;"></div>
+
+             <a href="{{ route('frontend.berita') }}" class="flex items-center gap-3 px-3 py-1.5 rounded-[10px] transition-colors cursor-default"
+                style="{{ request()->routeIs('frontend.berita') ? 'background: #007aff; color: white;' : 'color: rgba(255,255,255,0.85);' }}"
+                onmouseover="this.style.backgroundColor='{{ request()->routeIs('frontend.berita') ? '#007aff' : 'rgba(255,255,255,0.1)' }}';"
+                onmouseout="this.style.backgroundColor='{{ request()->routeIs('frontend.berita') ? '#007aff' : 'transparent' }}';">
+                <div class="w-7 h-7 flex items-center justify-center rounded-md" style="background: {{ request()->routeIs('frontend.berita') ? 'transparent' : 'rgba(0,0,0,0.2)' }};">
+                    <i class="fa-solid fa-newspaper text-xs"></i>
+                </div>
+                <span style="font-size: 13px; font-weight: 500;">Portal Berita</span>
+             </a>
+
+             <a href="{{ url('/kegiatan') }}" class="flex items-center gap-3 px-3 py-1.5 rounded-[10px] transition-colors cursor-default"
+                style="{{ request()->is('kegiatan') ? 'background: #007aff; color: white;' : 'color: rgba(255,255,255,0.85);' }}"
+                onmouseover="this.style.backgroundColor='{{ request()->is('kegiatan') ? '#007aff' : 'rgba(255,255,255,0.1)' }}';"
+                onmouseout="this.style.backgroundColor='{{ request()->is('kegiatan') ? '#007aff' : 'transparent' }}';">
+                <div class="w-7 h-7 flex items-center justify-center rounded-md" style="background: {{ request()->is('kegiatan') ? 'transparent' : 'rgba(0,0,0,0.2)' }};">
+                    <i class="fa-regular fa-calendar-check text-xs"></i>
+                </div>
+                <span style="font-size: 13px; font-weight: 500;">Agenda Kegiatan</span>
+             </a>
+
+             <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 6px 12px;"></div>
+
+             <a href="{{ url('/aspirasi') }}" class="flex items-center gap-3 px-3 py-2 rounded-[10px] transition-colors mt-1 cursor-default"
+                style="background: rgba(244,195,50,0.12); border: 0.5px solid rgba(244,195,50,0.3); color: #facc15;"
+                onmouseover="this.style.backgroundColor='rgba(244,195,50,0.25)';"
+                onmouseout="this.style.backgroundColor='rgba(244,195,50,0.12)';">
+                <div class="w-7 h-7 flex items-center justify-center rounded-md" style="background: rgba(244,195,50,0.2);">
+                    <i class="fa-solid fa-bullhorn text-xs"></i>
+                </div>
+                <span style="font-size: 13px; font-weight: 600;">Suarakan Aspirasi</span>
+             </a>
+
+             <a href="{{ route('login') }}" class="flex items-center justify-between px-3 py-2.5 rounded-[10px] transition-colors mt-2 cursor-default"
+                style="background: rgba(0,0,0,0.2); border: 0.5px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.6);"
+                onmouseover="this.style.backgroundColor='rgba(255,255,255,0.1)';"
+                onmouseout="this.style.backgroundColor='rgba(0,0,0,0.2)';">
+                <span style="font-size: 12px; font-weight: 500;"><i class="fa-solid fa-lock mr-2"></i>Akses Administrator</span>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+             </a>
         </div>
-    </header>
+
+    </div>
+</header>
 
     <main class="flex-grow pt-28 md:pt-36 pb-20 relative z-0">
         @yield('content')
