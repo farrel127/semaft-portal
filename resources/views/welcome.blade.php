@@ -3,73 +3,47 @@
 @section('title', 'Beranda Utama')
 
 @section('content')
-   <section class="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden pt-32 pb-20" style="background-color: #150a38;">
+   <section class="relative w-full h-screen min-h-[700px] flex flex-col items-center justify-center overflow-hidden" style="background-color: #0b051a;">
 
-    <div class="absolute inset-0 opacity-[0.04]" style="background-image: linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px); background-size: 64px 64px;"></div>
+    <div style="position: absolute; top: -10%; left: 15%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(244,195,50,0.12) 0%, transparent 60%); filter: blur(100px); pointer-events: none;"></div>
     
-    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full mix-blend-screen pointer-events-none" style="background: radial-gradient(circle, rgba(30,17,96,0.8) 0%, rgba(21,10,56,0) 70%); filter: blur(100px);"></div>
-    
-    <div class="absolute -top-20 -left-20 w-[400px] h-[400px] rounded-full mix-blend-screen animate-pulse pointer-events-none" style="background: radial-gradient(circle, rgba(244,195,50,0.08) 0%, rgba(21,10,56,0) 70%); filter: blur(60px); animation-duration: 4s;"></div>
-    <div class="absolute bottom-0 -right-20 w-[500px] h-[500px] rounded-full mix-blend-screen animate-pulse pointer-events-none" style="background: radial-gradient(circle, rgba(139,92,246,0.08) 0%, rgba(21,10,56,0) 70%); filter: blur(80px); animation-duration: 6s;"></div>
+    <div style="position: absolute; bottom: -10%; right: 10%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 60%); filter: blur(100px); pointer-events: none;"></div>
 
-    <div class="hidden md:flex absolute top-[25%] left-[5%] lg:left-[10%] items-center gap-4 px-5 py-3.5 rounded-2xl border border-white/10 transform -rotate-6 hover:rotate-0 hover:scale-105 transition-all duration-500 shadow-[0_20px_40px_rgba(0,0,0,0.4)] cursor-default z-10 animate-[bounce_6s_infinite]" style="background: rgba(255,255,255,0.02); backdrop-filter: blur(16px);">
-        <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-inner" style="background: rgba(244,195,50,0.15); color: #f4c332;">
-            <i class="fa-solid fa-laptop-code text-lg"></i>
-        </div>
-        <div>
-            <p class="text-white font-bold text-sm tracking-wide">Inovasi Digital</p>
-            <p class="text-xs mt-0.5" style="color: #94a3b8;">Sistem Terintegrasi</p>
-        </div>
-    </div>
+    <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px); background-size: 40px 40px; opacity: 0.4; pointer-events: none;"></div>
 
-    <div class="hidden md:flex absolute bottom-[30%] right-[5%] lg:right-[10%] items-center gap-4 px-5 py-3.5 rounded-2xl border border-white/10 transform rotate-6 hover:rotate-0 hover:scale-105 transition-all duration-500 shadow-[0_20px_40px_rgba(0,0,0,0.4)] cursor-default z-10 animate-[bounce_7s_infinite_reverse]" style="background: rgba(255,255,255,0.02); backdrop-filter: blur(16px);">
-        <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-inner" style="background: rgba(139,92,246,0.15); color: #c084fc;">
-            <i class="fa-solid fa-lightbulb text-lg"></i>
-        </div>
-        <div>
-            <p class="text-white font-bold text-sm tracking-wide">Pengembangan Kreatif</p>
-            <p class="text-xs mt-0.5" style="color: #94a3b8;">Kolaborasi & Bisnis</p>
-        </div>
-    </div>
-
-    <div class="hidden lg:flex absolute top-[20%] right-[15%] items-center justify-center w-14 h-14 rounded-2xl border border-white/10 transform rotate-12 hover:-rotate-12 transition-all duration-500 shadow-xl cursor-default z-10" style="background: rgba(255,255,255,0.02); backdrop-filter: blur(16px); color: #f8fafc;">
-        <i class="fa-solid fa-users-gear text-xl opacity-80"></i>
-    </div>
-
-
-    <div class="relative z-20 text-center px-4 sm:px-6 max-w-5xl mx-auto flex flex-col items-center mt-12">
-
-        <div class="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 mb-8 md:mb-10 transform hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(244,195,50,0.2)] transition-all duration-500 cursor-default" style="background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.01) 100%); backdrop-filter: blur(12px);">
+    <div class="relative z-10 flex flex-col items-center px-4 sm:px-6 w-full max-w-4xl mx-auto mt-16 md:mt-0">
+        
+        <div class="inline-flex items-center gap-2.5 px-5 py-1.5 rounded-full mb-8 shadow-2xl" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(12px);">
             <span class="relative flex h-2 w-2">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background-color: #f4c332;"></span>
-                <span class="relative inline-flex rounded-full h-2 w-2" style="background-color: #f4c332;"></span>
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background-color: #facc15;"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2" style="background-color: #facc15;"></span>
             </span>
-            <span class="text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase" style="color: #e2e8f0;">
-                Senat Mahasiswa Fakultas Teknik USB YPKP
+            <span class="text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase" style="color: #cbd5e1;">
+                Senat Mahasiswa FT USB YPKP
             </span>
         </div>
 
-        <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black tracking-tight leading-[1.05] mb-8 drop-shadow-2xl">
-            <span class="text-white">Sinergi Membangun</span> <br class="hidden sm:block" />
-            <span class="relative inline-block mt-2" style="background: linear-gradient(to right, #fde047, #ffffff, #facc15); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0px 10px 20px rgba(244,195,50,0.25));">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-center tracking-tight leading-[1.1] mb-6" style="color: #ffffff;">
+            Sinergi Membangun <br class="hidden sm:block" />
+            <span style="background: linear-gradient(135deg, #fde047 0%, #facc15 50%, #eab308 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0px 8px 16px rgba(244,195,50,0.15));">
                 Fakultas Teknik yang Solid
             </span>
         </h1>
 
-        <p class="text-base sm:text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed mb-16" style="color: #cbd5e1; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+        <p class="text-base sm:text-lg md:text-xl text-center max-w-2xl leading-relaxed mb-14" style="color: #94a3b8;">
             Rumah aspirasi dan kolaborasi bagi seluruh elemen mahasiswa teknik untuk berkarya, berinovasi, dan bergerak bersama.
         </p>
 
-        <div class="flex flex-col items-center justify-center opacity-60 hover:opacity-100 transition-opacity duration-300 animate-bounce cursor-default">
-            <span class="text-[10px] font-bold tracking-[0.3em] uppercase mb-4" style="color: #94a3b8;">Eksplorasi Portal</span>
-            <div class="w-7 h-12 rounded-full border-2 flex justify-center pt-2.5 shadow-[0_0_15px_rgba(255,255,255,0.1)]" style="border-color: rgba(255,255,255,0.15);">
-                <div class="w-1 h-3 rounded-full" style="background-color: #f4c332;"></div>
+        <div class="flex flex-col items-center opacity-50 hover:opacity-100 transition-opacity duration-300">
+            <span class="text-[10px] font-bold tracking-[0.3em] uppercase mb-3" style="color: #64748b;">Eksplorasi</span>
+            <div class="w-6 h-10 rounded-full border-2 flex justify-center pt-2" style="border-color: rgba(255,255,255,0.2);">
+                <div class="w-1 h-2 rounded-full animate-bounce" style="background-color: #facc15;"></div>
             </div>
         </div>
 
     </div>
 
-    <div class="absolute bottom-0 inset-x-0 h-48 pointer-events-none" style="background: linear-gradient(to top, #f8fafc, transparent);"></div>
+    <div class="absolute bottom-0 inset-x-0 h-32 pointer-events-none" style="background: linear-gradient(to top, #f9fafb, transparent);"></div>
 </section>
 
     <section class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative bg-slate-50/50">
