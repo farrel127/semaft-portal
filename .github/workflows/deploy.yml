@@ -17,6 +17,8 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.PORT }}
+          use_insecure_cipher: true # Tambahkan baris ini
+          debug: true
           # Ini adalah komando yang biasa Anda ketik manual di terminal
           script: |
             cd semaft_portal
