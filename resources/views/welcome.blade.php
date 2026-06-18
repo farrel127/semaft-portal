@@ -4,66 +4,56 @@
 
 @section('content')
    <!-- HERO SECTION: APPLE macOS "VIBRANCY" AESTHETIC -->
-<section class="relative w-full h-screen min-h-[750px] flex items-center justify-center overflow-hidden" style="background-color: #08080c;">
+<section class="relative w-full h-screen min-h-[750px] flex items-center justify-center overflow-hidden" style="background-color: #0b0622;">
 
-    <!-- 1. MAC WALLPAPER EFFECT (Abstrak Blur Gradient Putih & Warna) -->
-    <!-- Gradient Putih Susu (Signature Apple) -->
-    <div style="position: absolute; top: -5%; left: 10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 60%); filter: blur(120px); pointer-events: none; mix-blend-mode: screen;"></div>
+    <div style="position: absolute; top: -10%; left: 15%; width: 55vw; height: 55vw; background: radial-gradient(circle, rgba(255,255,255,0.28) 0%, transparent 65%); filter: blur(130px); pointer-events: none; mix-blend-mode: screen;"></div>
     
-    <!-- Gradient Emas SEMAFT -->
-    <div style="position: absolute; top: 30%; right: -5%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(244,195,50,0.15) 0%, transparent 60%); filter: blur(140px); pointer-events: none;"></div>
+    <div style="position: absolute; top: 15%; right: -5%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(244,195,50,0.18) 0%, transparent 60%); filter: blur(120px); pointer-events: none;"></div>
     
-    <!-- Gradient Biru Malam / Ungu -->
-    <div style="position: absolute; bottom: -10%; left: 30%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(30,17,96,0.4) 0%, transparent 60%); filter: blur(120px); pointer-events: none;"></div>
+    <div style="position: absolute; bottom: -15%; left: 10%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(30,17,96,0.6) 0%, transparent 70%); filter: blur(140px); pointer-events: none;"></div>
 
-    <!-- 2. MAC WINDOW (Glassmorphism Utama) -->
-    <div class="relative z-10 w-full max-w-5xl mx-4 sm:mx-6 px-6 sm:px-12 py-16 md:py-20 rounded-[2rem] flex flex-col items-center text-center transform hover:scale-[1.01] transition-transform duration-700"
-         style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 100%);
+    <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 32px 32px; opacity: 0.5; pointer-events: none;"></div>
+
+    <div class="relative z-10 w-full max-w-5xl mx-4 sm:mx-6 px-6 sm:px-12 py-16 md:py-22 rounded-[24px] flex flex-col items-center text-center transform hover:scale-[1.005] transition-transform duration-700"
+         style="background: linear-gradient(135deg, rgba(30, 17, 96, 0.25) 0%, rgba(255, 255, 255, 0.02) 100%);
                 backdrop-filter: blur(40px);
                 -webkit-backdrop-filter: blur(40px);
-                border: 1px solid rgba(255, 255, 255, 0.15);
-                box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);">
+                border: 1px solid rgba(255, 255, 255, 0.14);
+                box-shadow: 0 40px 80px rgba(6, 3, 20, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.25);">
         
-        <!-- Window Controls (Lampu Merah, Kuning, Hijau khas macOS) -->
         <div class="absolute top-6 left-6 flex gap-2">
-            <div style="width: 12px; height: 12px; rounded-radius: 50%; border-radius: 50%; background-color: #ff5f56; border: 1px solid rgba(0,0,0,0.1);"></div>
-            <div style="width: 12px; height: 12px; rounded-radius: 50%; border-radius: 50%; background-color: #ffbd2e; border: 1px solid rgba(0,0,0,0.1);"></div>
-            <div style="width: 12px; height: 12px; rounded-radius: 50%; border-radius: 50%; background-color: #27c93f; border: 1px solid rgba(0,0,0,0.1);"></div>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #ff5f56; border: 0.5px solid rgba(0,0,0,0.15);"></div>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #ffbd2e; border: 0.5px solid rgba(0,0,0,0.15);"></div>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #27c93f; border: 0.5px solid rgba(0,0,0,0.15);"></div>
         </div>
 
-        <!-- 3. KONTEN (Tipografi Sleek ala Apple) -->
-        <!-- Badge Apple-esque -->
-        <div class="mt-8 md:mt-2 inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-8" 
-             style="background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);">
-            <i class="fa-solid fa-microchip text-xs" style="color: #cbd5e1;"></i>
-            <span class="text-[10px] sm:text-xs font-semibold tracking-widest uppercase" style="color: #cbd5e1;">Senat Mahasiswa FT YPKP</span>
+        <div class="mt-6 md:mt-0 inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full mb-8" 
+             style="background: rgba(16, 8, 54, 0.4); border: 1px solid rgba(244, 195, 50, 0.25); box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);">
+            <i class="fa-solid fa-microchip text-xs" style="color: #f4c332;"></i>
+            <span class="text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase" style="color: #e2e8f0;">Senat Mahasiswa Fakultas Teknik</span>
         </div>
 
-        <!-- Headline Super Bersih -->
-        <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-6" style="letter-spacing: -0.03em; line-height: 1.05;">
-            <span style="background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-8" style="letter-spacing: -0.03em; line-height: 1.05;">
+            <span style="background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
                 Sinergi Membangun
             </span>
             <br class="hidden sm:block" />
-            <span style="background: linear-gradient(135deg, #fde047 0%, #facc15 50%, #eab308 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 4px 12px rgba(244,195,50,0.2));">
+            <span style="background: linear-gradient(135deg, #fef08a 0%, #f4c332 50%, #ca8a04 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 8px 20px rgba(244,195,50,0.3));">
                 Fakultas Teknik yang Solid
             </span>
         </h1>
 
-        <!-- Subteks -->
-        <p class="text-base md:text-xl max-w-2xl leading-relaxed mb-10" style="color: rgba(255,255,255,0.7); font-weight: 400; letter-spacing: -0.01em;">
+        <p class="text-base md:text-xl max-w-2xl leading-relaxed mb-12" style="color: rgba(226, 232, 240, 0.75); font-weight: 400; letter-spacing: -0.01em;">
             Rumah aspirasi dan kolaborasi bagi seluruh elemen mahasiswa teknik untuk berkarya, berinovasi, dan bergerak bersama.
         </p>
 
-        <!-- Elemen Interaktif Tambahan (Floating Icon) -->
-        <div class="flex flex-col items-center opacity-60 hover:opacity-100 transition-opacity duration-300 animate-bounce cursor-default mt-4">
-            <span class="text-[9px] font-bold tracking-[0.2em] uppercase mb-3" style="color: rgba(255,255,255,0.5);">Eksplorasi</span>
-            <i class="fa-solid fa-chevron-down text-sm" style="color: rgba(255,255,255,0.8);"></i>
+        <div class="flex flex-col items-center opacity-50 hover:opacity-100 transition-opacity duration-300 animate-bounce cursor-default mt-2">
+            <span class="text-[9px] font-bold tracking-[0.25em] uppercase mb-3" style="color: rgba(255,255,255,0.4);">Eksplorasi</span>
+            <i class="fa-solid fa-chevron-down text-xs" style="color: #f4c332;"></i>
         </div>
 
     </div>
 
-    <!-- 4. TRANSISI HALUS KE KONTEN BAWAH -->
     <div class="absolute bottom-0 inset-x-0 h-40 pointer-events-none" style="background: linear-gradient(to top, #f9fafb, transparent);"></div>
 </section>
 

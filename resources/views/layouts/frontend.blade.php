@@ -29,25 +29,25 @@
     <div class="relative w-full px-4 sm:px-6 pointer-events-auto flex justify-center">
 
         <nav class="w-full max-w-4xl rounded-[18px] px-4 py-2 flex items-center justify-between transition-all duration-500"
-             style="background: rgba(30, 30, 35, 0.45);
-                    backdrop-filter: blur(40px) saturate(200%);
-                    -webkit-backdrop-filter: blur(40px) saturate(200%);
+             style="background: rgba(30, 17, 96, 0.4);
+                    backdrop-filter: blur(30px) saturate(210%);
+                    -webkit-backdrop-filter: blur(30px) saturate(210%);
                     border: 0.5px solid rgba(255, 255, 255, 0.2);
-                    box-shadow: 0 10px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);">
+                    box-shadow: 0 12px 40px rgba(16, 8, 54, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);">
 
-            <a href="{{ url('/') }}" class="flex items-center gap-3 shrink-0 transition-opacity" style="opacity: 0.9;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.9'">
+            <a href="{{ url('/') }}" class="flex items-center gap-3 shrink-0 transition-all duration-300 hover:scale-105">
                 <img src="{{ asset('images/sema.png') }}" alt="Logo" class="h-7 md:h-8 w-auto object-contain drop-shadow-md">
-                <span style="font-weight: 700; font-size: 15px; color: white; letter-spacing: 0.5px;">
-                    SEMA<span style="color: #facc15;">FT</span>
+                <span style="font-weight: 800; font-size: 16px; color: #ffffff; letter-spacing: 0.8px;">
+                    SEMA<span style="color: #f4c332;">FT</span>
                 </span>
             </a>
 
-            <button @click="isMenuOpen = !isMenuOpen" class="flex items-center gap-2.5 px-3 py-1.5 rounded-[10px] transition-all focus:outline-none"
-                    style="background: rgba(255, 255, 255, 0.08); border: 0.5px solid rgba(255, 255, 255, 0.1); box-shadow: 0 2px 5px rgba(0,0,0,0.1);"
-                    onmouseover="this.style.backgroundColor='rgba(255, 255, 255, 0.15)'"
-                    onmouseout="this.style.backgroundColor='rgba(255, 255, 255, 0.08)'">
-                <i class="fa-brands fa-apple" style="color: rgba(255,255,255,0.9); font-size: 14px;"></i>
-                <span style="color: white; font-size: 13px; font-weight: 500;">Menu</span>
+            <button @click="isMenuOpen = !isMenuOpen" class="flex items-center gap-2 px-3 py-1.5 rounded-[10px] transition-all focus:outline-none"
+                    style="background: rgba(244, 195, 50, 0.15); border: 0.5px solid rgba(244, 195, 50, 0.3); box-shadow: 0 2px 8px rgba(0,0,0,0.15);"
+                    onmouseover="this.style.backgroundColor='rgba(244, 195, 50, 0.25)'"
+                    onmouseout="this.style.backgroundColor='rgba(244, 195, 50, 0.15)'">
+                <i class="fa-brands fa-apple" style="color: #f4c332; font-size: 14px;"></i>
+                <span style="color: #ffffff; font-size: 13px; font-weight: 600; letter-spacing: 0.3px;">Menu</span>
             </button>
         </nav>
 
@@ -61,76 +61,76 @@
              x-transition:leave-start="opacity-100 scale-100 translate-y-0"
              x-transition:leave-end="opacity-0 scale-95 -translate-y-2"
              class="absolute top-[calc(100%+0.75rem)] right-4 sm:right-[calc(50%-450px)] sm:max-w-max w-[260px] rounded-[18px] p-2 flex flex-col origin-top-right z-50"
-             style="background: rgba(35, 35, 40, 0.65);
-                    backdrop-filter: blur(60px) saturate(220%);
-                    -webkit-backdrop-filter: blur(60px) saturate(220%);
-                    border: 0.5px solid rgba(255, 255, 255, 0.18);
-                    box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.15);">
+             style="background: rgba(21, 10, 56, 0.75);
+                    backdrop-filter: blur(50px) saturate(220%);
+                    -webkit-backdrop-filter: blur(50px) saturate(220%);
+                    border: 0.5px solid rgba(255, 255, 255, 0.15);
+                    box-shadow: 0 30px 60px rgba(11, 5, 30, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);">
 
-             <div class="px-3 pt-1 pb-2">
-                 <p style="color: rgba(255,255,255,0.45); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Navigasi Sistem</p>
+             <div class="px-3 pt-1 pb-1.5">
+                 <p style="color: rgba(244,195,50,0.6); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Navigasi Portal</p>
              </div>
 
              <a href="{{ url('/') }}" class="flex items-center gap-3 px-3 py-1.5 rounded-[10px] transition-colors cursor-default"
-                style="{{ request()->is('/') ? 'background: #007aff; color: white;' : 'color: rgba(255,255,255,0.85);' }}"
-                onmouseover="this.style.backgroundColor='{{ request()->is('/') ? '#007aff' : 'rgba(255,255,255,0.1)' }}';"
-                onmouseout="this.style.backgroundColor='{{ request()->is('/') ? '#007aff' : 'transparent' }}';">
-                <div class="w-7 h-7 flex items-center justify-center rounded-md" style="background: {{ request()->is('/') ? 'transparent' : 'rgba(0,0,0,0.2)' }};">
+                style="{{ request()->is('/') ? 'background: #f4c332; color: #1e1160; font-weight: 700;' : 'color: rgba(255,255,255,0.9);' }}"
+                onmouseover="this.style.backgroundColor='{{ request()->is('/') ? '#f4c332' : 'rgba(255,255,255,0.08)' }}';"
+                onmouseout="this.style.backgroundColor='{{ request()->is('/') ? '#f4c332' : 'transparent' }}';">
+                <div class="w-7 h-7 flex items-center justify-center rounded-md" style="background: {{ request()->is('/') ? 'rgba(0,0,0,0.15)' : 'rgba(255,255,255,0.05)' }};">
                     <i class="fa-solid fa-house text-xs"></i>
                 </div>
-                <span style="font-size: 13px; font-weight: 500;">Beranda Utama</span>
+                <span style="font-size: 13px;">Beranda Utama</span>
              </a>
 
              <a href="{{ url('/tentang') }}" class="flex items-center gap-3 px-3 py-1.5 rounded-[10px] transition-colors cursor-default"
-                style="{{ request()->is('tentang') ? 'background: #007aff; color: white;' : 'color: rgba(255,255,255,0.85);' }}"
-                onmouseover="this.style.backgroundColor='{{ request()->is('tentang') ? '#007aff' : 'rgba(255,255,255,0.1)' }}';"
-                onmouseout="this.style.backgroundColor='{{ request()->is('tentang') ? '#007aff' : 'transparent' }}';">
-                <div class="w-7 h-7 flex items-center justify-center rounded-md" style="background: {{ request()->is('tentang') ? 'transparent' : 'rgba(0,0,0,0.2)' }};">
+                style="{{ request()->is('tentang') ? 'background: #f4c332; color: #1e1160; font-weight: 700;' : 'color: rgba(255,255,255,0.9);' }}"
+                onmouseover="this.style.backgroundColor='{{ request()->is('tentang') ? '#f4c332' : 'rgba(255,255,255,0.08)' }}';"
+                onmouseout="this.style.backgroundColor='{{ request()->is('tentang') ? '#f4c332' : 'transparent' }}';">
+                <div class="w-7 h-7 flex items-center justify-center rounded-md" style="background: {{ request()->is('tentang') ? 'rgba(0,0,0,0.15)' : 'rgba(255,255,255,0.05)' }};">
                     <i class="fa-solid fa-users text-xs"></i>
                 </div>
-                <span style="font-size: 13px; font-weight: 500;">Profil Organisasi</span>
+                <span style="font-size: 13px;">Profil Organisasi</span>
              </a>
 
-             <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 6px 12px;"></div>
+             <div style="height: 1px; background: rgba(255,255,255,0.08); margin: 6px 12px;"></div>
 
              <a href="{{ route('frontend.berita') }}" class="flex items-center gap-3 px-3 py-1.5 rounded-[10px] transition-colors cursor-default"
-                style="{{ request()->routeIs('frontend.berita') ? 'background: #007aff; color: white;' : 'color: rgba(255,255,255,0.85);' }}"
-                onmouseover="this.style.backgroundColor='{{ request()->routeIs('frontend.berita') ? '#007aff' : 'rgba(255,255,255,0.1)' }}';"
-                onmouseout="this.style.backgroundColor='{{ request()->routeIs('frontend.berita') ? '#007aff' : 'transparent' }}';">
-                <div class="w-7 h-7 flex items-center justify-center rounded-md" style="background: {{ request()->routeIs('frontend.berita') ? 'transparent' : 'rgba(0,0,0,0.2)' }};">
+                style="{{ request()->routeIs('frontend.berita') ? 'background: #f4c332; color: #1e1160; font-weight: 700;' : 'color: rgba(255,255,255,0.9);' }}"
+                onmouseover="this.style.backgroundColor='{{ request()->routeIs('frontend.berita') ? '#f4c332' : 'rgba(255,255,255,0.08)' }}';"
+                onmouseout="this.style.backgroundColor='{{ request()->routeIs('frontend.berita') ? '#f4c332' : 'transparent' }}';">
+                <div class="w-7 h-7 flex items-center justify-center rounded-md" style="background: {{ request()->routeIs('frontend.berita') ? 'rgba(0,0,0,0.15)' : 'rgba(255,255,255,0.05)' }};">
                     <i class="fa-solid fa-newspaper text-xs"></i>
                 </div>
-                <span style="font-size: 13px; font-weight: 500;">Portal Berita</span>
+                <span style="font-size: 13px;">Portal Berita</span>
              </a>
 
              <a href="{{ url('/kegiatan') }}" class="flex items-center gap-3 px-3 py-1.5 rounded-[10px] transition-colors cursor-default"
-                style="{{ request()->is('kegiatan') ? 'background: #007aff; color: white;' : 'color: rgba(255,255,255,0.85);' }}"
-                onmouseover="this.style.backgroundColor='{{ request()->is('kegiatan') ? '#007aff' : 'rgba(255,255,255,0.1)' }}';"
-                onmouseout="this.style.backgroundColor='{{ request()->is('kegiatan') ? '#007aff' : 'transparent' }}';">
-                <div class="w-7 h-7 flex items-center justify-center rounded-md" style="background: {{ request()->is('kegiatan') ? 'transparent' : 'rgba(0,0,0,0.2)' }};">
+                style="{{ request()->is('kegiatan') ? 'background: #f4c332; color: #1e1160; font-weight: 700;' : 'color: rgba(255,255,255,0.9);' }}"
+                onmouseover="this.style.backgroundColor='{{ request()->is('kegiatan') ? '#f4c332' : 'rgba(255,255,255,0.08)' }}';"
+                onmouseout="this.style.backgroundColor='{{ request()->is('kegiatan') ? '#f4c332' : 'transparent' }}';">
+                <div class="w-7 h-7 flex items-center justify-center rounded-md" style="background: {{ request()->is('kegiatan') ? 'rgba(0,0,0,0.15)' : 'rgba(255,255,255,0.05)' }};">
                     <i class="fa-regular fa-calendar-check text-xs"></i>
                 </div>
-                <span style="font-size: 13px; font-weight: 500;">Agenda Kegiatan</span>
+                <span style="font-size: 13px;">Agenda Kegiatan</span>
              </a>
 
-             <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 6px 12px;"></div>
+             <div style="height: 1px; background: rgba(255,255,255,0.08); margin: 6px 12px;"></div>
 
              <a href="{{ url('/aspirasi') }}" class="flex items-center gap-3 px-3 py-2 rounded-[10px] transition-colors mt-1 cursor-default"
-                style="background: rgba(244,195,50,0.12); border: 0.5px solid rgba(244,195,50,0.3); color: #facc15;"
+                style="background: rgba(244,195,50,0.15); border: 0.5px solid rgba(244,195,50,0.4); color: #f4c332;"
                 onmouseover="this.style.backgroundColor='rgba(244,195,50,0.25)';"
-                onmouseout="this.style.backgroundColor='rgba(244,195,50,0.12)';">
-                <div class="w-7 h-7 flex items-center justify-center rounded-md" style="background: rgba(244,195,50,0.2);">
+                onmouseout="this.style.backgroundColor='rgba(244,195,50,0.15)';">
+                <div class="w-7 h-7 flex items-center justify-center rounded-md" style="background: rgba(244,195,50,0.2); color: #f4c332;">
                     <i class="fa-solid fa-bullhorn text-xs"></i>
                 </div>
-                <span style="font-size: 13px; font-weight: 600;">Suarakan Aspirasi</span>
+                <span style="font-size: 13px; font-weight: 700;">Suarakan Aspirasi</span>
              </a>
 
-             <a href="{{ route('login') }}" class="flex items-center justify-between px-3 py-2.5 rounded-[10px] transition-colors mt-2 cursor-default"
-                style="background: rgba(0,0,0,0.2); border: 0.5px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.6);"
-                onmouseover="this.style.backgroundColor='rgba(255,255,255,0.1)';"
-                onmouseout="this.style.backgroundColor='rgba(0,0,0,0.2)';">
-                <span style="font-size: 12px; font-weight: 500;"><i class="fa-solid fa-lock mr-2"></i>Akses Administrator</span>
-                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+             <a href="{{ route('login') }}" class="flex items-center justify-between px-3 py-2 rounded-[10px] transition-colors mt-2 cursor-default"
+                style="background: rgba(0,0,0,0.25); border: 0.5px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.5);"
+                onmouseover="this.style.backgroundColor='rgba(255,255,255,0.08)'; this.style.color='#ffffff';"
+                onmouseout="this.style.backgroundColor='rgba(0,0,0,0.25)'; this.style.color='rgba(255,255,255,0.5)';">
+                <span style="font-size: 11px; font-weight: 600;"><i class="fa-solid fa-lock mr-2" style="color: #f4c332;"></i>Admin Access</span>
+                <i class="fa-solid fa-chevron-right text-[9px]"></i>
              </a>
         </div>
 
