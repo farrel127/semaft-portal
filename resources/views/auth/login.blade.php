@@ -3,159 +3,137 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Akses Sistem - SEMA FT</title>
+    <title>Lock Screen - SEMA FT</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     {!! NoCaptcha::renderJs() !!}
 
     <style>
-        /* Mengamankan autofill browser agar tidak merusak desain kaca */
+        /* Mencegah autofill background putih yang merusak desain */
         input:-webkit-autofill,
         input:-webkit-autofill:hover, 
         input:-webkit-autofill:focus, 
         input:-webkit-autofill:active{
-            -webkit-box-shadow: 0 0 0 30px rgba(11, 6, 34, 0.9) inset !important;
+            -webkit-box-shadow: 0 0 0 30px rgba(255, 255, 255, 0.05) inset !important;
             -webkit-text-fill-color: white !important;
             transition: background-color 5000s ease-in-out 0s;
         }
 
-        /* Animasi pendaran wallpaper */
-        @keyframes aurora {
-            0% { transform: scale(1) translate(0, 0); opacity: 0.6; }
-            50% { transform: scale(1.1) translate(20px, -30px); opacity: 0.8; }
-            100% { transform: scale(1) translate(0, 0); opacity: 0.6; }
+        /* Animasi Wallpaper Ambient */
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
         }
-        .animate-aurora { animation: aurora 15s infinite alternate ease-in-out; }
     </style>
 </head>
 
-<body class="min-h-screen relative flex items-center justify-center overflow-hidden font-sans antialiased" style="background-color: #0b061a;">
+<body style="background-color: #090514; min-height: 100vh; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow-x: hidden; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
 
-    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0 flex items-center justify-center">
-        <div class="absolute top-0 w-[40vw] h-[40vw] rounded-full animate-aurora mix-blend-screen" style="background: radial-gradient(circle, rgba(109,40,217,0.2) 0%, transparent 60%); filter: blur(80px);"></div>
-        <div class="absolute -bottom-[10%] w-[50vw] h-[50vw] rounded-full animate-aurora mix-blend-screen" style="background: radial-gradient(circle, rgba(244,195,50,0.12) 0%, transparent 60%); filter: blur(100px); animation-delay: -5s;"></div>
+    <div style="position: fixed; inset: 0; z-index: 0; pointer-events: none; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+        <div style="position: absolute; width: 60vw; height: 60vw; max-width: 800px; max-height: 800px; background: radial-gradient(circle, rgba(76,29,149,0.25) 0%, transparent 60%); filter: blur(100px); animation: pulse-slow 10s infinite alternate;"></div>
+        <div style="position: absolute; bottom: -20%; width: 70vw; height: 70vw; max-width: 900px; max-height: 900px; background: radial-gradient(circle, rgba(244,195,50,0.1) 0%, transparent 60%); filter: blur(120px); animation: pulse-slow 15s infinite alternate-reverse;"></div>
         
-        <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px); background-size: 40px 40px;"></div>
+        <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 32px 32px; opacity: 0.3;"></div>
     </div>
 
-    <div class="relative z-10 w-full max-w-[420px] px-5 py-8 md:py-12 mx-auto transform transition-all duration-500">
+    <div style="position: relative; z-index: 10; width: 100%; max-width: 400px; padding: 20px; box-sizing: border-box;">
         
-        <div class="rounded-[2.5rem] p-8 md:p-10 overflow-hidden relative"
-             style="background: linear-gradient(180deg, rgba(30,17,96,0.4) 0%, rgba(15,8,45,0.6) 100%);
-                    backdrop-filter: blur(40px) saturate(200%);
-                    -webkit-backdrop-filter: blur(40px) saturate(200%);
-                    border: 1px solid rgba(255, 255, 255, 0.12);
-                    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15);">
+        <div style="background: rgba(255, 255, 255, 0.03); 
+                    backdrop-filter: blur(50px) saturate(200%); 
+                    -webkit-backdrop-filter: blur(50px) saturate(200%); 
+                    border: 1px solid rgba(255, 255, 255, 0.1); 
+                    border-radius: 32px; 
+                    padding: 40px 30px; 
+                    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);">
             
-            <div class="absolute top-0 inset-x-0 h-1" style="background: linear-gradient(90deg, transparent, rgba(244,195,50,0.6), transparent);"></div>
-
-            <div class="text-center mb-8">
-                <div class="inline-flex items-center justify-center w-16 h-16 rounded-[1.25rem] mb-5 transform hover:scale-105 transition-transform duration-500"
-                     style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); box-shadow: inset 0 2px 10px rgba(255,255,255,0.05);">
-                    <img src="{{ asset('images/sema.png') }}" alt="Logo SEMA FT" class="w-10 h-10 object-contain">
+            <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 32px;">
+                <div style="width: 80px; height: 80px; border-radius: 50%; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; box-shadow: inset 0 2px 10px rgba(255,255,255,0.05);">
+                    <img src="{{ asset('images/sema.png') }}" alt="Logo" style="width: 45px; height: 45px; object-fit: contain;">
                 </div>
-                <h1 class="text-2xl md:text-3xl font-bold tracking-tight text-white mb-1.5">Authentikasi</h1>
-                <p class="text-[10px] md:text-xs font-semibold tracking-[0.15em] uppercase" style="color: rgba(255,255,255,0.5);">SEMA Fakultas Teknik</p>
+                <h1 style="color: white; font-size: 22px; font-weight: 700; margin: 0; letter-spacing: -0.5px;">Fakultas Teknik</h1>
+                <p style="color: rgba(255,255,255,0.5); font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 4px;">Portal Administrator</p>
             </div>
 
-            <x-auth-session-status class="mb-5" :status="session('status')" />
+            <x-auth-session-status class="mb-4" :status="session('status')" />
 
-            <form method="POST" action="{{ route('login') }}" class="space-y-4" novalidate>
+            <form method="POST" action="{{ route('login') }}" novalidate style="display: flex; flex-direction: column; gap: 16px;">
                 @csrf
 
-                <div class="relative group">
-                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-yellow-400 transition-colors">
-                        <i class="fa-regular fa-envelope text-sm"></i>
-                    </div>
-                    <input type="email" name="email" required
-                           class="w-full pl-11 pr-4 py-3.5 rounded-2xl outline-none transition-all duration-300 placeholder-white/30 text-white font-medium text-sm"
-                           style="background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.08); box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);"
-                           onfocus="this.style.background='rgba(0,0,0,0.4)'; this.style.borderColor='rgba(244,195,50,0.5)';"
-                           onblur="this.style.background='rgba(0,0,0,0.25)'; this.style.borderColor='rgba(255,255,255,0.08)';"
-                           placeholder="Alamat Email">
-                    <x-input-error :messages="$errors->get('email')" class="mt-1.5 text-[11px] text-red-400" />
-                </div>
-
-                <div class="relative group">
-                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-yellow-400 transition-colors">
-                        <i class="fa-solid fa-lock text-sm"></i>
-                    </div>
-                    <input id="password" type="password" name="password" required
-                           class="w-full pl-11 pr-12 py-3.5 rounded-2xl outline-none transition-all duration-300 placeholder-white/30 text-white font-medium text-sm"
-                           style="background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.08); box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);"
-                           onfocus="this.style.background='rgba(0,0,0,0.4)'; this.style.borderColor='rgba(244,195,50,0.5)';"
-                           onblur="this.style.background='rgba(0,0,0,0.25)'; this.style.borderColor='rgba(255,255,255,0.08)';"
-                           placeholder="Kata Sandi">
+                <div style="background: rgba(0,0,0,0.2); border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); overflow: hidden;">
                     
-                    <button type="button" onclick="togglePassword()" class="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-white transition-colors focus:outline-none">
-                        <i id="eye-icon" class="fa-regular fa-eye text-sm"></i>
-                    </button>
-                    <x-input-error :messages="$errors->get('password')" class="mt-1.5 text-[11px] text-red-400" />
+                    <div style="position: relative; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <div style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.4);">
+                            <i class="fa-regular fa-envelope" style="font-size: 14px;"></i>
+                        </div>
+                        <input type="email" name="email" required placeholder="Alamat Email" 
+                               style="width: 100%; padding: 14px 16px 14px 44px; background: transparent; border: none; color: white; font-size: 14px; outline: none; box-sizing: border-box;"
+                               onfocus="this.parentElement.style.background='rgba(255,255,255,0.05)'" 
+                               onblur="this.parentElement.style.background='transparent'">
+                    </div>
+
+                    <div style="position: relative;">
+                        <div style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.4);">
+                            <i class="fa-solid fa-lock" style="font-size: 14px;"></i>
+                        </div>
+                        <input id="password" type="password" name="password" required placeholder="Kata Sandi" 
+                               style="width: 100%; padding: 14px 44px; background: transparent; border: none; color: white; font-size: 14px; outline: none; box-sizing: border-box;"
+                               onfocus="this.parentElement.style.background='rgba(255,255,255,0.05)'" 
+                               onblur="this.parentElement.style.background='transparent'">
+                        <button type="button" onclick="togglePassword()" style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); background: none; border: none; color: rgba(255,255,255,0.4); cursor: pointer; padding: 0;">
+                            <i id="eye-icon" class="fa-regular fa-eye" style="font-size: 14px;"></i>
+                        </button>
+                    </div>
+
                 </div>
 
-                <div class="flex items-center justify-between pt-1 pb-1">
-                    <label class="flex items-center gap-2.5 cursor-pointer group">
-                        <div class="relative flex items-center">
-                            <input type="checkbox" name="remember" class="w-4 h-4 rounded border-gray-400 appearance-none outline-none cursor-pointer transition-all duration-300 checked:bg-yellow-400 checked:border-yellow-400" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);">
-                            <i class="fa-solid fa-check absolute inset-0 text-[10px] text-black m-auto opacity-0 pointer-events-none transition-opacity duration-300"></i>
-                        </div>
-                        <span class="text-[11px] md:text-xs font-medium text-gray-400 group-hover:text-white transition-colors">Ingat sesi</span>
-                    </label>
+                @if ($errors->get('email') || $errors->get('password'))
+                    <div style="color: #f87171; font-size: 12px; text-align: center; margin-top: -8px;">
+                        Kredensial tidak valid. Silakan coba lagi.
+                    </div>
+                @endif
 
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 4px;">
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <input type="checkbox" name="remember" style="accent-color: #f4c332; width: 14px; height: 14px; cursor: pointer;">
+                        <span style="color: rgba(255,255,255,0.6); font-size: 12px;">Ingat sesi</span>
+                    </label>
                     @if (Route::has('password.request'))
-                        <a href="{{ route('password.request') }}" class="text-[11px] md:text-xs font-medium text-gray-400 hover:text-yellow-400 transition-colors">
-                            Lupa sandi?
-                        </a>
+                        <a href="{{ route('password.request') }}" style="color: rgba(255,255,255,0.6); font-size: 12px; text-decoration: none;" onmouseover="this.style.color='#f4c332'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Lupa sandi?</a>
                     @endif
                 </div>
 
-                <div class="flex justify-center py-2">
-                    <div class="transform scale-[0.85] sm:scale-95 origin-center overflow-hidden rounded-md" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
+                <div style="display: flex; justify-content: center; margin-top: 4px; transform: scale(0.9); transform-origin: center;">
+                    <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden;">
                         {!! NoCaptcha::display() !!}
                     </div>
                 </div>
                 @if ($errors->has('g-recaptcha-response'))
-                    <p class="text-red-400 text-[11px] text-center mt-0">
-                        {{ $errors->first('g-recaptcha-response') }}
-                    </p>
+                    <p style="color: #f87171; font-size: 11px; text-align: center; margin: 0;">{{ $errors->first('g-recaptcha-response') }}</p>
                 @endif
 
-                <div class="pt-3">
-                    <button type="submit" id="submit-btn"
-                            class="w-full py-3.5 rounded-2xl font-bold text-sm tracking-wide transition-all duration-300 flex justify-center items-center gap-2 transform active:scale-[0.98] outline-none"
-                            style="background: #f4c332; color: #1e1160; box-shadow: 0 4px 15px rgba(244,195,50,0.3), inset 0 1px 0 rgba(255,255,255,0.4);"
-                            onmouseover="this.style.boxShadow='0 8px 25px rgba(244,195,50,0.5), inset 0 1px 0 rgba(255,255,255,0.4)';"
-                            onmouseout="this.style.boxShadow='0 4px 15px rgba(244,195,50,0.3), inset 0 1px 0 rgba(255,255,255,0.4)';">
-                        <i class="fa-solid fa-lock-open" id="submit-icon"></i> 
-                        <span id="submit-text">Akses Sistem</span>
-                    </button>
-                </div>
+                <button type="submit" id="submit-btn"
+                        style="width: 100%; padding: 14px; margin-top: 8px; border-radius: 14px; background: #f4c332; color: #1e1160; font-weight: 700; font-size: 14px; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(244,195,50,0.3); display: flex; justify-content: center; align-items: center; gap: 8px; transition: 0.2s;"
+                        onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 8px 20px rgba(244,195,50,0.4)';"
+                        onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 15px rgba(244,195,50,0.3)';">
+                    <i id="submit-icon" class="fa-solid fa-arrow-right-to-bracket"></i>
+                    <span id="submit-text">Akses Sistem</span>
+                </button>
             </form>
-
-            <div class="mt-4">
-                <a href="{{ url('/') }}" class="w-full py-3.5 rounded-2xl font-medium text-[11px] md:text-xs flex justify-center items-center gap-2 transition-all duration-300 outline-none"
-                   style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.6);"
-                   onmouseover="this.style.background='rgba(255,255,255,0.08)'; this.style.color='#ffffff';"
-                   onmouseout="this.style.background='rgba(255,255,255,0.03)'; this.style.color='rgba(255,255,255,0.6)';">
-                    <i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda
-                </a>
-            </div>
-
         </div>
-        
-        <p class="text-center text-[10px] font-semibold tracking-widest mt-8 uppercase" style="color: rgba(255,255,255,0.3);">
-            © {{ date('Y') }} SEMA FT USB YPKP
-        </p>
+
+        <div style="text-center; margin-top: 24px; display: flex; justify-content: center;">
+            <a href="{{ url('/') }}" 
+               style="color: rgba(255,255,255,0.5); font-size: 12px; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 20px; transition: 0.2s;"
+               onmouseover="this.style.color='white'; this.style.background='rgba(255,255,255,0.1)';"
+               onmouseout="this.style.color='rgba(255,255,255,0.5)'; this.style.background='transparent';">
+                <i class="fa-solid fa-arrow-left"></i> Kembali ke Portal Utama
+            </a>
+        </div>
+
     </div>
 
 <script>
-    // Fix untuk animasi checkbox custom
-    document.querySelector('input[name="remember"]').addEventListener('change', function() {
-        const icon = this.nextElementSibling;
-        icon.style.opacity = this.checked ? '1' : '0';
-    });
-
     // Toggle Password Visibility
     function togglePassword(){
         const password = document.getElementById('password');
@@ -170,11 +148,11 @@
             password.type = 'password';
             icon.classList.remove('fa-eye-slash');
             icon.classList.add('fa-eye');
-            icon.style.color = '';
+            icon.style.color = 'rgba(255,255,255,0.4)';
         }
     }
 
-    // UX Feedback: Animasi Loading saat form disubmit
+    // UX Feedback: Animasi Loading 
     document.querySelector('form').addEventListener('submit', function() {
         const btn = document.getElementById('submit-btn');
         const icon = document.getElementById('submit-icon');
@@ -183,7 +161,7 @@
         btn.style.opacity = '0.8';
         btn.style.cursor = 'wait';
         icon.className = 'fa-solid fa-circle-notch fa-spin';
-        text.innerText = 'Memproses...';
+        text.innerText = 'Memverifikasi...';
     });
 </script>
 
