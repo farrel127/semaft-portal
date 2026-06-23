@@ -81,7 +81,7 @@
                 <span style="font-size: 13px;">Beranda Utama</span>
              </a>
 
-             <a href="{{ url('/tentang') }}" class="flex items-center gap-3 px-3 py-1.5 rounded-[10px] transition-colors cursor-default"
+             <!-- <a href="{{ url('/tentang') }}" class="flex items-center gap-3 px-3 py-1.5 rounded-[10px] transition-colors cursor-default"
                 style="{{ request()->is('tentang') ? 'background: #f4c332; color: #1e1160; font-weight: 700;' : 'color: rgba(255,255,255,0.9);' }}"
                 onmouseover="this.style.backgroundColor='{{ request()->is('tentang') ? '#f4c332' : 'rgba(255,255,255,0.08)' }}';"
                 onmouseout="this.style.backgroundColor='{{ request()->is('tentang') ? '#f4c332' : 'transparent' }}';">
@@ -89,7 +89,7 @@
                     <i class="fa-solid fa-users text-xs"></i>
                 </div>
                 <span style="font-size: 13px;">Profil Organisasi</span>
-             </a>
+             </a> -->
 
              <div style="height: 1px; background: rgba(255,255,255,0.08); margin: 6px 12px;"></div>
 
