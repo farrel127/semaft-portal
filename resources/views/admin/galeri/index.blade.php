@@ -1,4 +1,4 @@
-@extends('layouts.admin') <!-- Ganti 'layouts.admin' dengan nama file layout dashboard Anda -->
+@extends('layouts.frontend') <!-- Ganti 'layouts.admin' dengan nama file layout dashboard Anda -->
 
 @section('content')
 <div class="p-6 sm:p-10 space-y-6">
