@@ -25,6 +25,7 @@ Route::middleware([TrackVisitor::class])->group(function () {
 
     Route::get('/kegiatan', [FrontendController::class, 'kegiatan'])->name('frontend.kegiatan');
     Route::get('/tentang', [FrontendController::class, 'tentang'])->name('frontend.tentang');
+    Route::get('/galeri', [App\Http\Controllers\FrontendController::class, 'galeri'])->name('frontend.galeri');
 });
 
 

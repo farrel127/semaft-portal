@@ -8,7 +8,7 @@ use App\Models\Aspirasi;
 use App\Models\Kegiatan;
 use Illuminate\Http\Request;
 
-class FrontendController extends Controller
+class Controller extends Controller
 {
     // 1. Menampilkan Halaman Beranda Utama
     public function index()
@@ -29,21 +29,21 @@ class FrontendController extends Controller
     public function berita()
     {
         $semuaBerita = Berita::with(['user', 'himpunan'])->latest()->paginate(9);
-        return view('frontend.berita', compact('semuaBerita'));
+        return view('.berita', compact('semuaBerita'));
     }
 
     // 3. Menampilkan Halaman Baca Berita (Detail)
     public function bacaBerita($slug)
     {
         $berita = Berita::with(['user', 'himpunan'])->where('slug', $slug)->firstOrFail();
-        return view('frontend.baca-berita', compact('berita'));
+        return view('.baca-berita', compact('berita'));
     }
 
     // 4. Menampilkan Halaman Form Aspirasi
     public function aspirasi()
     {
         $himpunans = Himpunan::all();
-        return view('frontend.aspirasi', compact('himpunans'));
+        return view('.aspirasi', compact('himpunans'));
     }
 
     // 5. Menyimpan Data Aspirasi ke Database
@@ -71,13 +71,20 @@ class FrontendController extends Controller
                         ->orderBy('tanggal', 'desc')
                         ->get();
                         
-        return view('frontend.kegiatan', compact('kegiatans'));
+        return view('.kegiatan', compact('kegiatans'));
     }
 
     // 7. Menampilkan Halaman Tentang SEMAFT
     public function tentang()
     {
         $himpunans = Himpunan::all();
-        return view('frontend.tentang', compact('himpunans'));
+        return view('.tentang', compact('himpunans'));
+    }
+    // Menampilkan Halaman Galeri
+    public function galeri()
+    {
+        // Mengambil semua data galeri, diurutkan dari yang terbaru
+        $galeris = \App\Models\Gallery::latest()->get();
+        return view('frontend.galeri', compact('galeris'));
     }
 }
