@@ -114,6 +114,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('admin/aspirasi', AspirasiController::class)->names('aspirasi')->only(['index', 'update', 'destroy']);
     Route::resource('admin/kegiatan', KegiatanController::class)->names('kegiatan');
     Route::resource('admin/himpunan', HimpunanController::class)->names('himpunan')->only(['index', 'edit', 'update']);
+    // Rute Pengelolaan Galeri (Admin)
+Route::get('/admin/galeri', [App\Http\Controllers\GalleryController::class, 'index'])->name('admin.galeri');
+Route::post('/admin/galeri', [App\Http\Controllers\GalleryController::class, 'store'])->name('admin.galeri.store');
+Route::delete('/admin/galeri/{id}', [App\Http\Controllers\GalleryController::class, 'destroy'])->name('admin.galeri.destroy');
     
 });
 

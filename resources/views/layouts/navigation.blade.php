@@ -54,6 +54,16 @@
             </a>
         </div>
         @endif
+        <!-- Menu Navigasi: Arsip Visual (Galeri) -->
+<a href="{{ route('admin.galeri') }}" 
+   class="flex items-center gap-3 px-4 py-3 mb-2 rounded-xl transition-all duration-200 group {{ request()->routeIs('admin.galeri') ? 'bg-blue-600 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' }}">
+    
+    <div class="flex items-center justify-center w-6 h-6">
+        <i class="{{ request()->routeIs('admin.galeri') ? 'fa-solid' : 'fa-regular' }} fa-images text-lg transition-transform group-hover:scale-110"></i>
+    </div>
+    
+    <span class="font-semibold text-sm">Arsip Visual</span>
+</a>
     </nav>
 </aside>
 
