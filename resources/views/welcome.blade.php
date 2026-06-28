@@ -131,6 +131,66 @@
         </div>
     </section>
     @endif
+    <!-- SECTION: ARSIP VISUAL (GALERI TERBARU) -->
+<section class="py-16 md:py-24 relative overflow-hidden" style="background-color: #0b061a;">
+    
+    <!-- Efek Cahaya Latar Belakang -->
+    <div class="absolute top-0 right-0 w-[40vw] h-[40vw] bg-indigo-900/20 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Judul Section & Tombol Lihat Semua -->
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 gap-4">
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-3" style="background: rgba(244,195,50,0.1); border: 1px solid rgba(244,195,50,0.2);">
+                    <i class="fa-solid fa-camera text-xs" style="color: #f4c332;"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-yellow-400">Galeri SEMA FT</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight">Arsip Visual</h2>
+            </div>
+            
+            <a href="{{ route('frontend.galeri') }}" class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold transition-all duration-300 hover:gap-3" style="color: #f4c332;">
+                Eksplorasi Semua Karya <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- Grid Foto -->
+        @if($galeri_terbaru->count() > 0)
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                @foreach($galeri_terbaru as $foto)
+                    <a href="{{ route('frontend.galeri') }}" class="group relative rounded-2xl overflow-hidden aspect-square border shadow-lg transform transition-all duration-500 hover:-translate-y-2" style="border-color: rgba(255,255,255,0.1);">
+                        
+                        <!-- Gambar -->
+                        <img src="{{ asset('storage/' . $foto->gambar) }}" alt="{{ $foto->judul }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        
+                        <!-- Filter Gelap Muncul Saat Hover -->
+                        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 md:p-6"
+                             style="background: linear-gradient(to top, rgba(11,5,26,0.9) 0%, rgba(11,5,26,0.2) 50%, transparent 100%);">
+                            <span class="text-[10px] md:text-xs font-bold uppercase tracking-wider mb-1" style="color: #f4c332;">
+                                {{ $foto->kategori }}
+                            </span>
+                            <h3 class="text-white font-bold text-sm md:text-lg truncate">{{ $foto->judul }}</h3>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+        @else
+            <!-- Jika Admin Belum Upload Foto -->
+            <div class="w-full py-12 rounded-2xl flex flex-col items-center justify-center border border-dashed" style="border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.02);">
+                <i class="fa-regular fa-image text-4xl mb-3 text-gray-600"></i>
+                <p class="text-gray-500 text-sm font-medium">Dokumentasi kegiatan akan segera diunggah.</p>
+            </div>
+        @endif
+
+        <!-- Tombol Lihat Semua (Versi Mobile) -->
+        <div class="mt-8 text-center sm:hidden">
+            <a href="{{ route('frontend.galeri') }}" class="inline-flex items-center justify-center w-full py-3 rounded-xl text-sm font-bold transition-all" style="background: rgba(244,195,50,0.15); border: 1px solid rgba(244,195,50,0.3); color: #f4c332;">
+                Eksplorasi Semua Karya <i class="fa-solid fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+
+    </div>
+</section>
 
     <section class="py-16 sm:py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

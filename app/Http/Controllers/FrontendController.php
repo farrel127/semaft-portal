@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 class FrontendController extends Controller
 {
     // 1. Menampilkan Halaman Beranda Utama
+    // 1. Menampilkan Halaman Beranda Utama
     public function index()
     {
         $himpunans = Himpunan::all();
@@ -23,7 +24,11 @@ class FrontendController extends Controller
                                 ->take(3)
                                 ->get();
 
-        return view('welcome', compact('himpunans', 'berita_terbaru', 'agenda_terdekat'));
+        // TAMBAHKAN BARIS INI: Mengambil 6 foto terbaru untuk ditampilkan di Beranda
+        $galeri_terbaru = \App\Models\Gallery::latest()->take(6)->get();
+
+        // JANGAN LUPA: Tambahkan 'galeri_terbaru' ke dalam compact()
+        return view('welcome', compact('himpunans', 'berita_terbaru', 'agenda_terdekat', 'galeri_terbaru'));
     }
 
     // 2. Menampilkan Halaman Daftar Semua Berita
