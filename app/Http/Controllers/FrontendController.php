@@ -8,7 +8,8 @@ use App\Models\Aspirasi;
 use App\Models\Kegiatan;
 use Illuminate\Http\Request;
 
-class Controller extends Controller
+// NAMA CLASS HARUS SESUAI DENGAN NAMA FILE
+class FrontendController extends Controller
 {
     // 1. Menampilkan Halaman Beranda Utama
     public function index()
@@ -29,36 +30,37 @@ class Controller extends Controller
     public function berita()
     {
         $semuaBerita = Berita::with(['user', 'himpunan'])->latest()->paginate(9);
-        return view('.berita', compact('semuaBerita'));
+        return view('frontend.berita', compact('semuaBerita'));
     }
 
     // 3. Menampilkan Halaman Baca Berita (Detail)
     public function bacaBerita($slug)
     {
         $berita = Berita::with(['user', 'himpunan'])->where('slug', $slug)->firstOrFail();
-        return view('.baca-berita', compact('berita'));
+        return view('frontend.baca-berita', compact('berita'));
     }
 
     // 4. Menampilkan Halaman Form Aspirasi
     public function aspirasi()
     {
         $himpunans = Himpunan::all();
-        return view('.aspirasi', compact('himpunans'));
+        return view('frontend.aspirasi', compact('himpunans'));
     }
 
     // 5. Menyimpan Data Aspirasi ke Database
     public function storeAspirasi(Request $request)
     {
-        // Validasi disesuaikan dengan struktur kolom database aspirasis kamu
+        // Validasi disesuaikan dengan struktur kolom database aspirasis
+        // (Pastikan ini sudah menggunakan himpunan_id sesuai perbaikan kita sebelumnya)
         $request->validate([
-            'nama'     => 'required|string|max:255',
-            'email'    => 'required|email|max:255',
-            'prodi'    => 'required|string|max:255',
-            'kategori' => 'required|string|max:255',
-            'pesan'    => 'required|string|min:10',
+            'nama'        => 'required|string|max:255',
+            'email'       => 'required|email|max:255',
+            'himpunan_id' => 'required|exists:himpunans,id', 
+            'kategori'    => 'required|string|max:255',
+            'pesan'       => 'required|string|min:10',
         ]);
 
-        // Menyimpan semua data dengan aman (status otomatis menjadi 'Menunggu' dari migration)
+        // Menyimpan semua data dengan aman
         Aspirasi::create($request->all());
 
         return redirect()->back()->with('success', 'Terima kasih! Aspirasi Anda telah berhasil dikirim ke Senat Mahasiswa Fakultas Teknik.');
@@ -71,16 +73,17 @@ class Controller extends Controller
                         ->orderBy('tanggal', 'desc')
                         ->get();
                         
-        return view('.kegiatan', compact('kegiatans'));
+        return view('frontend.kegiatan', compact('kegiatans'));
     }
 
     // 7. Menampilkan Halaman Tentang SEMAFT
     public function tentang()
     {
         $himpunans = Himpunan::all();
-        return view('.tentang', compact('himpunans'));
+        return view('frontend.tentang', compact('himpunans'));
     }
-    // Menampilkan Halaman Galeri
+    
+    // 8. Menampilkan Halaman Galeri
     public function galeri()
     {
         // Mengambil semua data galeri, diurutkan dari yang terbaru
