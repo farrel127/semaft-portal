@@ -164,13 +164,8 @@
                     @yield('content')
                 </div>
 
-                <!-- FOOTER GLOBAL BAWAH (Menyambung dengan area konten) -->
-                <footer class="mt-6 mb-2 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 px-4">
-                    <p>&copy; {{ date('Y') }} Senat Mahasiswa Fakultas Teknik. All rights reserved.</p>
-                    <div class="flex items-center gap-1 mt-2 sm:mt-0">
-                        Dibuat dengan <i class="fa-solid fa-heart text-red-400"></i> untuk SEMA FT
-                    </div>
-                </footer>
+                <!-- FOOTER GLOBAL BAWAH -->
+                @include('layouts.components.footer')
 
             </main>
             
