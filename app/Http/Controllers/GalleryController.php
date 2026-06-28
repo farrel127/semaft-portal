@@ -12,7 +12,7 @@ class GalleryController extends Controller
     public function index()
     {
         $galeris = Gallery::latest()->get();
-        return view('backend.galeri.index', compact('galeris'));
+        return view('admin.galeri.index', compact('galeris'));
     }
 
     // Menyimpan gambar baru ke database dan folder storage
